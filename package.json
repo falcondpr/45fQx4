@@ -12,7 +12,10 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-socket.io": "^9.0.11",
+    "@nestjs/websockets": "^9.0.11",
     "core-js": "^3.6.5",
     "next": "12.2.3",
     "react": "18.2.0",
