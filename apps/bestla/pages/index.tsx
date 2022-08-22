@@ -8,42 +8,45 @@ const Index = () => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    const receiveMessage = (message) => {
+    const receiveMessage = (message: string) => {
       setMessages([message, ...messages])
     }
 
-    socket.on('message', receiveMessage)
+    socket.on('findAllMessages', receiveMessage)
 
     return () => {
-      socket.off('message', receiveMessage)
+      socket.off('findAllMessages', receiveMessage)
     }
   }, [messages])
 
   console.log(messages)
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const handleSubmit = () => {
     const newMessage = {
       body: message,
       from: 'Me',
     }
     setMessages([newMessage, ...messages])
     setMessage('')
-    socket.emit('message', newMessage.body)
+    socket.emit('createMessage', newMessage.body)
   }
 
   return (
     <div style={{ padding: 20 }}>
       <div>
-        {/* <p>{response}</p> */}
-
         <input
           type="text"
           placeholder="Enter message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button>Send message</button>
+        <button onClick={handleSubmit}>Send message</button>
+      </div>
+
+      <div>
+        {messages.map((message: any, index: number) => (
+          <p key={index}>{message.body}</p>
+        ))}
       </div>
     </div>
   )
