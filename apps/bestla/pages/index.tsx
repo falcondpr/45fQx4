@@ -5,48 +5,68 @@ const socket = io('http://localhost:3333')
 
 const Index = () => {
   const [messages, setMessages] = useState([])
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState<string>('')
+  const [name, setName] = useState<string>('')
+
+  const [joined, setJoined] = useState<boolean>(false)
 
   useEffect(() => {
-    const receiveMessage = (message: string) => {
-      setMessages([message, ...messages])
-    }
+    socket.emit('findAllMessages', {}, (data) => {
+      setMessages(data)
+    })
 
-    socket.on('findAllMessages', receiveMessage)
+    socket.on('message', (message) => {
+      console.log('hello', message)
+      setMessages(message)
+    })
+  }, [])
 
-    return () => {
-      socket.off('findAllMessages', receiveMessage)
-    }
-  }, [messages])
+  // console.log(messages)
 
-  console.log(messages)
+  const join = () => {
+    socket.emit('join', { name }, () => {
+      setJoined(true)
+    })
+  }
 
   const handleSubmit = () => {
-    const newMessage = {
-      body: message,
-      from: 'Me',
-    }
-    setMessages([newMessage, ...messages])
+    if (message === '') return
+
+    socket.emit('createMessage', { text: message, name }, (response) => {
+      setMessages([...messages, response])
+    })
+
     setMessage('')
-    socket.emit('createMessage', newMessage.body)
   }
 
   return (
     <div style={{ padding: 20 }}>
       <div>
-        <input
-          type="text"
-          placeholder="Enter message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Send message</button>
-      </div>
+        {joined ? (
+          <div>
+            <input
+              type="text"
+              placeholder="Enter message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <button onClick={handleSubmit}>Send message</button>
 
-      <div>
-        {messages.map((message: any, index: number) => (
-          <p key={index}>{message.body}</p>
-        ))}
+            <div>
+              {messages.map((message, index: number) => (
+                <p key={index}>
+                  [{message.name}] - {message.text}
+                </p>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div>whats your name</div>
+            <input value={name} onChange={(e) => setName(e.target.value)} />
+            <button onClick={join}>send name</button>
+          </div>
+        )}
       </div>
     </div>
   )

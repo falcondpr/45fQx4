@@ -5,7 +5,7 @@ import { Message } from './entities/message.entity'
 
 @Injectable()
 export class MessagesService {
-  messages: Message[] = [{ name: 'Fernando', text: 'Hey Lee' }]
+  private messages: Message[] = [{ name: 'Fernando', text: 'Hey Lee' }]
   clientToUser = {}
 
   identify(name: string, clientId: string) {
@@ -18,8 +18,8 @@ export class MessagesService {
   }
 
   create(createMessageDto: CreateMessageDto) {
-    const message = { ...createMessageDto }
-    this.messages.push(message)
+    const withNewMessage = [...this.messages, createMessageDto]
+    return withNewMessage
   }
 
   findAll() {
