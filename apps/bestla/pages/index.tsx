@@ -16,12 +16,15 @@ const Index = () => {
     })
 
     socket.on('message', (message) => {
-      console.log('hello', message)
-      setMessages(message)
+      setMessages([...messages, message])
     })
-  }, [])
 
-  // console.log(messages)
+    return () => {
+      socket.off('message')
+    }
+  }, [messages])
+
+  console.log('general', messages)
 
   const join = () => {
     socket.emit('join', { name }, () => {
@@ -32,11 +35,14 @@ const Index = () => {
   const handleSubmit = () => {
     if (message === '') return
 
-    socket.emit('createMessage', { text: message, name }, (response) => {
-      setMessages([...messages, response])
-    })
+    const data = {
+      text: message,
+      name,
+    }
 
-    setMessage('')
+    socket.emit('createMessage', data, () => {
+      setMessage('')
+    })
   }
 
   return (
