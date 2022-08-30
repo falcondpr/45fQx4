@@ -11,20 +11,18 @@ const Index = () => {
   const [joined, setJoined] = useState<boolean>(false)
 
   useEffect(() => {
-    socket.emit('findAllMessages', {}, (data) => {
-      setMessages(data)
-    })
+    // socket.emit('findAllMessages', {}, (data) => {
+    //   setMessages(data)
+    // })
 
     socket.on('message', (message) => {
-      setMessages([...messages, message])
+      setMessages(message)
     })
 
     return () => {
       socket.off('message')
     }
-  }, [messages])
-
-  console.log('general', messages)
+  }, [])
 
   const join = () => {
     socket.emit('join', { name }, () => {
