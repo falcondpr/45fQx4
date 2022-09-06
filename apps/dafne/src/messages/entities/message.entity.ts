@@ -1,4 +1,6 @@
 export class Message {
-  name: string
-  text: string
+  id_user_transmitter: number
+  id_user_receiver: number
+  content: string
+  created_at: string
 }

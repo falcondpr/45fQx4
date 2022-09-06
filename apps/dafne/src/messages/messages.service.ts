@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common'
 
 import { CreateMessageDto } from './dto/create-message.dto'
 import { Message } from './entities/message.entity'
+import { PrismaService } from '../../prisma/prisma.service'
 
 @Injectable()
 export class MessagesService {
   messages: Message[] = []
   clientToUser = {}
+
+  constructor(private prisma: PrismaService) {}
 
   identify(name: string, clientId: string) {
     this.clientToUser[clientId] = name
@@ -17,12 +20,15 @@ export class MessagesService {
     return this.clientToUser[clientId]
   }
 
-  create(createMessageDto: CreateMessageDto) {
-    const messages = this.messages.concat(createMessageDto)
-    return messages
+  async create(createMessageDto: CreateMessageDto) {
+    await this.prisma.message.create({
+      data: { ...createMessageDto },
+    })
+
+    return this.prisma.message.findMany()
   }
 
   findAll() {
-    return this.messages
+    return this.prisma.message.findMany()
   }
 }

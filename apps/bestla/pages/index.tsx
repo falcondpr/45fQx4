@@ -5,28 +5,31 @@ const socket = io('http://localhost:3333')
 
 const Index = () => {
   const [messages, setMessages] = useState([])
-  const [message, setMessage] = useState<string>('')
+  const [message, setMessage] = useState({
+    id_user_transmitter: 10,
+    id_user_receiver: 28,
+    content: '',
+  })
   const [name, setName] = useState<string>('')
 
   const [joined, setJoined] = useState<boolean>(false)
-
-  console.log(messages)
 
   useEffect(() => {
     socket.emit('findAllMessages', {}, (data) => {
       setMessages(data)
     })
 
-    socket.on('message', (message) => {
+    socket.on('message', () => {
       setMessages((p) => {
-        return [...p, ...message]
+        return [...p, message]
       })
     })
 
     return () => {
       socket.off('message')
     }
-  }, [])
+    // eslint-disable-next-line
+  }, [messages])
 
   const join = () => {
     socket.emit('join', { name }, () => {
@@ -35,15 +38,17 @@ const Index = () => {
   }
 
   const handleSubmit = () => {
-    if (message === '') return
+    if (message.content === '') return
 
     const data = {
-      text: message,
-      name,
+      ...message,
     }
 
-    socket.emit('createMessage', data, () => {
-      setMessage('')
+    socket.emit('createMessage', data)
+    setMessage({
+      id_user_transmitter: 0,
+      id_user_receiver: 0,
+      content: '',
     })
   }
 
@@ -55,15 +60,17 @@ const Index = () => {
             <input
               type="text"
               placeholder="Enter message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={message.content}
+              onChange={(e) =>
+                setMessage({ ...message, content: e.target.value })
+              }
             />
             <button onClick={handleSubmit}>Send message</button>
 
             <div>
-              {messages.map((message, index: number) => (
+              {messages?.map((message, index: number) => (
                 <p key={index}>
-                  [{message.name}] - {message.text}
+                  [{message.id_user_transmitter}] - {message.content}
                 </p>
               ))}
             </div>
