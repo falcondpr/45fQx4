@@ -29,6 +29,8 @@ export class MessagesService {
   }
 
   findAll() {
-    return this.prisma.message.findMany()
+    return this.prisma.message.findMany({
+      orderBy: { created_at: 'desc' },
+    })
   }
 }
