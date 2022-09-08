@@ -22,3 +22,18 @@ model Message {
   content             String
   created_at          DateTime @default(now())
 }
+
+model Requests {
+  id         Int      @id @default(autoincrement())
+  id_product String
+  status     Boolean
+  created_at DateTime @default(now())
+}
+
+model MessageComment {
+  id         Int      @id @default(autoincrement())
+  content    String
+  id_vendor  String
+  id_buyer   String
+  created_at DateTime @default(now())
+}
