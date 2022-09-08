@@ -11,25 +11,16 @@ export class MessagesService {
 
   constructor(private prisma: PrismaService) {}
 
-  identify(name: string, clientId: string) {
-    this.clientToUser[clientId] = name
-    return Object.values(this.clientToUser)
-  }
-
-  getClientName(clientId: string) {
-    return this.clientToUser[clientId]
-  }
-
-  async create(createMessageDto: CreateMessageDto) {
-    await this.prisma.message.create({
-      data: { ...createMessageDto },
+  async create(dto: CreateMessageDto) {
+    await this.prisma.messageComment.create({
+      data: { ...dto },
     })
 
-    return this.prisma.message.findMany()
+    return this.prisma.messageComment.findMany()
   }
 
   findAll() {
-    return this.prisma.message.findMany({
+    return this.prisma.messageComment.findMany({
       orderBy: { created_at: 'desc' },
     })
   }
