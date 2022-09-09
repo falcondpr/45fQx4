@@ -11,6 +11,7 @@ import {
 
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
+import { LoginUserDto } from './dto/login-user.dto'
 
 @Controller('users')
 export class UsersController {
@@ -23,6 +24,25 @@ export class UsersController {
       message: 'User created!',
       success: true,
       data: user,
+    })
+  }
+
+  @Post('/login')
+  async login(@Res() res: Response, @Body() dto: LoginUserDto) {
+    const token = await this.service.login(dto)
+
+    if (!token) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        message: 'Some error',
+        success: false,
+        data: null,
+      })
+    }
+
+    return res.status(HttpStatus.OK).json({
+      message: 'User logged!',
+      success: true,
+      data: token,
     })
   }
 
