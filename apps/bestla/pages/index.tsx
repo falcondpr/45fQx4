@@ -5,23 +5,24 @@ import { UserAuth } from '../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import { getRequests } from '../utils/request'
 
-// import { io } from 'socket.io-client'
+import { io } from 'socket.io-client'
 
-// const socket = io('http://localhost:3333')
+const socket = io('http://localhost:3333')
 
 const Index: NextPage = () => {
   const router = useRouter()
   const { user, logout } = UserAuth()
 
-  // const handleSubmit = () => {
-  //   const data = {
-  //     content: 'content 2312',
-  //     id_vendor: 'id vendor 2312',
-  //     id_buyer: 'id buyer 2312',
-  //   }
+  const handleSubmit = () => {
+    const data = {
+      id_request: 1,
+      content: 'content 2312',
+      id_vendor: 1,
+      id_buyer: 2,
+    }
 
-  //   socket.emit('createMessage', data)
-  // }
+    socket.emit('createMessage', data)
+  }
 
   const { data: requests } = useQuery(['todos'], getRequests)
 
@@ -52,7 +53,7 @@ const Index: NextPage = () => {
           </span>
         )}
 
-        {/* <button onClick={handleSubmit}>sending</button> */}
+        <button onClick={handleSubmit}>sending</button>
         {user ? (
           <button onClick={logout}>Cerrar sesión</button>
         ) : (
@@ -77,6 +78,7 @@ const Index: NextPage = () => {
                 padding: 20,
                 cursor: 'pointer',
               }}
+              onClick={() => router.push(`/request/${request.id}`)}
             >
               <p style={{ margin: 0 }}>Nro: {request.id}</p>
               <p style={{ margin: 0 }}>Id prod: {request.id_product}</p>

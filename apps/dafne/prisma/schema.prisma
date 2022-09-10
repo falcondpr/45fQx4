@@ -32,8 +32,9 @@ model Requests {
 
 model MessageComment {
   id         Int      @id @default(autoincrement())
+  id_request Int
   content    String
-  id_vendor  String
-  id_buyer   String
+  id_vendor  Int
+  id_buyer   Int
   created_at DateTime @default(now())
 }

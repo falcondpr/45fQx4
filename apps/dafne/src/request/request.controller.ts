@@ -1,5 +1,13 @@
 import { Response } from 'express'
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  HttpStatus,
+  Param,
+  Post,
+  Res,
+} from '@nestjs/common'
 
 import { RequestService } from './request.service'
 import { CreateRequestDto } from './dto/create-request.dto'
@@ -25,6 +33,16 @@ export class RequestController {
       message: 'All requests',
       success: true,
       data: requests,
+    })
+  }
+
+  @Get('/:id')
+  async get(@Res() res: Response, @Param('id') id: number) {
+    const request = await this.service.get(id)
+    return res.status(HttpStatus.OK).json({
+      message: 'Request',
+      success: true,
+      data: request,
     })
   }
 }
