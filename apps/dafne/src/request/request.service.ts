@@ -13,4 +13,8 @@ export class RequestService {
       },
     })
   }
+
+  getAll() {
+    return this.prisma.requests.findMany()
+  }
 }
