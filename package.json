@@ -19,6 +19,7 @@
     "@nestjs/platform-socket.io": "^9.0.11",
     "@nestjs/websockets": "^9.0.11",
     "@prisma/client": "^4.3.1",
+    "@tanstack/react-query": "^4.3.1",
     "core-js": "^3.6.5",
     "jwt-decode": "^3.1.2",
     "next": "12.2.4",

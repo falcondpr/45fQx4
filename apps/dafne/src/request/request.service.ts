@@ -13,4 +13,12 @@ export class RequestService {
       },
     })
   }
+
+  getAll() {
+    return this.prisma.requests.findMany()
+  }
+
+  get(id: number) {
+    return this.prisma.requests.findFirst({ where: { id: +id } })
+  }
 }
