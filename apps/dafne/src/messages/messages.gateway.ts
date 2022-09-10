@@ -4,10 +4,10 @@ import {
   MessageBody,
   WebSocketServer,
 } from '@nestjs/websockets'
+import { Server } from 'socket.io'
 
 import { MessagesService } from './messages.service'
 import { CreateMessageDto } from './dto/create-message.dto'
-import { Server } from 'socket.io'
 
 @WebSocketGateway({
   cors: {
@@ -28,7 +28,7 @@ export class MessagesGateway {
   }
 
   @SubscribeMessage('findAllMessages')
-  findAll() {
-    return this.messagesService.findAll()
+  findAll(@MessageBody() id_request: number) {
+    return this.messagesService.findAll(id_request)
   }
 }

@@ -25,7 +25,9 @@ model Message {
 
 model Requests {
   id         Int      @id @default(autoincrement())
-  id_product String
+  id_product Int
+  id_vendor  Int
+  id_buyer   Int
   status     Boolean
   created_at DateTime @default(now())
 }
