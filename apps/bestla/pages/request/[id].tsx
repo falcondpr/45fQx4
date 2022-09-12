@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { GetServerSideProps, NextPage } from 'next'
 import { getRequest } from '../../utils/request'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -7,7 +7,27 @@ import { io } from 'socket.io-client'
 
 const socket = io('http://localhost:3333')
 
-const Request = () => {
+interface RequestProps {
+  request: {
+    id: number
+    id_product: number
+    id_vendor: number
+    id_buyer: number
+    status: boolean
+    created_at: string
+  }
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const request = await getRequest(Number(context.query.id))
+  return {
+    props: {
+      request: request.data,
+    },
+  }
+}
+
+const Request: NextPage<RequestProps> = ({ request }) => {
   const router = useRouter()
 
   const [messages, setMessages] = useState([])
@@ -18,12 +38,8 @@ const Request = () => {
     id_request: 1,
   })
 
-  const { data: request } = useQuery(['todos', router?.query], () =>
-    getRequest(Number(router?.query.id)),
-  )
-
   useEffect(() => {
-    socket.emit('findAllMessages', { id_request: request?.data.id }, (data) => {
+    socket.emit('findAllMessages', { id_request: request.id }, (data) => {
       setMessages(data)
     })
 
@@ -39,6 +55,7 @@ const Request = () => {
     // eslint-disable-next-line
   }, [messages])
 
+  console.log(request)
   console.log(messages)
 
   return (
@@ -46,10 +63,10 @@ const Request = () => {
       <button onClick={() => router.back()}>volver</button>
 
       <div>
-        <h3>{request?.data.id}</h3>
+        <h3>{request.id}</h3>
         <p>
           Id product:{' '}
-          <span style={{ fontWeight: 'bold' }}>{request?.data.id_product}</span>
+          <span style={{ fontWeight: 'bold' }}>{request.id_product}</span>
         </p>
       </div>
 
