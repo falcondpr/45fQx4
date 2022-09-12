@@ -21,7 +21,7 @@ export class MessagesService {
 
   findAll(id_request: number) {
     return this.prisma.messageComment.findMany({
-      where: { id_request },
+      where: { id_request: Number(id_request) },
       orderBy: { created_at: 'desc' },
     })
   }
