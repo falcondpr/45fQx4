@@ -7,6 +7,7 @@
     "bestla-e2e": "apps/bestla-e2e",
     "dafne": "apps/dafne",
     "web": "apps/web",
-    "web-e2e": "apps/web-e2e"
+    "web-e2e": "apps/web-e2e",
+    "yocasta": "apps/yocasta"
   }
 }
