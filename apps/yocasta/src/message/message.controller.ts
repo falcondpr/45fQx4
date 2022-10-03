@@ -37,6 +37,16 @@ export class MessageController {
     })
   }
 
+  @Get()
+  async getAll(@Res() res: Response) {
+    const messages = await this.service.getAll()
+    return res.status(HttpStatus.OK).json({
+      message: 'All messages',
+      success: true,
+      data: messages,
+    })
+  }
+
   @Get('id_team/:id_team')
   async getMessages(@Res() res: Response, @Param('id_team') id_team: string) {
     const messages = await this.service.getMessages(id_team)

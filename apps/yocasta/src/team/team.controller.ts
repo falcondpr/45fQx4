@@ -2,6 +2,7 @@ import { Response } from 'express'
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Param,
@@ -36,6 +37,20 @@ export class TeamController {
     })
   }
 
+  @Get('/members/:id_user_1/:id_user_2')
+  async existTeam(
+    @Res() res: Response,
+    @Param('id_user_1') id_user_1: string,
+    @Param('id_user_2') id_user_2: string,
+  ) {
+    const team = await this.service.existTeam(id_user_1, id_user_2)
+    return res.status(HttpStatus.OK).json({
+      message: 'Team',
+      success: true,
+      data: team ?? null,
+    })
+  }
+
   @Get('/:id')
   async getByUser(@Res() res: Response, @Param('id') id: string) {
     const teams = await this.service.getByUser(id)
@@ -43,6 +58,16 @@ export class TeamController {
       message: 'Teams by user',
       success: true,
       data: teams,
+    })
+  }
+
+  @Delete('/:id')
+  async delete(@Res() res: Response, @Param('id') id: string) {
+    const team = await this.service.deteleTeam(id)
+    return res.status(HttpStatus.OK).json({
+      message: 'Team deleted!',
+      success: true,
+      data: team,
     })
   }
 }
