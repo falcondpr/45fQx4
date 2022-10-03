@@ -33,6 +33,11 @@ export class MessageService {
     }
   }
 
+  async getAll(): Promise<Message[]> {
+    const messages = await this.messageModel.find()
+    return messages
+  }
+
   async delete(id: string): Promise<Message> {
     const message = await this.messageModel.findByIdAndDelete(id)
     return message

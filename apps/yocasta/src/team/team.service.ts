@@ -19,6 +19,24 @@ export class TeamService {
     return team
   }
 
+  async existTeam(id_user_transmitter: string, id_user_receiver: string) {
+    const teamsFromDatabase = await this.teamModel.find()
+    const teamFiltered = teamsFromDatabase.map((team) => {
+      const isContains = team.members.includes(id_user_transmitter)
+      if (!isContains) return null
+
+      if (isContains) {
+        const isContains2 = team.members.includes(id_user_receiver)
+        if (!isContains2) return null
+
+        return team
+      }
+    })
+
+    const team = teamFiltered.filter((team) => team?._id && team)
+    return team[0]
+  }
+
   async getByUser(id: string) {
     const teamsAll = await this.teamModel.find()
     const teamsFiltered = teamsAll.map((team) => {
@@ -29,5 +47,10 @@ export class TeamService {
 
     const teams = teamsFiltered.filter((team) => team?.id && team)
     return teams
+  }
+
+  async deteleTeam(id: string): Promise<Team> {
+    const team = await this.teamModel.findByIdAndDelete(id)
+    return team
   }
 }
