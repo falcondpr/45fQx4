@@ -2,9 +2,9 @@ import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { Injectable } from '@nestjs/common'
 
+import { Team, TeamDocument } from '../team/schema/team.schema'
 import { Message, MessageDocument } from './schema/message.schema'
 import { CreateMessageDto } from './dto/create-message.dto'
-import { Team, TeamDocument } from '../team/schema/team.schema'
 
 @Injectable()
 export class MessageService {
@@ -14,23 +14,7 @@ export class MessageService {
   ) {}
 
   async create(dto: CreateMessageDto): Promise<Message> {
-    const teams = await this.teamModel.find()
-    const teamsFiltered = teams?.map((team) => {
-      const isContainsReceiver = team.members.includes(dto?.id_user_receiver)
-
-      if (isContainsReceiver) {
-        const isContainsTransmitter = team.members.includes(
-          dto?.id_user_transmitter,
-        )
-        if (isContainsTransmitter) {
-          return team
-        }
-      }
-    })
-
-    const messagesFiltered = teamsFiltered?.filter((team) => team?.id && team)
-
-    if (messagesFiltered.length === 1) {
+    if (dto.id_team) {
       const message = new this.messageModel(dto)
       return await message.save()
     } else {
