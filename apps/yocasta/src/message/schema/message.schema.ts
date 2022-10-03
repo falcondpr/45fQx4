@@ -12,6 +12,9 @@ export class Message {
   id_user_transmitter: string
 
   @Prop({ type: String, required: true })
+  content: string
+
+  @Prop({ type: String, required: true })
   id_user_receiver: string
 
   @Prop({ type: Date, default: Date.now })
