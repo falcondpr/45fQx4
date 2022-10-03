@@ -4,16 +4,49 @@ import { Injectable } from '@nestjs/common'
 
 import { Message, MessageDocument } from './schema/message.schema'
 import { CreateMessageDto } from './dto/create-message.dto'
+import { Team, TeamDocument } from '../team/schema/team.schema'
 
 @Injectable()
 export class MessageService {
   constructor(
     @InjectModel(Message.name) private messageModel: Model<MessageDocument>,
+    @InjectModel(Team.name) private teamModel: Model<TeamDocument>,
   ) {}
 
   async create(dto: CreateMessageDto): Promise<Message> {
-    const message = new this.messageModel(dto)
-    return await message.save()
+    const teams = await this.teamModel.find()
+    const teamsFiltered = teams?.map((team) => {
+      const isContainsReceiver = team.members.includes(dto?.id_user_receiver)
+
+      if (isContainsReceiver) {
+        const isContainsTransmitter = team.members.includes(
+          dto?.id_user_transmitter,
+        )
+        if (isContainsTransmitter) {
+          return team
+        }
+      }
+    })
+
+    const messagesFiltered = teamsFiltered?.filter((team) => team?.id && team)
+
+    if (messagesFiltered.length === 1) {
+      const message = new this.messageModel(dto)
+      return await message.save()
+    } else {
+      const team = new this.teamModel({
+        members: [dto.id_user_receiver, dto.id_user_transmitter],
+      })
+      await team.save()
+
+      const message = new this.messageModel({
+        id_team: team._id,
+        id_user_receiver: dto.id_user_receiver,
+        id_user_transmitter: dto.id_user_transmitter,
+        content: dto.content,
+      })
+      return await message.save()
+    }
   }
 
   async delete(id: string): Promise<Message> {

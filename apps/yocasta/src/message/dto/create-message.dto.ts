@@ -11,5 +11,9 @@ export class CreateMessageDto {
 
   @IsString()
   @IsNotEmpty()
+  content: string
+
+  @IsString()
+  @IsNotEmpty()
   id_user_receiver: string
 }
