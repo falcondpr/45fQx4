@@ -6,6 +6,8 @@
     "bestla": "apps/bestla",
     "bestla-e2e": "apps/bestla-e2e",
     "dafne": "apps/dafne",
+    "deimos": "apps/deimos",
+    "deimos-e2e": "apps/deimos-e2e",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e",
     "yocasta": "apps/yocasta"
