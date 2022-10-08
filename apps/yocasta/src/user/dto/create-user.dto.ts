@@ -17,3 +17,13 @@ export class CreateUserDTO {
   @IsNotEmpty()
   password: string
 }
+
+export class LoginUserDTO {
+  @IsString()
+  @IsNotEmpty()
+  email: string
+
+  @IsString()
+  @IsNotEmpty()
+  password: string
+}

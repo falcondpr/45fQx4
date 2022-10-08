@@ -11,7 +11,7 @@ import {
   Res,
 } from '@nestjs/common'
 
-import { CreateUserDTO } from './dto/create-user.dto'
+import { CreateUserDTO, LoginUserDTO } from './dto/create-user.dto'
 import { UserService } from './user.service'
 import { UpdateUserDTO } from './dto/update-user.dto'
 
@@ -21,11 +21,21 @@ export class UserController {
 
   @Post('/create')
   async create(@Res() res: Response, @Body() dto: CreateUserDTO) {
-    const user = await this.service.create(dto)
+    const token = await this.service.create(dto)
     return res.status(HttpStatus.OK).json({
       message: 'User created!',
       success: true,
-      data: user,
+      data: token,
+    })
+  }
+
+  @Post('/login')
+  async login(@Res() res: Response, @Body() dto: LoginUserDTO) {
+    const token = await this.service.login(dto)
+    return res.status(HttpStatus.OK).json({
+      message: 'User created!',
+      success: true,
+      data: token,
     })
   }
 
