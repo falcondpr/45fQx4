@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Button, Text } from '@chakra-ui/react'
 
 const Settings: React.FC = () => {
   return (
@@ -7,6 +7,10 @@ const Settings: React.FC = () => {
       <Text fontSize="24px" fontWeight="bold">
         Ajustes
       </Text>
+
+      <Button mt="15px" bgColor="gray.600" rounded="2px" color="white">
+        Cerrar sesion
+      </Button>
     </Box>
   )
 }

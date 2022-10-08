@@ -1,5 +1,7 @@
 import React from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Button, Grid, Text } from '@chakra-ui/react'
+
+import Input from '../components/Input'
 
 const Login: React.FC = () => {
   return (
@@ -7,6 +9,15 @@ const Login: React.FC = () => {
       <Text fontSize="24px" fontWeight="bold">
         Ingresar
       </Text>
+
+      <Grid rowGap="20px" mt="15px">
+        <Input placeholder="Email" />
+        <Input placeholder="Contrasena" />
+
+        <Button bgColor="gray.600" rounded="2px" color="white">
+          Iniciar
+        </Button>
+      </Grid>
     </Box>
   )
 }
