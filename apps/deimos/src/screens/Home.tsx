@@ -1,14 +1,15 @@
 import React from 'react'
-import { Box, Grid, Text } from '@chakra-ui/react'
+import { Grid, Text } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 import Chat from '../components/Chat'
-import { useNavigate } from 'react-router-dom'
+import Layout from '../Layout'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <Box p="20px">
+    <Layout p="20px" mb="50px">
       <Text fontSize="24px" fontWeight="bold">
         Home
       </Text>
@@ -26,16 +27,8 @@ const Home: React.FC = () => {
             image: 'https://picsum.photos/80',
           }}
         />
-        <Chat
-          onClick={() => navigate('/message')}
-          user={{
-            name: 'Lucas',
-            message: 'Hola que tal',
-            image: 'https://picsum.photos/80',
-          }}
-        />
       </Grid>
-    </Box>
+    </Layout>
   )
 }
 
