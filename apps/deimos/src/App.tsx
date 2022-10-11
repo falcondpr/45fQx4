@@ -10,6 +10,7 @@ import NotFound from './screens/NotFound'
 import Register from './screens/Register'
 import Settings from './screens/Settings'
 import Search from './screens/Search'
+import User from './screens/User'
 import { UserProvider } from './context/UserContext'
 
 const queryClient = new QueryClient()
@@ -27,6 +28,7 @@ const App: React.FC = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/user/:username" element={<User />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </UserProvider>
