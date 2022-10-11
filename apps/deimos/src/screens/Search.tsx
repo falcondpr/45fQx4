@@ -6,8 +6,10 @@ import Layout from '../Layout'
 import User from '../components/User'
 import Input from '../components/Input'
 import { getUserByUsername } from '../utils/user'
+import { useNavigate } from 'react-router-dom'
 
 const Search: React.FC = () => {
+  const navigate = useNavigate()
   const [inputUsername, setInputUsername] = useState<string>('')
 
   const { data } = useQuery(
@@ -38,6 +40,7 @@ const Search: React.FC = () => {
           </Box>
         ) : (
           <User
+            onClick={() => navigate(`/user/${data?.data.username}`)}
             name={data?.data.name}
             username={data?.data.username}
             id={data?.data._id}
