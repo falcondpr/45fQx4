@@ -7,6 +7,8 @@ import User from '../components/User'
 import Input from '../components/Input'
 
 const Search: React.FC = () => {
+  // const
+
   return (
     <Layout p="20px">
       <Text fontSize="24px" fontWeight="bold">
