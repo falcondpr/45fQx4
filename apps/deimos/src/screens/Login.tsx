@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import { Box, Button, Grid, Text } from '@chakra-ui/react'
 import toast from 'react-hot-toast'
+import { Box, Button, Grid, Text } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 import Input from '../components/Input'
 import { UserAuth } from '../hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
-import { loginUser } from '../utils/user'
 
 const Login: React.FC = () => {
   const navigate = useNavigate()
-  const { user, login } = UserAuth()
+  const { login } = UserAuth()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,7 +24,6 @@ const Login: React.FC = () => {
     const response = await login(data)
 
     if (response.success) {
-      toast.success('Sesión iniciada correctamente')
       return navigate('/')
     }
   }

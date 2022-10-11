@@ -8,6 +8,7 @@ import Message from './screens/Message'
 import NotFound from './screens/NotFound'
 import Register from './screens/Register'
 import Settings from './screens/Settings'
+import Search from './screens/Search'
 import { UserProvider } from './context/UserContext'
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/search" element={<Search />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </UserProvider>

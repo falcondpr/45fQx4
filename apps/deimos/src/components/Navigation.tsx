@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Button, Box } from '@chakra-ui/react'
-import { FaHome } from 'react-icons/fa'
+import { FaHome, FaSearch } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 
@@ -22,6 +22,12 @@ const Navigation: React.FC = () => {
       <Box>
         <Button bgColor="white" onClick={() => navigate('/')}>
           <FaHome />
+        </Button>
+      </Box>
+
+      <Box>
+        <Button bgColor="white" onClick={() => navigate('/search')}>
+          <FaSearch />
         </Button>
       </Box>
 
