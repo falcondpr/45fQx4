@@ -29,11 +29,11 @@ export const getUser = async (id: string) => {
   }
 }
 
-export const getUserByUsername = async (id: string) => {
+export const getUserByUsername = async (username: string) => {
   try {
     const response = await axios({
       method: 'GET',
-      url: `/user/${id}`,
+      url: `/user/username/${username}`,
     })
 
     return response.data
