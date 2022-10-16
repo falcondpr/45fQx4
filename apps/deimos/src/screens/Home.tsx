@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 
       <Grid rowGap="20px" mt="10px">
         <Chat
-          onClick={() => navigate('/message')}
+          onClick={() => navigate('/message/lucasgonzalez')}
           user={{
             name: 'Fernando',
             message: 'Hola mi nombre es Fer',

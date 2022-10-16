@@ -5,13 +5,30 @@ import { useQuery } from '@tanstack/react-query'
 
 import Layout from '../Layout'
 import { getUserByUsername } from '../utils/user'
+import { UserType } from '../interfaces/User'
 
 const User: React.FC = () => {
   const { username } = useParams()
 
-  const { data, isSuccess } = useQuery(['getUserByUsername', username], () =>
-    getUserByUsername(username as string),
+  const { data: userFetched, isSuccess } = useQuery(
+    ['getUserByUsername', username],
+    () => getUserByUsername(username as string),
   )
+
+  const user: UserType = userFetched?.data
+
+  /*
+
+   * Consultar si ambos usuarios tienen team
+   * Si los usuarios no tienen team hay que crear
+     - Ir a una vista de mensajes temporal
+     - Si realiza el mensaje
+       + Crear un team con ambos usuarios
+       + Al tener el team realizar la creacion del mensaje
+   * Si los usuarios tienen team hay que consultar el chat a traves de los idUser
+     - Una vez se tiene el team_id se podra crear el mensaje
+
+   */
 
   return (
     <Layout p="20px">
@@ -27,13 +44,13 @@ const User: React.FC = () => {
             textTransform="uppercase"
             mb="3px"
           >
-            {data.data.name}
+            {user.name}
           </Text>
           <Text fontSize="12px" color="gray.600" mb="3px">
-            {data.data.username}
+            {user.username}
           </Text>
           <Text fontSize="12px" color="gray.600">
-            {data.data._id}
+            {user._id}
           </Text>
 
           <Button

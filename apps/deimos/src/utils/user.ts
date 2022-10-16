@@ -1,6 +1,7 @@
 import axios from '../config/axios'
+import { UpdateUserType } from '../interfaces/User'
 
-export const loginUser = async (data: any) => {
+export const loginUser = async (data: { email: string; password: string }) => {
   try {
     const response = await axios({
       method: 'POST',
@@ -57,7 +58,7 @@ export const getUserByName = async (name: string) => {
   }
 }
 
-export const updateUser = async (id: string, data: any) => {
+export const updateUser = async (id: string, data: UpdateUserType) => {
   const response = await axios({
     method: 'PATCH',
     url: `/user/${id}`,
