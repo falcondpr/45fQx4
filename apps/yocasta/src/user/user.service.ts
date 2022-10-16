@@ -90,4 +90,12 @@ export class UserService {
     const user = await this.userModel.findOne({ username })
     return user
   }
+
+  async getByName(name: string): Promise<User[]> {
+    const users = await this.userModel.find()
+    const usersFiltered = users?.filter((user) =>
+      user.name.toLowerCase().includes(name.toLowerCase()),
+    )
+    return usersFiltered
+  }
 }
