@@ -95,4 +95,14 @@ export class UserController {
       data: user,
     })
   }
+
+  @Get('/name/:name')
+  async getByName(@Res() res: Response, @Param('name') name: string) {
+    const users = await this.service.getByName(name)
+    return res.status(HttpStatus.OK).json({
+      message: 'Users fetched by name',
+      success: true,
+      data: users,
+    })
+  }
 }
