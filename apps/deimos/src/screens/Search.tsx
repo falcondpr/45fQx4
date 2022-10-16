@@ -7,6 +7,7 @@ import Layout from '../Layout'
 import User from '../components/User'
 import Input from '../components/Input'
 import { getUserByName } from '../utils/user'
+import { UserType } from '../interfaces/User'
 
 const Search: React.FC = () => {
   const navigate = useNavigate()
@@ -40,7 +41,7 @@ const Search: React.FC = () => {
             <Text>Usuario no encontrado</Text>
           </Box>
         ) : (
-          users.map((user: any) => (
+          users.map((user: UserType) => (
             <User
               onClick={() => navigate(`/user/${user?.username}`)}
               name={user?.name}
