@@ -10,7 +10,7 @@ interface UserProps {
 
 const User: React.FC<UserProps> = ({ name, username, id, onClick }) => {
   return (
-    <Box onClick={onClick} bgColor="gray.200" rounded="3px" p="12px">
+    <Box onClick={onClick} bgColor="gray.200" rounded="3px" p="12px" mb="20px">
       <Text fontSize="14px" fontWeight="bold" color="gray.600" mb="5px">
         {name}
       </Text>
@@ -18,6 +18,9 @@ const User: React.FC<UserProps> = ({ name, username, id, onClick }) => {
         {username}
       </Text>
       <Text fontSize="12px" color="gray.600">
+        <Text as="span" fontWeight="bold">
+          Id user:
+        </Text>{' '}
         {id}
       </Text>
     </Box>
