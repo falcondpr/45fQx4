@@ -37,7 +37,7 @@ export class TeamService {
     return team[0]
   }
 
-  async getByUser(id: string) {
+  async getTeamsByUser(id: string) {
     const teamsAll = await this.teamModel.find()
     const teamsFiltered = teamsAll.map((team) => {
       const isContains = team.members.includes(id)
