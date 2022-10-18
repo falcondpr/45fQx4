@@ -52,8 +52,8 @@ export class TeamController {
   }
 
   @Get('/:id')
-  async getByUser(@Res() res: Response, @Param('id') id: string) {
-    const teams = await this.service.getByUser(id)
+  async getTeamsByUser(@Res() res: Response, @Param('id') id: string) {
+    const teams = await this.service.getTeamsByUser(id)
     return res.status(HttpStatus.OK).json({
       message: 'Teams by user',
       success: true,

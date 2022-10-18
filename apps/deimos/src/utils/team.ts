@@ -16,3 +16,17 @@ export const existTeam = async (
     return null
   }
 }
+
+export const getTeamsByUser = async (id_user: string) => {
+  try {
+    const response = await axios({
+      method: 'GET',
+      url: `/team/${id_user}`,
+    })
+
+    return response.data
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
