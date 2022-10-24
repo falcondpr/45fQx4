@@ -13,7 +13,7 @@ const Home: React.FC = () => {
   const { user } = useContext(UserContext)
 
   const { data: allMessagesFetched } = useQuery(
-    ['getAllMessages'],
+    ['getAllMessages', user?.id],
     () => user?.id && getTeamsByUser(user.id),
     {
       refetchOnWindowFocus: false,
@@ -38,12 +38,7 @@ const Home: React.FC = () => {
       <Grid rowGap="20px" mt="10px">
         {/* eslint-disable-next-line */}
         {allMessages?.map((chat: any) => (
-          <Chat
-            key={chat._id}
-            user={user}
-            onClick={() => navigate('/message/lucasgonzalez')}
-            team={chat}
-          />
+          <Chat key={chat._id} user={user} team={chat} />
         ))}
       </Grid>
     </Layout>

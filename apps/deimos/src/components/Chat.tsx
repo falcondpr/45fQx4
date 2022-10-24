@@ -4,23 +4,25 @@ import { useQuery } from '@tanstack/react-query'
 import { getUser } from '../utils/user'
 import { getMessages } from '../utils/message'
 import { existTeam } from '../utils/team'
+import { useNavigate } from 'react-router-dom'
 
 interface UserProps {
-  onClick?: () => void
   // eslint-disable-next-line
   user: any
   // eslint-disable-next-line
   team: any
 }
 
-const Chat: React.FC<UserProps> = ({ team, user, onClick }) => {
+const Chat: React.FC<UserProps> = ({ team, user }) => {
+  const navigate = useNavigate()
   const [idUserReceiver, setIdUserReceiver] = useState<string | null>(null)
 
   const fnUserIdReceiver = (arrayId: string[]) => {
-    // console.log(arrayId?.filter((id: string) => id !== user?.id)[0])
+    if (!arrayId) return
+
     return (
       user?.id &&
-      arrayId.length > 0 &&
+      arrayId?.length > 0 &&
       arrayId?.filter((id: string) => id !== user?.id)[0]
     )
   }
@@ -29,10 +31,10 @@ const Chat: React.FC<UserProps> = ({ team, user, onClick }) => {
     const id_user_receiver = fnUserIdReceiver(team?.members)
     setIdUserReceiver(id_user_receiver)
     // eslint-disable-next-line
-  }, [team])
+  }, [team?.members])
 
   const { data: userReceiverInfoFetched } = useQuery(
-    ['getUser'],
+    ['getUser', idUserReceiver],
     () => idUserReceiver && getUser(idUserReceiver),
     {
       refetchOnWindowFocus: false,
@@ -41,7 +43,7 @@ const Chat: React.FC<UserProps> = ({ team, user, onClick }) => {
   const infoUserReceiver = userReceiverInfoFetched?.data
 
   const { data: teamInfoFetched } = useQuery(
-    ['getTeam'],
+    ['getTeam', idUserReceiver, user?.id],
     () => idUserReceiver && user?.id && existTeam(idUserReceiver, user?.id),
     {
       refetchOnWindowFocus: false,
@@ -50,7 +52,7 @@ const Chat: React.FC<UserProps> = ({ team, user, onClick }) => {
   const teamInfo = teamInfoFetched?.data
 
   const { data: allMessagesChatFetched } = useQuery(
-    ['getMessages'],
+    ['getMessages', teamInfo?._id],
     () => teamInfo?._id && getMessages(teamInfo?._id),
     {
       refetchOnWindowFocus: false,
@@ -62,7 +64,7 @@ const Chat: React.FC<UserProps> = ({ team, user, onClick }) => {
   console.log(infoUserReceiver)
 
   return (
-    <Flex onClick={onClick}>
+    <Flex onClick={() => navigate(`/message/${infoUserReceiver?.username}`)}>
       <Box w="80px" bgColor="gray.200">
         {/* <Image src={user.image} alt={user.name} /> */}
       </Box>
