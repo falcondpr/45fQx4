@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Box, Flex, Image } from '@chakra-ui/react'
-import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
+import { useNavigate } from 'react-router-dom'
+import { Box, Flex, Image, Text } from '@chakra-ui/react'
+import { useQuery } from '@tanstack/react-query'
 
 import { getUser } from '../utils/user'
 import { getMessages } from '../utils/message'
@@ -13,6 +13,41 @@ interface UserProps {
   user: any
   // eslint-disable-next-line
   team: any
+}
+
+interface ContentMessageChatProps {
+  // eslint-disable-next-line
+  allMessages: any
+}
+
+const ContentMessageChat: React.FC<ContentMessageChatProps> = ({
+  allMessages,
+}) => {
+  const id_user_transmitter = allMessages && allMessages[0]?.id_user_transmitter
+
+  const { data: userTransmisserFetched } = useQuery(
+    ['userTransmisser'],
+    () => id_user_transmitter && getUser(id_user_transmitter),
+  )
+
+  const userTransmisser = userTransmisserFetched?.data
+
+  return (
+    <Flex justifyContent="space-between" alignItems="center" flex="1">
+      <Flex>
+        <Box>
+          <Text as="span" fontWeight="bold">
+            {userTransmisser?.name}
+          </Text>
+          : {allMessages && allMessages[0]?.content}{' '}
+        </Box>
+      </Flex>
+
+      <Box fontSize="10px">
+        {allMessages && dayjs(allMessages[0]?.created_at).format('DD/MM HH:MM')}
+      </Box>
+    </Flex>
+  )
 }
 
 const Chat: React.FC<UserProps> = ({ team, user }) => {
@@ -86,22 +121,8 @@ const Chat: React.FC<UserProps> = ({ team, user }) => {
         >
           {infoUserReceiver?.name}
         </Box>
-        <Flex
-          justifyContent="space-between"
-          alignItems="center"
-          fontSize="12px"
-          p="5px 10px"
-          flex="1"
-          bgColor="gray.400"
-        >
-          <Flex>
-            <Box>{allMessages && allMessages[0]?.content} </Box>
-          </Flex>
-
-          <Box fontSize="10px">
-            {allMessages &&
-              dayjs(allMessages[0]?.created_at).format('DD/MM HH:MM')}
-          </Box>
+        <Flex fontSize="12px" p="5px 10px" flex="1" bgColor="gray.400">
+          <ContentMessageChat allMessages={allMessages} />
         </Flex>
       </Flex>
     </Flex>
