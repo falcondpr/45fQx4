@@ -12,11 +12,10 @@ import { getMessages } from '../utils/message'
 const Message: React.FC = () => {
   const navigate = useNavigate()
   const { username } = useParams()
-
   const { user } = UserAuth()
 
   const { data: userReceiverFetched } = useQuery(
-    ['userReceiver'],
+    ['userReceiver', username],
     () => username && getUserByUsername(username as string),
     {
       refetchOnWindowFocus: false,
@@ -25,7 +24,7 @@ const Message: React.FC = () => {
 
   const userReceiver = userReceiverFetched?.data
   const { data: teamFetched, isLoading } = useQuery(
-    ['getUserReceiver'],
+    ['getUserReceiver', user?.id, userReceiver?._id],
     () =>
       user?.id &&
       userReceiver?._id &&
@@ -38,7 +37,7 @@ const Message: React.FC = () => {
   const team = teamFetched?.data
 
   const { data: messagesFetched } = useQuery(
-    ['getAllMessages'],
+    ['getAllMessages', team?._id],
     () => team?._id && getMessages(team?._id),
   )
 

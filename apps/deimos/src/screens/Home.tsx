@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Grid, Text } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 import Chat from '../components/Chat'
@@ -9,11 +8,10 @@ import { UserContext } from '../context/UserContext'
 import { getTeamsByUser } from '../utils/team'
 
 const Home: React.FC = () => {
-  const navigate = useNavigate()
   const { user } = useContext(UserContext)
 
   const { data: allMessagesFetched } = useQuery(
-    ['getAllMessages'],
+    ['getAllMessages', user?.id],
     () => user?.id && getTeamsByUser(user.id),
     {
       refetchOnWindowFocus: false,
@@ -38,12 +36,7 @@ const Home: React.FC = () => {
       <Grid rowGap="20px" mt="10px">
         {/* eslint-disable-next-line */}
         {allMessages?.map((chat: any) => (
-          <Chat
-            key={chat._id}
-            user={user}
-            onClick={() => navigate('/message/lucasgonzalez')}
-            team={chat}
-          />
+          <Chat key={chat._id} user={user} team={chat} />
         ))}
       </Grid>
     </Layout>
