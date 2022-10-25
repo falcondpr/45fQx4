@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Grid, Text } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 import Chat from '../components/Chat'
@@ -9,7 +8,6 @@ import { UserContext } from '../context/UserContext'
 import { getTeamsByUser } from '../utils/team'
 
 const Home: React.FC = () => {
-  const navigate = useNavigate()
   const { user } = useContext(UserContext)
 
   const { data: allMessagesFetched } = useQuery(
