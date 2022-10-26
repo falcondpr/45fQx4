@@ -26,7 +26,7 @@ Por el momento, colaboradores que ayudan a revisar
 | [deimos](apps/deimos/)   |  Frontend   |
 | [yocasta](apps/yocasta/) |   Backend   |
 
-## How to run locally
+## Como correr en local
 
 ### Instalar las dependencias:
 
