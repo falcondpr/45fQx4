@@ -25,7 +25,7 @@ const ContentMessageChat: React.FC<ContentMessageChatProps> = ({
 }) => {
   const id_user_transmitter = allMessages && allMessages[0]?.id_user_transmitter
 
-  const { data: userTransmisserFetched } = useQuery(
+  const { data: userTransmisserFetched, isLoading } = useQuery(
     ['userTransmisser'],
     () => id_user_transmitter && getUser(id_user_transmitter),
   )
@@ -36,9 +36,13 @@ const ContentMessageChat: React.FC<ContentMessageChatProps> = ({
     <Flex justifyContent="space-between" alignItems="center" flex="1">
       <Flex>
         <Box>
-          <Text as="span" fontWeight="bold">
-            {userTransmisser?.name}
-          </Text>
+          {isLoading ? (
+            <Box w="60px" h="20px" bgColor="gray.300"></Box>
+          ) : (
+            <Text as="span" fontWeight="bold">
+              {userTransmisser?.name}
+            </Text>
+          )}
           : {allMessages && allMessages[0]?.content}{' '}
         </Box>
       </Flex>
