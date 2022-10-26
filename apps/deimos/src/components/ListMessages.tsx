@@ -16,7 +16,7 @@ const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
           message?.id_user_transmitter === user?.id ? true : false
 
         return (
-          <Box key={message?._id}>
+          <Box key={message?._id} mb="15px">
             <Box
               w="70%"
               py="7px"
