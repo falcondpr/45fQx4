@@ -4,6 +4,7 @@ import { FaAngleLeft } from 'react-icons/fa'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
+import ListMessages from '../components/ListMessages'
 import { existTeam } from '../utils/team'
 import { UserAuth } from '../hooks/useAuth'
 import { getUserByUsername } from '../utils/user'
@@ -42,7 +43,6 @@ const Message: React.FC = () => {
   )
 
   const allMessages = messagesFetched?.data
-  console.log(allMessages)
 
   return (
     <Box>
@@ -74,6 +74,8 @@ const Message: React.FC = () => {
               </Text>
             </Flex>
           </Box>
+
+          <ListMessages allMessages={allMessages} />
         </Box>
       )}
     </Box>
