@@ -26,7 +26,7 @@ const ContentMessageChat: React.FC<ContentMessageChatProps> = ({
   const id_user_transmitter = allMessages && allMessages[0]?.id_user_transmitter
 
   const { data: userTransmisserFetched, isLoading } = useQuery(
-    ['userTransmisser'],
+    ['userTransmisser', id_user_transmitter],
     () => id_user_transmitter && getUser(id_user_transmitter),
   )
 

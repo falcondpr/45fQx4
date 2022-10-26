@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Flex, Grid, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, Input, Text } from '@chakra-ui/react'
 import { FaAngleLeft } from 'react-icons/fa'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
@@ -9,6 +9,7 @@ import { existTeam } from '../utils/team'
 import { UserAuth } from '../hooks/useAuth'
 import { getUserByUsername } from '../utils/user'
 import { getMessages } from '../utils/message'
+import { IoMdSend } from 'react-icons/io'
 
 const Message: React.FC = () => {
   const navigate = useNavigate()
@@ -75,9 +76,40 @@ const Message: React.FC = () => {
             </Flex>
           </Box>
 
-          <ListMessages allMessages={allMessages} />
+          <Box pb="80px">
+            <ListMessages allMessages={allMessages} />
+          </Box>
         </Box>
       )}
+
+      <Box
+        position="fixed"
+        bgColor="gray.100"
+        w="full"
+        h="60px"
+        bottom="0"
+        left="0"
+      >
+        <Grid
+          p="10px"
+          alignItems="center"
+          gap="20px"
+          gridTemplateColumns="1fr 50px"
+        >
+          <Box>
+            <Input
+              fontSize="14px"
+              bgColor="white"
+              placeholder="Escribe el mensaje"
+            />
+          </Box>
+          <Box>
+            <Button w="full" bgColor="blue.400" color="white" fontSize="20px">
+              <IoMdSend />
+            </Button>
+          </Box>
+        </Grid>
+      </Box>
     </Box>
   )
 }
