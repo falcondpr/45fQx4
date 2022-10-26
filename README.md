@@ -6,6 +6,8 @@
 
 **SUV** es un espacio que te permitira vender y/o comprar productos/servicios de manera segura. La premisa de la misma es evitar cualquier tipo de estafas, dificultad durante la transacción, veracidad del producto entre otros obstáculo que ocasiona una mala experiencia en la compra/venta.
 
+Se prima la experiencia del comprador y/o vendedor y la seguridad al manipular el software. Esto nos permitiría recuperar la confianza de la venta en línea y acrecentar en mayor o menor medida la economía.
+
 ## Ramas
 
 - staging -> pr en esta rama para todo
@@ -19,7 +21,7 @@ Por el momento, colaboradores que ayudan a revisar
 
 ## Estructura
 
-| Codebase                 | Description |
+| Path                     | Descripción |
 | :----------------------- | :---------: |
 | [deimos](apps/deimos/)   |  Frontend   |
 | [yocasta](apps/yocasta/) |   Backend   |
