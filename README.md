@@ -1,10 +1,8 @@
-# SUV
-
 <p align="center">
 <img src="https://github.com/fervillalbag/suv/blob/main/logo-suv.png?raw=true" height="90" />
 </p>
 
-**SUV** es un espacio que te permitira vender y comprar productos/servicios de manera segura. La premisa de la misma es evitar cualquier tipo de estafas, dificultades durante las transacciones, veracidad del producto, entre otros obstáculos que ocasionan una mala experiencia en la venta.
+**SUVAP** es un espacio que te permitira vender y comprar productos/servicios de manera segura. La premisa de la misma es evitar cualquier tipo de estafas, dificultades durante las transacciones, veracidad del producto, entre otros obstáculos que ocasionan una mala experiencia en la venta.
 
 Se prima la experiencia del usuario y la seguridad al manipular el software. Esto nos permitiría recuperar la confianza de las compras en línea y acrecentar en mayor o menor medida la economía.
 
