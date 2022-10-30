@@ -104,7 +104,15 @@ const Chat: React.FC<UserProps> = ({ team, user }) => {
   const allMessages = allMessagesChatFetched?.data
 
   return (
-    <Flex onClick={() => navigate(`/message/${infoUserReceiver?.username}`)}>
+    <Flex
+      onClick={() =>
+        navigate(`/message/${infoUserReceiver?.username}`, {
+          state: {
+            id_team: teamInfo?._id,
+          },
+        })
+      }
+    >
       <Box w="80px" bgColor="gray.200">
         <Image
           src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
