@@ -1,20 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Flex, Grid, Input, Text } from '@chakra-ui/react'
-import { FaAngleLeft } from 'react-icons/fa'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { FaAngleLeft } from 'react-icons/fa'
+import { IoMdSend } from 'react-icons/io'
+import { io } from 'socket.io-client'
 
 import ListMessages from '../components/ListMessages'
 import { existTeam } from '../utils/team'
 import { UserAuth } from '../hooks/useAuth'
 import { getUserByUsername } from '../utils/user'
 import { getMessages } from '../utils/message'
-import { IoMdSend } from 'react-icons/io'
+
+const socket = io('http://localhost:3333')
 
 const Message: React.FC = () => {
   const navigate = useNavigate()
+  const {
+    state: { id_team },
+  } = useLocation()
+
   const { username } = useParams()
   const { user } = UserAuth()
+
+  const [message] = useState()
+  // eslint-disable-next-line
+  const [messages, setMessages] = useState<any>([])
 
   const { data: userReceiverFetched } = useQuery(
     ['userReceiver', username],
@@ -36,14 +47,43 @@ const Message: React.FC = () => {
     },
   )
 
-  const team = teamFetched?.data
-
-  const { data: messagesFetched } = useQuery(
-    ['getAllMessages', team?._id],
-    () => team?._id && getMessages(team?._id),
+  const {
+    data: allMessagesFetched,
+    // isSuccess,
+  } = useQuery(
+    ['getAllMessages', id_team],
+    () => id_team && getMessages(id_team),
+    {
+      refetchOnWindowFocus: false,
+    },
   )
 
-  const allMessages = messagesFetched?.data
+  useEffect(() => {
+    setMessages(allMessagesFetched?.data)
+  }, [allMessagesFetched])
+
+  const team = teamFetched?.data
+
+  useEffect(() => {
+    // eslint-disable-next-line
+    socket.emit('findAllMessages', { id_team }, (data: any) => {
+      setMessages(data)
+    })
+
+    socket.on('message', () => {
+      // eslint-disable-next-line
+      setMessages((p: any) => {
+        return [...p, message]
+      })
+    })
+
+    return () => {
+      socket.off('message')
+    }
+    // eslint-disable-next-line
+  }, [messages])
+
+  console.log(messages)
 
   return (
     <Box>
@@ -77,7 +117,7 @@ const Message: React.FC = () => {
           </Box>
 
           <Box pb="80px">
-            <ListMessages allMessages={allMessages} />
+            <ListMessages allMessages={messages} />
           </Box>
         </Box>
       )}

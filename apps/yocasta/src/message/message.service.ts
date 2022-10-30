@@ -16,7 +16,8 @@ export class MessageService {
   async create(dto: CreateMessageDto): Promise<Message> {
     if (dto.id_team) {
       const message = new this.messageModel(dto)
-      return await message.save()
+      await message.save()
+      return message
     } else {
       const team = new this.teamModel({
         members: [dto.id_user_receiver, dto.id_user_transmitter],
@@ -29,7 +30,8 @@ export class MessageService {
         id_user_transmitter: dto.id_user_transmitter,
         content: dto.content,
       })
-      return await message.save()
+      await message.save()
+      return message
     }
   }
 
