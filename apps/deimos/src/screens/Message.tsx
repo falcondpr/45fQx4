@@ -10,7 +10,6 @@ import ListMessages from '../components/ListMessages'
 import { existTeam } from '../utils/team'
 import { UserAuth } from '../hooks/useAuth'
 import { getUserByUsername } from '../utils/user'
-import { getMessages } from '../utils/message'
 
 const socket = io('http://localhost:3333')
 
@@ -47,26 +46,11 @@ const Message: React.FC = () => {
     },
   )
 
-  const {
-    data: allMessagesFetched,
-    // isSuccess,
-  } = useQuery(
-    ['getAllMessages', id_team],
-    () => id_team && getMessages(id_team),
-    {
-      refetchOnWindowFocus: false,
-    },
-  )
-
-  useEffect(() => {
-    setMessages(allMessagesFetched?.data)
-  }, [allMessagesFetched])
-
   const team = teamFetched?.data
 
   useEffect(() => {
     // eslint-disable-next-line
-    socket.emit('findAllMessages', { id_team }, (data: any) => {
+    socket.emit('findAllMessages', id_team, (data: any) => {
       setMessages(data)
     })
 
