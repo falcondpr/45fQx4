@@ -67,7 +67,16 @@ const Message: React.FC = () => {
     // eslint-disable-next-line
   }, [messages])
 
-  console.log(messages)
+  const handleSubmitMessage = () => {
+    const data_message = {
+      id_team: '6357016803d92ec8f10c33af',
+      id_user_receiver: '6355faadb958beed88e7a163',
+      id_user_transmitter: '6341c4088f953fc4ae8af125',
+      content: 'Hola Fer!',
+    }
+
+    socket.emit('createMessage', data_message)
+  }
 
   return (
     <Box>
@@ -128,7 +137,13 @@ const Message: React.FC = () => {
             />
           </Box>
           <Box>
-            <Button w="full" bgColor="blue.400" color="white" fontSize="20px">
+            <Button
+              w="full"
+              bgColor="blue.400"
+              color="white"
+              fontSize="20px"
+              onClick={handleSubmitMessage}
+            >
               <IoMdSend />
             </Button>
           </Box>
