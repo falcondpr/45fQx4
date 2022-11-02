@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Box, Button, Flex, Grid, Input, Text } from '@chakra-ui/react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
@@ -16,13 +16,23 @@ const socket = io('http://localhost:3333')
 const Message: React.FC = () => {
   const navigate = useNavigate()
   const {
-    state: { id_team },
+    state: { id_team, id_user_receiver, id_user_transmitter },
   } = useLocation()
+
+  // eslint-disable-next-line
+  const message_body = useRef<any>(null)
+  const [stateVariable, setStateVariable] = useState<boolean>(false)
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   const { username } = useParams()
   const { user } = UserAuth()
 
-  const [message] = useState()
+  const [message, setMessage] = useState({
+    id_team,
+    id_user_receiver,
+    id_user_transmitter,
+    content: '',
+  })
   // eslint-disable-next-line
   const [messages, setMessages] = useState<any>([])
 
@@ -52,6 +62,7 @@ const Message: React.FC = () => {
     // eslint-disable-next-line
     socket.emit('findAllMessages', id_team, (data: any) => {
       setMessages(data)
+      setStateVariable(true)
     })
 
     socket.on('message', () => {
@@ -63,19 +74,38 @@ const Message: React.FC = () => {
 
     return () => {
       socket.off('message')
+      // setStateVariable(false)
     }
     // eslint-disable-next-line
   }, [messages])
 
-  const handleSubmitMessage = () => {
+  useEffect(() => {
+    if (message_body.current) {
+      message_body.current.scrollIntoView({
+        behavior: 'auto',
+        block: 'end',
+        inline: 'end',
+      })
+    }
+  }, [stateVariable, isSubmitting])
+
+  // eslint-disable-next-line
+  const handleSubmitMessage = (e: any) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
     const data_message = {
-      id_team: '6357016803d92ec8f10c33af',
-      id_user_receiver: '6355faadb958beed88e7a163',
-      id_user_transmitter: '6341c4088f953fc4ae8af125',
-      content: 'Hola Fer!',
+      ...message,
     }
 
     socket.emit('createMessage', data_message)
+    setMessage({ ...message, content: '' })
+
+    window.scrollTo({
+      top: message_body.current.innerHeight,
+      left: 0,
+      behavior: 'auto',
+    })
   }
 
   return (
@@ -92,8 +122,8 @@ const Message: React.FC = () => {
           </Flex>
         </Grid>
       ) : (
-        <Box>
-          <Box p="20px">
+        <Box ref={message_body}>
+          <Box p="20px" position="sticky" top="0" bgColor="white" zIndex="20">
             <Flex alignItems="center" columnGap="15px">
               <Button
                 bgColor="white"
@@ -109,7 +139,7 @@ const Message: React.FC = () => {
             </Flex>
           </Box>
 
-          <Box pb="80px">
+          <Box pb="70px">
             <ListMessages allMessages={messages} />
           </Box>
         </Box>
@@ -124,6 +154,8 @@ const Message: React.FC = () => {
         left="0"
       >
         <Grid
+          as="form"
+          onSubmit={handleSubmitMessage}
           p="10px"
           alignItems="center"
           gap="20px"
@@ -131,6 +163,10 @@ const Message: React.FC = () => {
         >
           <Box>
             <Input
+              value={message.content}
+              onChange={(e) =>
+                setMessage({ ...message, content: e.target.value })
+              }
               fontSize="14px"
               bgColor="white"
               placeholder="Escribe el mensaje"
@@ -138,11 +174,14 @@ const Message: React.FC = () => {
           </Box>
           <Box>
             <Button
+              disabled={
+                !message.content || message.content.trim() === '' ? true : false
+              }
+              type="submit"
               w="full"
               bgColor="blue.400"
               color="white"
               fontSize="20px"
-              onClick={handleSubmitMessage}
             >
               <IoMdSend />
             </Button>

@@ -109,6 +109,8 @@ const Chat: React.FC<UserProps> = ({ team, user }) => {
         navigate(`/message/${infoUserReceiver?.username}`, {
           state: {
             id_team: teamInfo?._id,
+            id_user_transmitter: user?.id,
+            id_user_receiver: infoUserReceiver?._id,
           },
         })
       }

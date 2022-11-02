@@ -32,7 +32,7 @@ const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
                 bottom="3px"
                 right="10px"
               >
-                {dayjs(message?.created_at).format('HH:MM')}
+                {dayjs(message?.created_at).format('hh:mm a')}
               </Text>
             </Box>
           </Box>
