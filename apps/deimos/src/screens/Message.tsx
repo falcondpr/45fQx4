@@ -134,7 +134,7 @@ const Message: React.FC = () => {
                 <FaAngleLeft />
               </Button>
               <Text fontSize="24px" fontWeight="bold">
-                Message
+                {userReceiver?.name}
               </Text>
             </Flex>
           </Box>

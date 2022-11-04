@@ -3,10 +3,12 @@ import dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
 import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
+import { IoCheckmarkDoneSharp } from 'react-icons/io5'
 
 import { getUser } from '../utils/user'
 import { getMessages } from '../utils/message'
 import { existTeam } from '../utils/team'
+import { UserAuth } from '../hooks/useAuth'
 
 interface UserProps {
   // eslint-disable-next-line
@@ -23,32 +25,25 @@ interface ContentMessageChatProps {
 const ContentMessageChat: React.FC<ContentMessageChatProps> = ({
   allMessages,
 }) => {
-  const id_user_transmitter = allMessages && allMessages[0]?.id_user_transmitter
+  const { user } = UserAuth()
 
-  const { data: userTransmisserFetched, isLoading } = useQuery(
-    ['userTransmisser', id_user_transmitter],
-    () => id_user_transmitter && getUser(id_user_transmitter),
-  )
-
-  const userTransmisser = userTransmisserFetched?.data
+  const lastMessage = allMessages[allMessages?.length - 1]
+  const id_user_transmitter =
+    allMessages[allMessages?.length - 1]?.id_user_transmitter
 
   return (
     <Flex justifyContent="space-between" alignItems="center" flex="1">
       <Flex>
-        <Box>
-          {isLoading ? (
-            <Box w="60px" h="20px" bgColor="gray.300"></Box>
-          ) : (
-            <Text as="span" fontWeight="bold">
-              {userTransmisser?.name}
-            </Text>
-          )}
-          : {allMessages && allMessages[0]?.content}{' '}
-        </Box>
+        <Flex alignItems="center">
+          <Text fontWeight="bold" fontSize="16px" mr="2px" color="#555">
+            {user?.id === id_user_transmitter && <IoCheckmarkDoneSharp />}
+          </Text>
+          <Text>{lastMessage?.content}</Text>
+        </Flex>
       </Flex>
 
       <Box fontSize="10px">
-        {allMessages && dayjs(allMessages[0]?.created_at).format('DD/MM HH:MM')}
+        {allMessages && dayjs(allMessages[0]?.created_at).format('hh:mm a')}
       </Box>
     </Flex>
   )
@@ -136,7 +131,7 @@ const Chat: React.FC<UserProps> = ({ team, user }) => {
           {infoUserReceiver?.name}
         </Box>
         <Flex fontSize="12px" p="5px 10px" flex="1" bgColor="gray.400">
-          <ContentMessageChat allMessages={allMessages} />
+          {allMessages && <ContentMessageChat allMessages={allMessages} />}
         </Flex>
       </Flex>
     </Flex>
