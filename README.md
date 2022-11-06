@@ -8,7 +8,7 @@ Se prima la experiencia del usuario y la seguridad al manipular el software. Est
 
 ## Ramas
 
-- staging -> pr en esta rama para todo
+- writers -> pr en esta rama para todo
 - main -> no tocar, esto esta corriendo en produccion
 
 ## Contribuidores
