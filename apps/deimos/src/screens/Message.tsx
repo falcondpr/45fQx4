@@ -10,8 +10,9 @@ import ListMessages from '../components/ListMessages'
 import { existTeam } from '../utils/team'
 import { UserAuth } from '../hooks/useAuth'
 import { getUserByUsername } from '../utils/user'
+import { PORT_SOCKET_IO } from '../utils/variables'
 
-const socket = io('http://localhost:3333')
+const socket = io(PORT_SOCKET_IO)
 
 const Message: React.FC = () => {
   // eslint-disable-next-line
