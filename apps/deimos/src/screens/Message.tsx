@@ -14,15 +14,12 @@ import { getUserByUsername } from '../utils/user'
 const socket = io('http://localhost:3333')
 
 const Message: React.FC = () => {
+  // eslint-disable-next-line
+  const dummy: any = useRef()
   const navigate = useNavigate()
   const {
     state: { id_team, id_user_receiver, id_user_transmitter },
   } = useLocation()
-
-  // eslint-disable-next-line
-  const message_body = useRef<any>(null)
-  const [stateVariable, setStateVariable] = useState<boolean>(false)
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   const { username } = useParams()
   const { user } = UserAuth()
@@ -44,6 +41,12 @@ const Message: React.FC = () => {
     },
   )
 
+  useEffect(() => {
+    return () => {
+      // dummy.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [])
+
   const userReceiver = userReceiverFetched?.data
   const { data: teamFetched, isLoading } = useQuery(
     ['getUserReceiver', user?.id, userReceiver?._id],
@@ -62,7 +65,6 @@ const Message: React.FC = () => {
     // eslint-disable-next-line
     socket.emit('findAllMessages', id_team, (data: any) => {
       setMessages(data)
-      setStateVariable(true)
     })
 
     socket.on('message', () => {
@@ -79,20 +81,9 @@ const Message: React.FC = () => {
     // eslint-disable-next-line
   }, [messages])
 
-  useEffect(() => {
-    if (message_body.current) {
-      message_body.current.scrollIntoView({
-        behavior: 'auto',
-        block: 'end',
-        inline: 'end',
-      })
-    }
-  }, [stateVariable, isSubmitting])
-
   // eslint-disable-next-line
   const handleSubmitMessage = (e: any) => {
     e.preventDefault()
-    setIsSubmitting(true)
 
     const data_message = {
       ...message,
@@ -101,15 +92,15 @@ const Message: React.FC = () => {
     socket.emit('createMessage', data_message)
     setMessage({ ...message, content: '' })
 
-    window.scrollTo({
-      top: message_body.current.innerHeight,
-      left: 0,
-      behavior: 'auto',
+    dummy.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest',
     })
   }
 
   return (
-    <Box>
+    <>
       {isLoading ? (
         <Grid w="100vw" h="100vh" placeItems="center">
           <Text>Cargando</Text>
@@ -122,8 +113,8 @@ const Message: React.FC = () => {
           </Flex>
         </Grid>
       ) : (
-        <Box ref={message_body}>
-          <Box p="20px" position="sticky" top="0" bgColor="white" zIndex="20">
+        <>
+          <Box p="20px" bgColor="white" zIndex="20">
             <Flex alignItems="center" columnGap="15px">
               <Button
                 bgColor="white"
@@ -139,20 +130,14 @@ const Message: React.FC = () => {
             </Flex>
           </Box>
 
-          <Box pb="70px">
-            <ListMessages allMessages={messages} />
-          </Box>
-        </Box>
+          <Flex flexDir="column" bgColor="purple">
+            <ListMessages dummy={dummy} allMessages={messages} />
+            <span ref={dummy}></span>
+          </Flex>
+        </>
       )}
 
-      <Box
-        position="fixed"
-        bgColor="gray.100"
-        w="full"
-        h="60px"
-        bottom="0"
-        left="0"
-      >
+      <Box bgColor="gray.100" w="full" h="60px">
         <Grid
           as="form"
           onSubmit={handleSubmitMessage}
@@ -188,7 +173,7 @@ const Message: React.FC = () => {
           </Box>
         </Grid>
       </Box>
-    </Box>
+    </>
   )
 }
 

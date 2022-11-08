@@ -1,15 +1,23 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 
 import { UserAuth } from '../hooks/useAuth'
 
 // eslint-disable-next-line
-const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
+const ListMessages: React.FC<{ allMessages: any; dummy: any }> = ({
+  allMessages,
+  dummy,
+}) => {
   const { user } = UserAuth()
 
   return (
-    <Box>
+    <Flex
+      flexDir="column"
+      bgColor="red"
+      overflowY="scroll"
+      h="calc(100vh - 60px - 80px)"
+    >
       {/* eslint-disable-next-line */}
       {allMessages?.map((message: any) => {
         const is_transmitter =
@@ -38,7 +46,7 @@ const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
           </Box>
         )
       })}
-    </Box>
+    </Flex>
   )
 }
 
