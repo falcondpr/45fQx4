@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import dayjs from 'dayjs'
 import { Box, Flex, Text } from '@chakra-ui/react'
+import { useDataLoader, useChatScroll, useStickyScroll } from 'use-chat-scroll'
 
 import { UserAuth } from '../hooks/useAuth'
 
+const loadAdditionalData = () => [
+  /* Additional data */
+]
+
 // eslint-disable-next-line
-const ListMessages: React.FC<{ allMessages: any; dummy: any }> = ({
-  allMessages,
-  dummy,
-}) => {
+const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
   const { user } = UserAuth()
+
+  const containerRef = useRef<HTMLDivElement>(null)
+  const loader = useDataLoader(loadAdditionalData, allMessages, () =>
+    console.log('hello'),
+  )
+
+  // eslint-disable-next-line
+  useChatScroll(containerRef as any, allMessages, loader)
+  // eslint-disable-next-line
+  useStickyScroll(containerRef as any, allMessages)
 
   return (
     <Flex
@@ -17,6 +29,7 @@ const ListMessages: React.FC<{ allMessages: any; dummy: any }> = ({
       bgColor="red"
       overflowY="scroll"
       h="calc(100vh - 60px - 80px)"
+      ref={containerRef}
     >
       {/* eslint-disable-next-line */}
       {allMessages?.map((message: any) => {
