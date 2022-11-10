@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import dayjs from 'dayjs'
 import { Box, Flex, Text } from '@chakra-ui/react'
-import { useDataLoader, useChatScroll, useStickyScroll } from 'use-chat-scroll'
+import { useDataLoader, useChatScroll } from 'use-chat-scroll'
 
 import { UserAuth } from '../hooks/useAuth'
 
@@ -20,14 +20,12 @@ const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
 
   // eslint-disable-next-line
   useChatScroll(containerRef as any, allMessages, loader)
-  // eslint-disable-next-line
-  useStickyScroll(containerRef as any, allMessages)
 
   return (
     <Flex
       flexDir="column"
       bgColor="red"
-      overflowY="scroll"
+      overflowY="auto"
       h="calc(100vh - 60px - 80px)"
       ref={containerRef}
     >

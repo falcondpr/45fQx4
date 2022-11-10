@@ -13,6 +13,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // eslint-disable-next-line
   const handleLoginUser = async (e: any) => {
     e.preventDefault()
 
@@ -23,8 +24,12 @@ const Login: React.FC = () => {
     const data = { email, password }
     const response = await login(data)
 
-    if (response.success) {
+    if (response?.success) {
       return navigate('/')
+    }
+
+    if (!response?.success) {
+      return toast.error('Credenciales incorrectas')
     }
   }
 
