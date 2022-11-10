@@ -10,12 +10,11 @@ export const UserAuth = () => {
   const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate()
 
+  // eslint-disable-next-line
   const login = async (data: any) => {
     const response = await loginUser(data)
 
-    if (!response.success) {
-      return toast.error('Ocurrió un error al iniciar sesión')
-    }
+    if (!response) return null
 
     setUser(jwt(response.data))
     localStorage.setItem('SUV_TOKEN_AUTH', response.data)
