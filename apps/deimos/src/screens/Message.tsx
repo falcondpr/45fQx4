@@ -123,7 +123,7 @@ const Message: React.FC = () => {
             </Flex>
           </Box>
 
-          <Flex flexDir="column" bgColor="purple">
+          <Flex flexDir="column">
             <ListMessages allMessages={messages} />
           </Flex>
         </>
