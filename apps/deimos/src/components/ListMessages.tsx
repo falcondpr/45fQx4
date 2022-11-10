@@ -1,36 +1,32 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import dayjs from 'dayjs'
 import { Box, Flex, Text } from '@chakra-ui/react'
-import { useDataLoader, useChatScroll } from 'use-chat-scroll'
 
 import { UserAuth } from '../hooks/useAuth'
-
-const loadAdditionalData = () => [
-  /* Additional data */
-]
 
 // eslint-disable-next-line
 const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
   const { user } = UserAuth()
 
-  const containerRef = useRef<HTMLDivElement>(null)
-  const loader = useDataLoader(loadAdditionalData, allMessages, () =>
-    console.log('hello'),
-  )
-
   // eslint-disable-next-line
-  useChatScroll(containerRef as any, allMessages, loader)
+  const messagesOrdered = allMessages?.sort(
+    // eslint-disable-next-line
+    (a: any, b: any) =>
+      Number(new Date(b.created_at).getTime()) -
+      Number(new Date(a.created_at).getTime()),
+  )
 
   return (
     <Flex
+      // bgColor="red"
+      position="relative"
       flexDir="column"
-      bgColor="red"
       overflowY="auto"
       h="calc(100vh - 60px - 80px)"
-      ref={containerRef}
+      pb="1rem"
     >
       {/* eslint-disable-next-line */}
-      {allMessages?.map((message: any) => {
+      {messagesOrdered?.map((message: any) => {
         const is_transmitter =
           message?.id_user_transmitter === user?.id ? true : false
 
@@ -57,6 +53,16 @@ const ListMessages: React.FC<{ allMessages: any }> = ({ allMessages }) => {
           </Box>
         )
       })}
+
+      <Box
+        position="fixed"
+        w="full"
+        bottom="60px"
+        h="3rem"
+        zIndex="20"
+        // bgColor="#fff"
+        bgImage="linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,0) 100%)"
+      ></Box>
     </Flex>
   )
 }
