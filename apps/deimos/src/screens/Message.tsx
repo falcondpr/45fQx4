@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Flex, Grid, Input, Text } from '@chakra-ui/react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
@@ -15,8 +15,6 @@ import { PORT_SOCKET_IO } from '../utils/variables'
 const socket = io(PORT_SOCKET_IO)
 
 const Message: React.FC = () => {
-  // eslint-disable-next-line
-  const dummy: any = useRef()
   const navigate = useNavigate()
   const {
     state: { id_team, id_user_receiver, id_user_transmitter },
@@ -92,12 +90,6 @@ const Message: React.FC = () => {
 
     socket.emit('createMessage', data_message)
     setMessage({ ...message, content: '' })
-
-    dummy.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'end',
-      inline: 'nearest',
-    })
   }
 
   return (
@@ -132,8 +124,7 @@ const Message: React.FC = () => {
           </Box>
 
           <Flex flexDir="column" bgColor="purple">
-            <ListMessages dummy={dummy} allMessages={messages} />
-            <span ref={dummy}></span>
+            <ListMessages allMessages={messages} />
           </Flex>
         </>
       )}
