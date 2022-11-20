@@ -47,3 +47,24 @@ npx nx serve deimos
 # or
 nx serve deimos
 ```
+
+# Probar mensajes de texto
+
+- Desde el navegador ir a la ruta https://localhost:4200/login
+
+```json
+{
+  "email": "lucas@correo.com",
+  "password": "123"
+}
+```
+
+- Abrir una nueva ventana en privado para acceder al otro usuario
+- ir a la ruta https://localhost:4200/login
+
+```json
+{
+  "email": "fer@correo.com",
+  "password": "123"
+}
+```
