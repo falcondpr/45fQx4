@@ -50,4 +50,9 @@ export class ProductService {
     })
     return product.filter((item) => item !== null && item)
   }
+
+  async getByUser(id_user_owner: string): Promise<Product[]> {
+    const products = await this.productModel.find({ id_user_owner })
+    return products
+  }
 }
