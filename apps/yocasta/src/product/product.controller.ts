@@ -85,4 +85,17 @@ export class ProductController {
       data: products,
     })
   }
+
+  @Get('/id_user/:id_user')
+  async getByUser(
+    @Res() res: Response,
+    @Param('id_user') id_user_owner: string,
+  ) {
+    const products = await this.productService.getByUser(id_user_owner)
+    return res.status(HttpStatus.OK).json({
+      message: '',
+      success: true,
+      data: products,
+    })
+  }
 }
