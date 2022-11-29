@@ -9,6 +9,7 @@ import { UserModule } from '../user/user.module'
 import { URL_MONGO } from '../utils/constans'
 import { ChatModule } from '../chat/chat.module'
 import { ProductModule } from '../product/product.module'
+import { TicketModule } from '../ticket/ticket.module'
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ProductModule } from '../product/product.module'
     UserModule,
     ChatModule,
     ProductModule,
+    TicketModule,
   ],
   controllers: [AppController],
   providers: [AppService],
