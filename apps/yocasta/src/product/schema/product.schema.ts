@@ -31,7 +31,7 @@ export class Product {
   image: { url: string; description: string }
 
   // => VENDIDO, DISPONIBLE
-  @Prop({ type: String, default: 'DISPONIBLE' })
+  @Prop({ type: String, default: 'FREE' })
   status: string
 
   @Prop({ type: String, required: true })
