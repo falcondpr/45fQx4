@@ -8,6 +8,7 @@
     "dafne": "apps/dafne",
     "deimos": "apps/deimos",
     "deimos-e2e": "apps/deimos-e2e",
+    "kousa": "apps/kousa",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e",
     "yocasta": "apps/yocasta"
