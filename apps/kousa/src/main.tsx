@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 import App from './app/app'
 import { theme } from './theme'
+import './styles.css'
 
 // fonts
 import '@fontsource/poppins/400.css'
