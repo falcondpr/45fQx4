@@ -10,6 +10,7 @@ const ButtonUI: React.FC<ButtonUIProps> = ({ children, onClick, ...rest }) => {
   return (
     <Button
       w="full"
+      minW="initial"
       onClick={onClick}
       bgColor="primary"
       color="white"
