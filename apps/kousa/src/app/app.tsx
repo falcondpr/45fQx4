@@ -1,7 +1,7 @@
-import { Text } from '@chakra-ui/react'
+import Navigation from '../router/navigation'
 
 export function App() {
-  return <Text>Hello from Kousa</Text>
+  return <Navigation />
 }
 
 export default App
