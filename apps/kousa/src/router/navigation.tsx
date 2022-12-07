@@ -7,6 +7,7 @@ import Auth from '../screens/Auth'
 import Register from '../screens/Register'
 import Login from '../screens/Login'
 import Search from '../screens/Search'
+import Messages from '../screens/Messages'
 
 const Navigation: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Navigation: React.FC = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/messages" element={<Messages />} />
       </Routes>
     </BrowserRouter>
   )
