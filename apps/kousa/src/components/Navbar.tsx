@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom'
 const Navbar: React.FC = () => {
   return (
     <Box
+      borderTop="1px solid"
+      borderColor="#dbdbdb"
       position="fixed"
       p={{ base: '0 2rem' }}
       h={{ base: '60px' }}
@@ -29,6 +31,12 @@ const Navbar: React.FC = () => {
       <Link to="/">
         <Text fontSize={{ base: '2rem' }} color="border-color">
           <HiSearch />
+        </Text>
+      </Link>
+
+      <Link to="/">
+        <Text fontSize={{ base: '2rem' }} color="border-color">
+          {/* <TbMessageDots /> */}
         </Text>
       </Link>
 

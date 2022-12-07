@@ -1,5 +1,6 @@
-import { Box, BoxProps } from '@chakra-ui/react'
 import React from 'react'
+import { Box, BoxProps, Button } from '@chakra-ui/react'
+import { SlEnergy } from 'react-icons/sl'
 
 import Navbar from '../components/Navbar'
 
@@ -10,7 +11,29 @@ interface LayoutProps extends BoxProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Box pb="3.75rem">{children}</Box>
+      <Box pb="5rem">{children}</Box>
+
+      <Button
+        position="fixed"
+        bottom="2.2rem"
+        // right="0"
+        left="50%"
+        // translateX="-50%"
+        transform="translateX(-50%)"
+        // mx="auto"
+        zIndex="20"
+        bgColor="primary"
+        fontSize="1.5rem"
+        minW="initial"
+        w="3.2rem"
+        h="3.2rem"
+        p="0.5rem"
+        rounded="full"
+        color="white"
+      >
+        <SlEnergy />
+      </Button>
+
       <Navbar />
     </>
   )

@@ -1,5 +1,5 @@
-import { Box, BoxProps } from '@chakra-ui/react'
 import React from 'react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import Navigation from './components/Navigation'
 
 interface LayoutProps extends BoxProps {
