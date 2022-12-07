@@ -8,7 +8,6 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
   const { pathname } = useLocation()
-  console.log(pathname)
 
   return (
     <Box
@@ -47,7 +46,7 @@ const Navbar: React.FC = () => {
         <Text fontSize={{ base: '2rem' }}>{/* <TbMessageDots /> */}</Text>
       </Link>
 
-      <Link to="/">
+      <Link to="/messages">
         <Text
           fontSize={{ base: '2rem' }}
           color={pathname === '/messages' ? 'primary' : 'border-color'}
