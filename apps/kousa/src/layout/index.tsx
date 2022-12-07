@@ -1,4 +1,4 @@
-import { BoxProps } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import React from 'react'
 
 import Navbar from '../components/Navbar'
@@ -10,7 +10,7 @@ interface LayoutProps extends BoxProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      {children}
+      <Box pb="3.75rem">{children}</Box>
       <Navbar />
     </>
   )

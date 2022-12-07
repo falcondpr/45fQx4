@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import HeaderProfile from '../components/HeaderProfile'
 import CardProduct from '../components/CardProduct'
 import ButtonUI from '../ui/Button'
+import Layout from '../layout'
 import { categories } from '../data/categories'
 
 const Home: React.FC = () => {
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
   const [categorySelected, setCategorySelected] = useState<string>('todas')
 
   return (
-    <Box>
+    <Layout>
       <HeaderProfile
         navigate={navigate}
         userAvatar={'https://bit.ly/3FpDJGG'}
@@ -70,7 +71,7 @@ const Home: React.FC = () => {
           <CardProduct />
         </Grid>
       </Box>
-    </Box>
+    </Layout>
   )
 }
 
