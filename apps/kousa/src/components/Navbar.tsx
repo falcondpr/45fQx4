@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
         </Text>
       </Link>
 
-      <Link to="/">
+      <Link to="/search">
         <Text fontSize={{ base: '2rem' }} color="border-color">
           <HiSearch />
         </Text>
