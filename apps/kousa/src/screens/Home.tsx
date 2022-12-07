@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Box, Flex, Image } from '@chakra-ui/react'
+import { Box, Flex, Grid, Image } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
 import HeaderProfile from '../components/HeaderProfile'
-import { categories } from '../data/categories'
+import CardProduct from '../components/CardProduct'
 import ButtonUI from '../ui/Button'
+import { categories } from '../data/categories'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
@@ -30,6 +31,7 @@ const Home: React.FC = () => {
         />
       </Box>
 
+      {/* Categories */}
       <Box mt="1.875rem">
         <Flex overflowX="auto" className="hide-scroll">
           {categories.map((category, index) => (
@@ -52,6 +54,21 @@ const Home: React.FC = () => {
             </ButtonUI>
           ))}
         </Flex>
+      </Box>
+
+      {/* List Products */}
+      <Box p="1.5rem 1.25rem">
+        <Grid
+          gridTemplateColumns={{ base: 'repeat(2, 1fr)' }}
+          gap={{ base: '1.5rem 1rem' }}
+        >
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+        </Grid>
       </Box>
     </Box>
   )
