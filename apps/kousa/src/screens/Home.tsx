@@ -58,7 +58,7 @@ const Home: React.FC = () => {
       </Box>
 
       {/* List Products */}
-      <Box p="1.5rem 1.25rem">
+      <Box mt="1.3rem" p="0 1.25rem">
         <Grid
           gridTemplateColumns={{ base: 'repeat(2, 1fr)' }}
           gap={{ base: '1.5rem 1rem' }}

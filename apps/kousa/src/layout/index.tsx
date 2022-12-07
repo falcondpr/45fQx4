@@ -8,10 +8,12 @@ interface LayoutProps extends BoxProps {
   children?: React.ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
   return (
     <>
-      <Box pb="5rem">{children}</Box>
+      <Box {...rest} pb="6.2rem">
+        {children}
+      </Box>
 
       <Button
         position="fixed"
