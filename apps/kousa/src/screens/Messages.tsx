@@ -4,6 +4,7 @@ import { Box } from '@chakra-ui/react'
 import Layout from '../layout'
 import InputUI from '../ui/Input'
 import TextUI from '../ui/Text'
+
 import ProfileTagChat from '../components/ProfileTagChat'
 
 const Messages: React.FC = () => {
@@ -21,7 +22,6 @@ const Messages: React.FC = () => {
 
       {/* List of users */}
       <Box mt="1.25rem">
-        <ProfileTagChat />
         <ProfileTagChat />
         <ProfileTagChat />
         <ProfileTagChat />
