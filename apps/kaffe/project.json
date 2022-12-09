@@ -1,0 +1,81 @@
+{
+  "name": "kaffe",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/kaffe/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/kaffe",
+        "index": "apps/kaffe/src/index.html",
+        "baseHref": "/",
+        "main": "apps/kaffe/src/main.tsx",
+        "polyfills": "apps/kaffe/src/polyfills.ts",
+        "tsConfig": "apps/kaffe/tsconfig.app.json",
+        "assets": ["apps/kaffe/src/favicon.ico", "apps/kaffe/src/assets"],
+        "styles": ["apps/kaffe/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/kaffe/src/environments/environment.ts",
+              "with": "apps/kaffe/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "kaffe:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "kaffe:build:development"
+        },
+        "production": {
+          "buildTarget": "kaffe:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/kaffe/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/kaffe"],
+      "options": {
+        "jestConfig": "apps/kaffe/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
