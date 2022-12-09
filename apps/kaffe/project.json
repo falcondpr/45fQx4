@@ -1,7 +1,7 @@
 {
-  "name": "kousa",
+  "name": "kaffe",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/kousa/src",
+  "sourceRoot": "apps/kaffe/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,14 +10,14 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/kousa",
-        "index": "apps/kousa/src/index.html",
+        "outputPath": "dist/apps/kaffe",
+        "index": "apps/kaffe/src/index.html",
         "baseHref": "/",
-        "main": "apps/kousa/src/main.tsx",
-        "polyfills": "apps/kousa/src/polyfills.ts",
-        "tsConfig": "apps/kousa/tsconfig.app.json",
-        "assets": ["apps/kousa/src/favicon.ico", "apps/kousa/src/assets"],
-        "styles": ["apps/kousa/src/styles.css"],
+        "main": "apps/kaffe/src/main.tsx",
+        "polyfills": "apps/kaffe/src/polyfills.ts",
+        "tsConfig": "apps/kaffe/tsconfig.app.json",
+        "assets": ["apps/kaffe/src/favicon.ico", "apps/kaffe/src/assets"],
+        "styles": ["apps/kaffe/src/styles.css"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },
@@ -31,8 +31,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/kousa/src/environments/environment.ts",
-              "with": "apps/kousa/src/environments/environment.prod.ts"
+              "replace": "apps/kaffe/src/environments/environment.ts",
+              "with": "apps/kaffe/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -48,15 +48,15 @@
       "executor": "@nrwl/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "kousa:build",
+        "buildTarget": "kaffe:build",
         "hmr": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "kousa:build:development"
+          "buildTarget": "kaffe:build:development"
         },
         "production": {
-          "buildTarget": "kousa:build:production",
+          "buildTarget": "kaffe:build:production",
           "hmr": false
         }
       }
@@ -65,14 +65,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/kousa/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/kaffe/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/kousa"],
+      "outputs": ["coverage/apps/kaffe"],
       "options": {
-        "jestConfig": "apps/kousa/jest.config.ts",
+        "jestConfig": "apps/kaffe/jest.config.ts",
         "passWithNoTests": true
       }
     }
