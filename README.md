@@ -54,6 +54,7 @@ nx serve deimos
 
 ```json
 {
+  // account
   "email": "lucas@correo.com",
   "password": "123"
 }
@@ -64,6 +65,7 @@ nx serve deimos
 
 ```json
 {
+  // account
   "email": "fer@correo.com",
   "password": "123"
 }
