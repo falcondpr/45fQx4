@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, BoxProps, Button } from '@chakra-ui/react'
 import { SlEnergy } from 'react-icons/sl'
 
 import Navbar from '../components/Navbar'
+import { useLocation } from 'react-router-dom'
 
 interface LayoutProps extends BoxProps {
   children?: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   return (
     <>
       <Box {...rest} pb="6.2rem">
