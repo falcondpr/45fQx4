@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
         </Text>
       </Link>
 
-      <Link to="/">
+      <Link to="/profile">
         <Text
           fontSize={{ base: '2rem' }}
           color={pathname === '/profile' ? 'primary' : 'border-color'}
