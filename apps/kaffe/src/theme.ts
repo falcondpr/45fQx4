@@ -6,6 +6,7 @@ const colors = {
   primary: '#333333',
   'light-gray': '#999999',
   'border-color': '#bebebe',
+  'secondary-gray': '#777777',
   brand: {
     900: '#1a365d',
     800: '#153e75',
