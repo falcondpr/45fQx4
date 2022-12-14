@@ -1,12 +1,13 @@
 import React from 'react'
-import { Box, Button, Flex, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 import { FaUser } from 'react-icons/fa'
-import { FiLogOut } from 'react-icons/fi'
 import { SiMaildotru } from 'react-icons/si'
+import { FiLogOut } from 'react-icons/fi'
 import { IoShirtSharp } from 'react-icons/io5'
 import { GiInjustice } from 'react-icons/gi'
+import { BsPatchCheckFill } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
 
 import Layout from '../layout'
@@ -53,9 +54,14 @@ const Profile: React.FC = () => {
 
       {/* Profile Info */}
       <Box p="0.3125rem 1.25rem">
-        <TextUI fontWeight="bold" color="primary">
-          Lujan Vera
-        </TextUI>
+        <Flex alignItems="center">
+          <TextUI fontWeight="bold" color="primary">
+            Lujan Vera
+          </TextUI>
+          <Text color="light-gray" ml="0.35rem" fontSize="1.2rem">
+            <BsPatchCheckFill />
+          </Text>
+        </Flex>
         <TextUI fontSize="0.8rem" color="light-gray">
           @lujan_vera
         </TextUI>
