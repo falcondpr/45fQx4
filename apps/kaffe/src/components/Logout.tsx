@@ -1,7 +1,5 @@
 import React from 'react'
-import { Box, Flex, Grid, Text, Link as LinkUI, Button } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
-import TextUI from '../ui/Text'
+import { Box, Flex, Grid, Text, Button } from '@chakra-ui/react'
 
 interface LogoutProps {
   setShowLogoutModal: (value: boolean) => void
