@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
@@ -15,9 +15,14 @@ import BoxColor from '../ui/BoxColor'
 import TextUI from '../ui/Text'
 import { MdLocalGroceryStore } from 'react-icons/md'
 import { GoKey } from 'react-icons/go'
+import Logout from '../components/Logout'
 
 const Profile: React.FC = () => {
-  return (
+  const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false)
+
+  return showLogoutModal ? (
+    <Logout setShowLogoutModal={setShowLogoutModal} />
+  ) : (
     <Layout>
       {/* Banner */}
       <Box
@@ -33,6 +38,7 @@ const Profile: React.FC = () => {
           fontSize="1.1rem"
           color="primary"
           p="0.75rem"
+          onClick={() => setShowLogoutModal(true)}
         >
           <FiLogOut />
         </Button>
