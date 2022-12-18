@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 import HeaderProfile from '../components/HeaderProfile'
 import CardProduct from '../components/CardProduct'
-import ButtonUI from '../ui/Button'
 import Layout from '../layout'
 import { categories } from '../data/categories'
 
@@ -37,6 +36,9 @@ const Home: React.FC = () => {
         <Flex overflowX="auto" className="hide-scroll">
           {categories.map((category, index) => (
             <Button
+              flex="1"
+              minW="initial"
+              w="full"
               bgColor={
                 categorySelected === category.link ? 'primary' : 'light-primary'
               }
@@ -47,10 +49,10 @@ const Home: React.FC = () => {
               rounded="2px"
               mr={categories.length - 1 === index ? '1.25rem' : 0}
               onClick={() => setCategorySelected(category.link)}
-              // _focus={{ bgColor: 'primary' }}
-              // _active={{ bgColor: 'primary' }}
-              // _focusWithin={{ bgColor: 'primary' }}
-              // _focusVisible={{ bgColor: 'primary' }}
+              _focus={{ bgColor: 'primary' }}
+              _active={{ bgColor: 'primary' }}
+              _focusWithin={{ bgColor: 'primary' }}
+              _focusVisible={{ bgColor: 'primary' }}
             >
               {category.name}
             </Button>
