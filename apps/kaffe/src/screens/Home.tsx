@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Flex, Grid, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, Image } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
 import HeaderProfile from '../components/HeaderProfile'
@@ -36,23 +36,24 @@ const Home: React.FC = () => {
       <Box mt="1.875rem">
         <Flex overflowX="auto" className="hide-scroll">
           {categories.map((category, index) => (
-            <ButtonUI
-              border="2px solid transparent"
-              bgColor={categorySelected === category.link ? 'primary' : 'white'}
-              color={categorySelected === category.link ? 'white' : 'primary'}
-              borderColor={
-                categorySelected !== category.link ? 'primary' : 'transparent'
+            <Button
+              bgColor={
+                categorySelected === category.link ? 'primary' : 'light-primary'
               }
+              color={categorySelected === category.link ? 'white' : 'primary'}
               display="block"
               key={category.id}
               ml={index === 0 ? '1.25rem' : '0.625rem'}
               rounded="2px"
               mr={categories.length - 1 === index ? '1.25rem' : 0}
               onClick={() => setCategorySelected(category.link)}
-              _focus={{}}
+              // _focus={{ bgColor: 'primary' }}
+              // _active={{ bgColor: 'primary' }}
+              // _focusWithin={{ bgColor: 'primary' }}
+              // _focusVisible={{ bgColor: 'primary' }}
             >
               {category.name}
-            </ButtonUI>
+            </Button>
           ))}
         </Flex>
       </Box>
