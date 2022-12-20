@@ -44,6 +44,8 @@ const Profile: React.FC = () => {
           fontSize="1.1rem"
           color="primary"
           p="0.75rem"
+          border="1px solid"
+          borderColor="border-color"
           onClick={() => setShowLogoutModal(true)}
         >
           <FiLogOut />

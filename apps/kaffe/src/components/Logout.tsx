@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, Grid, Text, Button } from '@chakra-ui/react'
+import { Box, Flex, Grid, Text, Button, Image } from '@chakra-ui/react'
 
 interface LogoutProps {
   setShowLogoutModal: (value: boolean) => void
@@ -16,16 +16,17 @@ const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
       w="full"
       zIndex="100"
     >
-      <Box
+      <Image
+        h="80vh"
+        objectFit="cover"
+        w="full"
+        fallbackSrc="../assets/fallback-image.png"
         position="absolute"
         top="0"
-        bgPos="center top"
-        bgSize="cover"
         left="0"
-        w="full"
-        bgImage="url('https://bit.ly/3YoN1uj')"
-        h="80vh"
-      ></Box>
+        src="https://bit.ly/3YoN1uj"
+        alt="Background of modal"
+      />
       <Box
         py="2.375rem"
         px="1.25rem"
