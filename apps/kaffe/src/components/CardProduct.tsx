@@ -8,6 +8,7 @@ const CardProduct: React.FC = () => {
       <Box>
         <Image
           rounded="6px"
+          fallbackSrc="../assets/fallback-image.png"
           src="https://bit.ly/3VIqG99"
           alt=""
           w={{ base: 'full' }}

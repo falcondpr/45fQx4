@@ -25,12 +25,18 @@ const Profile: React.FC = () => {
   ) : (
     <Layout>
       {/* Banner */}
-      <Box
-        position="relative"
-        h="7.5rem"
-        bgSize="cover"
-        bgImage="url(https://bit.ly/3uKlINg)"
-      >
+      <Box position="relative" h="7.5rem">
+        <Image
+          position="absolute"
+          top="0"
+          left="0"
+          w="full"
+          h="full"
+          objectFit="cover"
+          fallbackSrc="../assets/fallback-image.png"
+          src="https://bit.ly/3uKlINg"
+          alt="Banner of profile user"
+        />
         <Button
           position="absolute"
           top="1.25rem"
@@ -48,7 +54,8 @@ const Profile: React.FC = () => {
       <Box pl="1.25rem" mt="-3.125rem" position="relative" zIndex="10">
         <Image
           src="https://bit.ly/3PlI4hH"
-          alt=""
+          fallbackSrc="../assets/fallback-image.png"
+          alt="Profile picture"
           w="6.25rem"
           h="6.25rem"
           objectFit="cover"
@@ -80,7 +87,7 @@ const Profile: React.FC = () => {
         </TextUI>
 
         <Box mt="0.75rem">
-          <Link to="/">
+          <Link to="/posted-posts">
             <Flex alignItems="center" mb="1rem">
               <BoxColor bgColor="#023E8A">
                 <IoShirtSharp />
@@ -91,7 +98,7 @@ const Profile: React.FC = () => {
             </Flex>
           </Link>
 
-          <Link to="/">
+          <Link to="/saved-post">
             <Flex alignItems="center" mb="1rem">
               <BoxColor bgColor="#335C67">
                 <MdLocalGroceryStore />
@@ -103,7 +110,7 @@ const Profile: React.FC = () => {
           </Link>
         </Box>
 
-        <TextUI fontSize="1.125rem" color="primary">
+        <TextUI mt="1.5rem" fontSize="1.125rem" color="primary">
           Editar perfil
         </TextUI>
 
@@ -142,7 +149,7 @@ const Profile: React.FC = () => {
           </Link>
         </Box>
 
-        <TextUI fontSize="1.125rem" color="primary">
+        <TextUI mt="1.5rem" fontSize="1.125rem" color="primary">
           Términos y condiciones
         </TextUI>
 

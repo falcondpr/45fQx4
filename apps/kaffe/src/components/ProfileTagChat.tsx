@@ -16,8 +16,9 @@ const ProfileTagChat: React.FC = () => {
           h="3.75rem"
           rounded="full"
           src="https://bit.ly/3VVAR9Z"
+          fallbackSrc="../assets/fallback-image.png"
           objectFit="cover"
-          alt=""
+          alt="Profile picture"
         />
       </Box>
       <Box>

@@ -27,7 +27,8 @@ const Home: React.FC = () => {
           objectFit="cover"
           objectPosition="top"
           src="https://bit.ly/3FnuneC"
-          alt=""
+          fallbackSrc="../assets/fallback-image.png"
+          alt="Banner ad"
         />
       </Box>
 

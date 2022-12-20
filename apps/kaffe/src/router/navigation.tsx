@@ -9,6 +9,8 @@ import Login from '../screens/Login'
 import Search from '../screens/Search'
 import Messages from '../screens/Messages'
 import Profile from '../screens/Profile'
+import SavedPost from '../screens/SavedPost'
+import PostedPosts from '../screens/PostedPosts'
 
 const Navigation: React.FC = () => {
   return (
@@ -21,6 +23,8 @@ const Navigation: React.FC = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/saved-post" element={<SavedPost />} />
+        <Route path="/posted-posts" element={<PostedPosts />} />
       </Routes>
     </BrowserRouter>
   )
