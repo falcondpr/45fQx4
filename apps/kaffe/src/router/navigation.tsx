@@ -1,16 +1,21 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-// screens
-import Home from '../screens/Home'
+// auth
+import Login from '../screens/Login'
 import Auth from '../screens/Auth'
 import Register from '../screens/Register'
-import Login from '../screens/Login'
+
+// principal screens
+import Home from '../screens/Home'
 import Search from '../screens/Search'
 import Messages from '../screens/Messages'
 import Profile from '../screens/Profile'
+
+// secondary screens
 import SavedPost from '../screens/SavedPost'
 import PostedPosts from '../screens/PostedPosts'
+import PostDetail from '../screens/PostDetail'
 
 const Navigation: React.FC = () => {
   return (
@@ -25,6 +30,7 @@ const Navigation: React.FC = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/saved-post" element={<SavedPost />} />
         <Route path="/posted-posts" element={<PostedPosts />} />
+        <Route path="/post/:id" element={<PostDetail />} />
       </Routes>
     </BrowserRouter>
   )
