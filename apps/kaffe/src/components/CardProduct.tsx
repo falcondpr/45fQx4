@@ -1,10 +1,12 @@
 import React from 'react'
 import { Box, Image, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
+
 import TagProfile from './TagProfile'
 
 const CardProduct: React.FC = () => {
   return (
-    <Box>
+    <Link to="/post/3">
       <Box>
         <Image
           rounded="6px"
@@ -24,7 +26,7 @@ const CardProduct: React.FC = () => {
           <TagProfile />
         </Box>
       </Box>
-    </Box>
+    </Link>
   )
 }
 
