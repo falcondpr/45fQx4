@@ -21,7 +21,8 @@ const HeaderProfile: React.FC<{
           objectFit="cover"
           rounded="2.5rem"
           src={userAvatar}
-          alt=""
+          fallbackSrc="../assets/fallback-image.png"
+          alt="Profile picture"
         />
       </Box>
       <Box>

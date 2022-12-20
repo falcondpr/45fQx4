@@ -38,7 +38,7 @@ const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
       >
         <Text
           fontWeight="semibold"
-          fontSize="2.25rem"
+          fontSize="2rem"
           color="primary"
           lineHeight="2.5rem"
           mb="1.25rem"
@@ -60,8 +60,8 @@ const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
           </Button>
 
           <Button
-            bgColor="white"
             color="primary"
+            bgColor="gray.200"
             h="3.2rem"
             display="flex"
             alignItems="center"
