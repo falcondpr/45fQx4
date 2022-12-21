@@ -18,18 +18,15 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
 
   return (
     <>
-      <Box {...rest} pb="5rem">
+      <Box {...rest} pb="6rem">
         {children}
       </Box>
 
       <Button
         position="fixed"
         bottom="2.2rem"
-        // right="0"
         left="50%"
-        // translateX="-50%"
         transform="translateX(-50%)"
-        // mx="auto"
         zIndex="20"
         bgColor="primary"
         fontSize="1.5rem"

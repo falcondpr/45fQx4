@@ -21,7 +21,7 @@ const Messages: React.FC = () => {
       </Box>
 
       {/* List of users */}
-      <Box mt="1.25rem">
+      <Box mt="1.25rem" mb="-1.25rem">
         <ProfileTagChat />
         <ProfileTagChat />
         <ProfileTagChat />
