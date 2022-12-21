@@ -7,7 +7,7 @@ interface InputUIProps extends InputProps {
 
 const InputUI: React.FC<InputUIProps> = ({ title, ...rest }) => {
   return (
-    <Box mb="20px">
+    <Box mb="20px" w="full">
       <Text
         htmlFor={title}
         display="block"

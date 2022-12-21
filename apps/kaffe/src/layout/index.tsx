@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
 
   return (
     <>
-      <Box {...rest} pb="6.2rem">
+      <Box {...rest} pb="5rem">
         {children}
       </Box>
 
