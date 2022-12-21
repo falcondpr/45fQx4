@@ -117,7 +117,7 @@ const Profile: React.FC = () => {
         </TextUI>
 
         <Box mt="0.75rem">
-          <Link to="/">
+          <Link to="/profile/email">
             <Flex alignItems="center" mb="1rem">
               <BoxColor bgColor="#2A9D8F">
                 <SiMaildotru />
@@ -128,7 +128,7 @@ const Profile: React.FC = () => {
             </Flex>
           </Link>
 
-          <Link to="/">
+          <Link to="/profile/username">
             <Flex alignItems="center" mb="1rem">
               <BoxColor bgColor="#264653">
                 <FaUser />
@@ -139,7 +139,7 @@ const Profile: React.FC = () => {
             </Flex>
           </Link>
 
-          <Link to="/">
+          <Link to="/profile/password">
             <Flex alignItems="center" mb="1rem">
               <BoxColor bgColor="#F4A261">
                 <GoKey />

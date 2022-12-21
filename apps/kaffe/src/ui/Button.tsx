@@ -14,11 +14,11 @@ const ButtonUI: React.FC<ButtonUIProps> = ({ children, onClick, ...rest }) => {
       onClick={onClick}
       bgColor="primary"
       color="white"
-      fontSize={{ base: '1.15rem' }}
+      fontSize={{ base: '1.05rem' }}
       py="14px"
       h="auto"
       border="2px solid transparent"
-      rounded="6px"
+      rounded="2px"
       fontWeight="medium"
       _focus={{
         bgColor: 'white',
