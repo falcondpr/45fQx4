@@ -83,7 +83,7 @@ const Profile: React.FC = () => {
       </Box>
 
       {/* Profile Options */}
-      <Box p="0.65rem 1.25rem">
+      <Box p="0.65rem 1.25rem" pb="0">
         <TextUI fontSize="1.125rem" color="primary">
           Informacion de usuario
         </TextUI>
