@@ -13,6 +13,7 @@ const Password: React.FC = () => {
 
       <Box mt="1rem">
         <InputUI placeholder="Editar contraseña" />
+        <InputUI placeholder="Confirmar contraseña" />
         <ButtonUI>Actualizar</ButtonUI>
       </Box>
     </Empty>
