@@ -17,20 +17,35 @@ import SavedPost from '../screens/SavedPost'
 import PostedPosts from '../screens/PostedPosts'
 import PostDetail from '../screens/PostDetail'
 
+// Profile
+import Email from '../screens/Profile/Email'
+import Username from '../screens/Profile/Username'
+import Password from '../screens/Profile/Password'
+
 const Navigation: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Auth */}
         <Route path="/auth" element={<Auth />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
+        {/* Principal Tab */}
+        <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<Profile />} />
+
+        {/* Profile */}
         <Route path="/saved-post" element={<SavedPost />} />
         <Route path="/posted-posts" element={<PostedPosts />} />
         <Route path="/post/:id" element={<PostDetail />} />
+
+        {/* Edit Profile */}
+        <Route path="/profile/email" element={<Email />} />
+        <Route path="/profile/username" element={<Username />} />
+        <Route path="/profile/password" element={<Password />} />
       </Routes>
     </BrowserRouter>
   )

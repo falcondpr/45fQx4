@@ -44,6 +44,7 @@ const Home: React.FC = () => {
                 categorySelected === category.link ? 'primary' : 'light-primary'
               }
               color={categorySelected === category.link ? 'white' : 'primary'}
+              fontWeight="medium"
               display="block"
               key={category.id}
               ml={index === 0 ? '1.25rem' : '0.625rem'}
