@@ -2,7 +2,7 @@
 <img src="https://github.com/fervillalbag/suv/blob/main/logo-suv.png?raw=true" height="90" />
 </p>
 
-**SUVAP** es un espacio que te permitirá vender y comprar productos/servicios de manera segura. La premisa de la misma es evitar cualquier tipo de estafas, dificultades durante las transacciones, veracidad del producto, entre otros obstáculos que ocasionan una mala experiencia en la venta.
+**SUVAP** es un espacio que te permitirá compra y vender productos/servicios de manera segura. La premisa de la misma es evitar cualquier tipo de estafas, dificultades durante las transacciones, veracidad del producto, facilidad en el pago, entre otros obstáculos que ocasionan una mala experiencia en la venta.
 
 Se prima la experiencia del usuario y la seguridad al manipular el software. Esto nos permitiría recuperar la confianza de las compras en línea y acrecentar en mayor o menor medida la economía.
 
@@ -48,7 +48,7 @@ npx nx serve deimos
 nx serve deimos
 ```
 
-### Probar mensajes de texto
+### Probar la funcionalidad mensajes de texto
 
 - Desde el navegador ir a la ruta http://localhost:4200/login
 
