@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Image } from '@chakra-ui/react'
 import { Link, NavigateFunction } from 'react-router-dom'
 
 import TextUI from '../ui/Text'
@@ -26,11 +26,23 @@ const HeaderProfile: React.FC<{
         />
       </Box>
       <Box>
-        <Link to="/tickets">
-          <TextUI p="5px" textTransform="uppercase" color="primary">
-            Tickets
+        <Button
+          display="flex"
+          h="2.5rem"
+          px="1rem"
+          rounded="4px"
+          border="1px solid"
+          borderColor="primary"
+          fontSize="0.875rem"
+          bgColor="white"
+        >
+          <TextUI color="primary" fontWeight="normal" textTransform="uppercase">
+            id user:
           </TextUI>
-        </Link>
+          <TextUI fontFamily="Arial, sans-serif" color="primary" ml="4px">
+            A1623
+          </TextUI>
+        </Button>
       </Box>
     </Flex>
   )
