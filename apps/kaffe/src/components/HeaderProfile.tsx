@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button, Flex, Image } from '@chakra-ui/react'
-import { Link, NavigateFunction } from 'react-router-dom'
+import { NavigateFunction } from 'react-router-dom'
 
 import TextUI from '../ui/Text'
 

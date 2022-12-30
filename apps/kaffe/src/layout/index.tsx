@@ -23,6 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
       </Box>
 
       <Button
+        display="none"
         position="fixed"
         bottom="2.2rem"
         left="50%"
