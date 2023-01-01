@@ -13,7 +13,7 @@ import { closeMenu } from '../features/menuSlice'
 const Menu: React.FC = () => {
   const dispatch = useDispatch()
 
-  const isSubscribe = !true
+  const isSubscribe = !!true
   const show = useSelector(
     (state: { menu: { show: boolean } }) => state.menu.show,
   )
@@ -103,7 +103,7 @@ const Menu: React.FC = () => {
               <IoShirtSharp />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Realizar transacción
+              Realizar entrega de producto
             </TextUI>
           </Flex>
         </Link>

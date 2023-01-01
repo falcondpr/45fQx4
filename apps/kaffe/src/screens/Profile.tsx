@@ -9,12 +9,12 @@ import { IoShirtSharp } from 'react-icons/io5'
 import { GiInjustice } from 'react-icons/gi'
 import { BsPatchCheckFill } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
+import { GoKey } from 'react-icons/go'
+import { MdLocalGroceryStore } from 'react-icons/md'
 
 import Layout from '../layout'
 import BoxColor from '../ui/BoxColor'
 import TextUI from '../ui/Text'
-import { MdLocalGroceryStore } from 'react-icons/md'
-import { GoKey } from 'react-icons/go'
 import Logout from '../components/Logout'
 
 const Profile: React.FC = () => {
