@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { IoShirtSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+
 import BoxColor from '../ui/BoxColor'
 import HeadingUI from '../ui/Heading'
 import TextUI from '../ui/Text'
@@ -52,7 +53,7 @@ const Menu: React.FC = () => {
               <IoShirtSharp />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Generar token
+              Vender mi producto
             </TextUI>
           </Flex>
         </Link>
