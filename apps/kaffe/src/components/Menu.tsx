@@ -92,7 +92,7 @@ const Menu: React.FC = () => {
               <IoShirtSharp />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Publicar un producto
+              Publicar un producto/servicio
             </TextUI>
           </Flex>
         </Link>
@@ -140,7 +140,7 @@ const Menu: React.FC = () => {
               <IoShirtSharp />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Historial de compras
+              Historial de pagos
             </TextUI>
           </Flex>
         </Link>
