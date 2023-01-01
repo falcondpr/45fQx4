@@ -13,6 +13,7 @@ import { closeMenu } from '../features/menuSlice'
 const Menu: React.FC = () => {
   const dispatch = useDispatch()
 
+  const isSubscribe = !true
   const show = useSelector(
     (state: { menu: { show: boolean } }) => state.menu.show,
   )
@@ -24,6 +25,7 @@ const Menu: React.FC = () => {
   // eslint-disable-next-line
   const ref = useRef<any>(null)
 
+  // eslint-disable-next-line
   const [menuHeight, setMenuHeight] = useState(0)
 
   useLayoutEffect(() => {
@@ -32,9 +34,9 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <Box position="fixed" bgColor="red.500" top="0" left="0" zIndex="200">
+      {/* <Box position="fixed" bgColor="red.500" top="0" left="0" zIndex="200">
         <h2 style={{ color: 'white' }}>Height: {menuHeight}</h2>
-      </Box>
+      </Box> */}
 
       <Box
         display={show ? 'block' : 'none'}
@@ -154,37 +156,57 @@ const Menu: React.FC = () => {
             Suscripcion{' '}
             <Text
               fontWeight="bold"
-              color="#DC2F02"
+              color={isSubscribe ? '#2A9D8F' : '#DC2F02'}
               as="span"
               textTransform="uppercase"
             >
-              inactiva
+              {isSubscribe ? 'activa' : 'inactiva'}
             </Text>
           </HeadingUI>
 
-          <TextUI color="primary" fontWeight="bold" fontSize="1.2rem">
-            Gs. 15.000{' '}
-            <Text
-              as="span"
-              fontWeight="normal"
-              color="light-gray"
-              fontSize="0.875rem"
-            >
-              /mes
-            </Text>
-          </TextUI>
+          <Box>
+            {!isSubscribe ? (
+              <Box>
+                <TextUI color="primary" fontWeight="bold" fontSize="1.2rem">
+                  Gs. 15.000{' '}
+                  <Text
+                    as="span"
+                    fontWeight="normal"
+                    color="light-gray"
+                    fontSize="0.875rem"
+                  >
+                    /mes
+                  </Text>
+                </TextUI>
+              </Box>
+            ) : (
+              <Box>
+                <TextUI color="primary" fontWeight="normal" fontSize="1.2rem">
+                  Se renueva el 22 de enero
+                </TextUI>
+                <TextUI
+                  color="light-gray"
+                  fontWeight="normal"
+                  fontSize="0.9rem"
+                >
+                  3 meses suscrito
+                </TextUI>
+              </Box>
+            )}
+          </Box>
 
           <Button
             mt="0.5rem"
             h="3.125rem"
             border="1px solid"
-            borderColor="primary"
+            borderColor={isSubscribe ? '#DC2F02' : 'primary'}
             rounded="4px"
             w="full"
             bgColor="white"
             textTransform="uppercase"
+            color={isSubscribe ? '#DC2F02' : 'primary'}
           >
-            Suscribirse
+            {isSubscribe ? 'Cancelar suscripcion' : 'Suscribirse'}
           </Button>
         </Box>
       </Box>
