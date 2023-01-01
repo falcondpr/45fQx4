@@ -15,7 +15,7 @@ const Message: React.FC = () => {
           <BackButton title="Lucas Lamas" />
         </Box>
 
-        <Box pt="1rem" pb="5.5rem" bgColor="gray.200">
+        <Box pt="1rem" pb="5.5rem">
           <MessagePill type="receiver" title="Hola que tal?" />
           <MessagePill
             type="receiver"

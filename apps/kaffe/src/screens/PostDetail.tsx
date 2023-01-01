@@ -48,6 +48,7 @@ const PostDetail: React.FC = () => {
               flex="1"
               mr={index === images.length - 1 ? '20px' : '0.5rem'}
               onClick={() => setImageSelected(image.id)}
+              _focusVisible={{}}
             >
               <Image
                 src={image.url}

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box, Text } from '@chakra-ui/react'
-
-import { MdLocalGroceryStore } from 'react-icons/md'
-import { HiSearch, HiOutlineUserCircle } from 'react-icons/hi'
 import { TbMessageDots } from 'react-icons/tb'
 import { Link, useLocation } from 'react-router-dom'
+import { MdLocalGroceryStore } from 'react-icons/md'
+import { HiSearch, HiOutlineUserCircle } from 'react-icons/hi'
+
 import Menu from './Menu'
 
 const Navbar: React.FC = () => {

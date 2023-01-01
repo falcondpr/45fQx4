@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { Box, BoxProps, Button } from '@chakra-ui/react'
 import { SlEnergy } from 'react-icons/sl'
 
 import Navbar from '../components/Navbar'
-import { useLocation } from 'react-router-dom'
+import { openMenu } from '../features/menuSlice'
 
 interface LayoutProps extends BoxProps {
   children?: React.ReactNode
@@ -11,6 +13,16 @@ interface LayoutProps extends BoxProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
   const { pathname } = useLocation()
+
+  const dispatch = useDispatch()
+
+  const show = useSelector(
+    (state: { menu: { show: boolean } }) => state.menu.show,
+  )
+
+  const handleOpenMenu = () => {
+    dispatch(openMenu())
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -23,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
       </Box>
 
       <Button
-        display="none"
+        display={show ? 'none' : 'flex'}
         position="fixed"
         bottom="2.2rem"
         left="50%"
@@ -37,6 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
         p="0.5rem"
         rounded="full"
         color="white"
+        onClick={handleOpenMenu}
       >
         <SlEnergy />
       </Button>
