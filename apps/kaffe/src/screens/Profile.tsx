@@ -95,7 +95,7 @@ const Profile: React.FC = () => {
                 <IoShirtSharp />
               </BoxColor>
               <TextUI ml="0.75rem" color="secondary-gray">
-                Post publicados
+                Publicaciones subidas
               </TextUI>
             </Flex>
           </Link>
@@ -106,7 +106,7 @@ const Profile: React.FC = () => {
                 <MdLocalGroceryStore />
               </BoxColor>
               <TextUI ml="0.75rem" color="secondary-gray">
-                Post guardados
+                Publicaciones guardadas
               </TextUI>
             </Flex>
           </Link>
