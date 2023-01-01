@@ -17,20 +17,20 @@ const MessagePill: React.FC<{ title: string; type: string }> = ({
         flexDir="column"
         display="inline-flex"
         rounded={type === 'receiver' ? '0 4px 4px 0' : '4px 0 0 4px'}
-        bgColor={type === 'receiver' ? 'secondary-gray' : 'border-color'}
+        bgColor={type === 'receiver' ? '#E9E9EB' : '#34C659'}
         py="0.5rem"
         alignItems="center"
         px="1rem"
       >
         <TextUI
           fontSize="0.95rem"
-          color={type === 'receiver' ? 'white' : 'primary'}
+          color={type === 'receiver' ? 'primary' : 'white'}
         >
           {title}
         </TextUI>
 
         <TextUI
-          color={type === 'receiver' ? 'border-color' : 'secondary-gray'}
+          color={type === 'receiver' ? 'border-color' : '#f2f2f2'}
           alignSelf="end"
           textAlign="right"
           fontSize="0.7rem"
