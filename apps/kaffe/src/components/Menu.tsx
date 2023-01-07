@@ -56,11 +56,11 @@ const Menu: React.FC = () => {
         borderTopLeftRadius="2rem"
         borderTopRightRadius="2rem"
         p="2rem 1.25rem"
-        position="absolute"
+        position="fixed"
         w="full"
         left="0"
         bottom="0"
-        h="max-content"
+        // h="max-content"
         zIndex="50"
       >
         <Button
