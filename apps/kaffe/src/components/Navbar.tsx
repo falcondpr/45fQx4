@@ -5,8 +5,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { MdLocalGroceryStore } from 'react-icons/md'
 import { HiSearch, HiOutlineUserCircle } from 'react-icons/hi'
 
-import Menu from './Menu'
-
 const Navbar: React.FC = () => {
   const { pathname } = useLocation()
 
@@ -25,8 +23,6 @@ const Navbar: React.FC = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Menu />
-
       <Link to="/">
         <Text
           fontSize={{ base: '2rem' }}

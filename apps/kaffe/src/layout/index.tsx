@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Box, BoxProps, Button } from '@chakra-ui/react'
 import { SlEnergy } from 'react-icons/sl'
 
-import Navbar from '../components/Navbar'
 import { openMenu } from '../features/menuSlice'
+import Menu from '../components/Menu'
 
 interface LayoutProps extends BoxProps {
   children?: React.ReactNode
@@ -30,9 +30,11 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
 
   return (
     <>
-      <Box {...rest} pb="6rem">
+      <Box {...rest} pb="8rem">
         {children}
       </Box>
+
+      <Menu />
 
       <Button
         display={show ? 'none' : 'flex'}
@@ -42,10 +44,13 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
         transform="translateX(-50%)"
         zIndex="20"
         bgColor="primary"
-        fontSize="1.5rem"
+        fontSize="2rem"
         minW="initial"
-        w="3.2rem"
-        h="3.2rem"
+        w="4.2rem"
+        h="4.2rem"
+        boxShadow="2xl"
+        border="3px solid"
+        borderColor="gray.400"
         p="0.5rem"
         rounded="full"
         color="white"
@@ -54,7 +59,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
         <SlEnergy />
       </Button>
 
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   )
 }
