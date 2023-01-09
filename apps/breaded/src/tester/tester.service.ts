@@ -8,23 +8,30 @@ import { UpdateTesterDto } from './dto/update-tester.dto'
 export class TesterService {
   constructor(private prisma: PrismaService) {}
 
-  create(dto: CreateTesterDto) {
-    return 'This action adds a new tester ' + dto
+  async create(dto: CreateTesterDto) {
+    const tester = await this.prisma.tester.create({
+      data: dto,
+    })
+
+    return tester
   }
 
   findAll() {
     return this.prisma.tester.findMany()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tester`
+  findOne(id: string) {
+    return this.prisma.tester.findUnique({ where: { id } })
   }
 
-  update(id: number, dto: UpdateTesterDto) {
-    return `This action updates a #${id} tester ${dto}`
+  update(id: string, dto: UpdateTesterDto) {
+    return this.prisma.tester.update({
+      where: { id },
+      data: dto,
+    })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tester`
+  remove(id: string) {
+    return this.prisma.tester.delete({ where: { id } })
   }
 }

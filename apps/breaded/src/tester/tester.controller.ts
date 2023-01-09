@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common'
+
 import { TesterService } from './tester.service'
 import { CreateTesterDto } from './dto/create-tester.dto'
 import { UpdateTesterDto } from './dto/update-tester.dto'
@@ -16,8 +17,8 @@ export class TesterController {
   constructor(private readonly testerService: TesterService) {}
 
   @Post()
-  create(@Body() createTesterDto: CreateTesterDto) {
-    return this.testerService.create(createTesterDto)
+  create(@Body() dto: CreateTesterDto) {
+    return this.testerService.create(dto)
   }
 
   @Get()
@@ -27,16 +28,16 @@ export class TesterController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.testerService.findOne(+id)
+    return this.testerService.findOne(id)
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTesterDto: UpdateTesterDto) {
-    return this.testerService.update(+id, updateTesterDto)
+  update(@Param('id') id: string, @Body() dto: UpdateTesterDto) {
+    return this.testerService.update(id, dto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.testerService.remove(+id)
+    return this.testerService.remove(id)
   }
 }
