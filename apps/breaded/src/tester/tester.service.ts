@@ -1,19 +1,21 @@
 import { Injectable } from '@nestjs/common'
 
-import { PrismaService } from '../prisma/prisma.service'
+import { PrismaService } from '../../prisma/prisma.service'
 import { CreateTesterDto } from './dto/create-tester.dto'
 import { UpdateTesterDto } from './dto/update-tester.dto'
+
+import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class TesterService {
   constructor(private prisma: PrismaService) {}
 
   async create(dto: CreateTesterDto) {
-    const tester = await this.prisma.tester.create({
+    return this.prisma.tester.create({
       data: dto,
     })
 
-    return tester
+    // return tester
   }
 
   findAll() {
