@@ -22,6 +22,7 @@
     "@nestjs/mongoose": "^9.2.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/platform-socket.io": "^9.0.11",
+    "@nestjs/typeorm": "^9.0.1",
     "@nestjs/websockets": "^9.1.6",
     "@prisma/client": "^4.8.1",
     "@reduxjs/toolkit": "^1.9.1",
@@ -31,10 +32,12 @@
     "class-validator": "^0.13.2",
     "core-js": "^3.6.5",
     "dayjs": "^1.11.6",
+    "dotenv": "^16.0.3",
     "framer-motion": "^7.6.18",
     "jwt-decode": "^3.1.2",
     "mongoose": "^6.6.3",
     "next": "12.2.4",
+    "pg": "^8.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.3.0",
@@ -47,6 +50,7 @@
     "socket.io": "^4.5.3",
     "socket.io-client": "^4.5.1",
     "tslib": "^2.3.0",
+    "typeorm": "^0.3.11",
     "use-chat-scroll": "^1.0.3"
   },
   "devDependencies": {
