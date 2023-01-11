@@ -1,10 +1,21 @@
 import { Module } from '@nestjs/common'
-
-import { PrismaService } from '../../prisma/prisma.service'
-import { TesterModule } from '../tester/tester.module'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
-  imports: [TesterModule],
-  providers: [PrismaService],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.host,
+      port: +process.env.port,
+      username: process.env.username,
+      password: process.env.password,
+      database: process.env.database,
+      synchronize: true,
+      autoLoadEntities: true,
+      ssl: true,
+    }),
+  ],
 })
 export class AppModule {}
