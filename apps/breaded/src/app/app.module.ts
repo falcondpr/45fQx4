@@ -1,21 +1,14 @@
 import { Module } from '@nestjs/common'
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { MongooseModule } from '@nestjs/mongoose'
 import { ConfigModule } from '@nestjs/config'
+
+import { TesterModule } from '../tester/tester.module'
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.host,
-      port: +process.env.port,
-      username: process.env.username,
-      password: process.env.password,
-      database: process.env.database,
-      synchronize: true,
-      autoLoadEntities: true,
-      ssl: true,
-    }),
+    MongooseModule.forRoot(process.env.MONGO_CONNECT),
+    TesterModule,
   ],
 })
 export class AppModule {}
