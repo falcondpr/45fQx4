@@ -1,18 +1,22 @@
-import { PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Document } from 'mongoose'
+import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose'
 
-export abstract class BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string
-
-  @Column({ type: 'boolean', default: true })
+@Schema()
+export class Tester extends Document {
+  @Prop({ type: 'boolean', default: true })
   isActive: boolean
 
-  @Column({ type: 'string' })
+  @Prop({ type: 'string' })
   username: string
 
-  @Column({ type: 'string' })
+  @Prop({ type: 'string', unique: true, required: true })
   email: string
 
-  @Column({ type: 'string' })
+  @Prop({ type: 'string' })
   name: string
+
+  @Prop({ type: 'string', default: new Date().toISOString() })
+  created_at: string
 }
+
+export const TesterSchema = SchemaFactory.createForClass(Tester)
