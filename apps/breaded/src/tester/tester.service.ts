@@ -65,13 +65,13 @@ export class TesterService {
   private handleException(error: any) {
     if (error.code === 11000) {
       throw new BadRequestException(
-        `Pokemon exists in db ${JSON.stringify(error.keyValue)}`,
+        `Tester exists in db ${JSON.stringify(error.keyValue)}`,
       )
     }
 
     console.log(error)
     throw new InternalServerErrorException(
-      `Can't create Pokemon - Check server logs`,
+      `Can't create Tester - Check server logs`,
     )
   }
 }
