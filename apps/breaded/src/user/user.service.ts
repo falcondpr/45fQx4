@@ -108,11 +108,16 @@ export class UserService {
   }
 
   async update(term: string, dto: UpdateUserDto) {
-    const user = await this.findOne(term)
+    const foundUser = await this.findOne(term)
 
     try {
-      await user.updateOne(dto)
-      return { ...dto, ...user.toJSON() }
+      const user = await this.userModel.findByIdAndUpdate(
+        term,
+        { ...dto, messages: [...foundUser.messages, dto.messages] },
+        { new: true },
+      )
+
+      return user
     } catch (error) {
       this.handleException(error)
     }
