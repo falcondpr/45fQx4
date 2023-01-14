@@ -2,17 +2,12 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "api": "apps/api",
     "bestla": "apps/bestla",
-    "bestla-e2e": "apps/bestla-e2e",
     "breaded": "apps/breaded",
     "dafne": "apps/dafne",
     "deimos": "apps/deimos",
-    "deimos-e2e": "apps/deimos-e2e",
     "kaffe": "apps/kaffe",
     "kaffe-e2e": "apps/kaffe-e2e",
-    "web": "apps/web",
-    "web-e2e": "apps/web-e2e",
     "yocasta": "apps/yocasta"
   }
 }
