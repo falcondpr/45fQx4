@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config'
 
 import { TesterModule } from '../tester/tester.module'
 import { UserModule } from '../user/user.module'
+import { TeamModule } from '../team/team.module'
+import { MessageModule } from '../message/message.module'
 
 @Module({
   imports: [
@@ -11,6 +13,8 @@ import { UserModule } from '../user/user.module'
     MongooseModule.forRoot(process.env.MONGO_CONNECT),
     TesterModule,
     UserModule,
+    TeamModule,
+    MessageModule,
   ],
 })
 export class AppModule {}
