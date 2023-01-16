@@ -1,26 +1,84 @@
-import { Injectable } from '@nestjs/common'
+import { Model } from 'mongoose'
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common'
+import { InjectModel } from '@nestjs/mongoose'
+
 import { CreateMessageDto } from './dto/create-message.dto'
 import { UpdateMessageDto } from './dto/update-message.dto'
+import { Message } from './entities/message.entity'
 
 @Injectable()
 export class MessageService {
-  create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message'
+  constructor(
+    @InjectModel(Message.name) private readonly messageModel: Model<Message>,
+  ) {}
+
+  async create(dto: CreateMessageDto) {
+    try {
+      const message = await this.messageModel.create({
+        ...dto,
+        created_at: new Date().toISOString(),
+      })
+
+      return message
+    } catch (error) {
+      this.handleException(error)
+    }
   }
 
   findAll() {
-    return `This action returns all message`
+    return this.messageModel.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} message`
+  async findOne(id: string) {
+    try {
+      const message = await this.messageModel.findById(id)
+      return message
+    } catch (error) {
+      this.handleException(error)
+    }
   }
 
-  update(id: number, updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${id} message`
+  async update(id: string, dto: UpdateMessageDto) {
+    const message = await this.findOne(id)
+
+    try {
+      await message.updateOne(dto)
+      return { ...message.toJSON(), ...dto }
+    } catch (error) {
+      this.handleException(error)
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} message`
+  async remove(id: string) {
+    try {
+      const { deletedCount } = await this.messageModel.deleteOne({ _id: id })
+
+      if (deletedCount === 0)
+        throw new NotFoundException(`Message with id ${id} does not exist`)
+
+      return `Message with id ${id} deleted!`
+    } catch (error) {
+      this.handleException(error)
+    }
+  }
+
+  // eslint-disable-next-line
+  private handleException(error: any) {
+    if (error.code === 11000) {
+      throw new BadRequestException(
+        `User exists in db ${JSON.stringify(error.keyvalue)}`,
+      )
+    }
+
+    console.log(error)
+
+    throw new InternalServerErrorException(
+      `Can't create User - Check server logs`,
+    )
   }
 }
