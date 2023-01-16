@@ -22,6 +22,7 @@ import Email from '../screens/Profile/Email'
 import Username from '../screens/Profile/Username'
 import Password from '../screens/Profile/Password'
 import Message from '../screens/Message'
+import Ticket from '../screens/Tickets'
 
 const Navigation: React.FC = () => {
   return (
@@ -50,6 +51,9 @@ const Navigation: React.FC = () => {
 
         {/* Message */}
         <Route path="/message" element={<Message />} />
+
+        {/* Tickets */}
+        <Route path="/tickets" element={<Ticket />} />
       </Routes>
     </BrowserRouter>
   )
