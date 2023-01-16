@@ -123,7 +123,7 @@ const Menu: React.FC = () => {
           LISTA
         </TextUI>
 
-        <Link to="/posted-posts">
+        <Link to="/tickets">
           <Flex alignItems="center" mb="1rem">
             <BoxColor bgColor="#335C67">
               <IoShirtSharp />
