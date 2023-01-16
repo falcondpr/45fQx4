@@ -12529,7 +12529,7 @@ socket.io@4.5.3:
     socket.io-adapter "~2.4.0"
     socket.io-parser "~4.2.0"
 
-socket.io@^4.5.3:
+socket.io@^4.5.4:
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/socket.io/-/socket.io-4.5.4.tgz#a4513f06e87451c17013b8d13fdfaf8da5a86a90"
   integrity sha512-m3GC94iK9MfIEeIBfbhJs5BqFibMtkRk8ZpKwG2QwxV0m/eEhPIV4ara6XCF1LWNAus7z58RodiZlAH71U3EhQ==

@@ -30,8 +30,8 @@ export class MessageService {
     }
   }
 
-  findAll() {
-    return this.messageModel.find()
+  findAll(id_team: string) {
+    return this.messageModel.find({ id_team })
   }
 
   async findOne(id: string) {
