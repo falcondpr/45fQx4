@@ -17,7 +17,7 @@ const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
       zIndex="100"
     >
       <Image
-        h="80vh"
+        h="86vh"
         objectFit="cover"
         w="full"
         fallbackSrc="../assets/fallback-image.png"
@@ -33,6 +33,7 @@ const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
         position="absolute"
         bottom="0"
         left="0"
+        w="full"
         bgColor="white"
         borderTopLeftRadius="2.5rem"
         borderTopRightRadius="2.5rem"

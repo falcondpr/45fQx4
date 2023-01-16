@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { FaUser } from 'react-icons/fa'
+import { FaAngleLeft, FaUser } from 'react-icons/fa'
 import { SiMaildotru } from 'react-icons/si'
 import { FiLogOut } from 'react-icons/fi'
 import { IoShirtSharp } from 'react-icons/io5'
 import { GiInjustice } from 'react-icons/gi'
-import { BsPatchCheckFill } from 'react-icons/bs'
+import { BsPatchCheckFill, BsThreeDotsVertical } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
 import { GoKey } from 'react-icons/go'
 import { MdLocalGroceryStore } from 'react-icons/md'
@@ -18,6 +18,7 @@ import TextUI from '../ui/Text'
 import Logout from '../components/Logout'
 
 const Profile: React.FC = () => {
+  const navigate = useNavigate()
   const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false)
 
   return showLogoutModal ? (
@@ -25,7 +26,7 @@ const Profile: React.FC = () => {
   ) : (
     <Layout>
       {/* Banner */}
-      <Box position="relative" h="7.5rem">
+      <Box position="relative" h="9rem">
         <Image
           position="absolute"
           top="0"
@@ -41,14 +42,38 @@ const Profile: React.FC = () => {
           position="absolute"
           top="1.25rem"
           right="1.25rem"
-          fontSize="1.1rem"
+          // fontSize="1.1rem"
+          w="2.85rem"
+          bgColor="white"
+          rounded="2px"
+          h="2.85rem"
+          fontSize="1.2rem"
           color="primary"
           p="0.75rem"
           border="1px solid"
-          borderColor="border-color"
+          borderColor="primary"
           onClick={() => setShowLogoutModal(true)}
         >
-          <FiLogOut />
+          <BsThreeDotsVertical />
+          {/* <FiLogOut /> */}
+        </Button>
+
+        <Button
+          position="absolute"
+          left="1.25rem"
+          top="1.25rem"
+          bgColor="primary"
+          color="white"
+          rounded="2px"
+          w="2.85rem"
+          h="2.85rem"
+          fontSize="1.2rem"
+          onClick={() => navigate('/')}
+          px="0.9rem"
+          shadow="2xl"
+          zIndex="20"
+        >
+          <FaAngleLeft />
         </Button>
       </Box>
 

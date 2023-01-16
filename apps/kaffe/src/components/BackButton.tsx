@@ -17,7 +17,7 @@ const BackButton: React.FC<{ title: string; route?: string }> = ({
         bgColor="primary"
         color="white"
         rounded="2px"
-        // w="2.85rem"
+        w="2.85rem"
         h="2.85rem"
         fontSize="1.2rem"
         onClick={() => {
