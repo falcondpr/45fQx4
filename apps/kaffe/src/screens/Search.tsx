@@ -4,11 +4,14 @@ import { Box, Grid } from '@chakra-ui/react'
 import CardProduct from '../components/CardProduct'
 import Layout from '../layout'
 import InputUI from '../ui/Input'
+import BackButton from '../components/BackButton'
 
 const Search: React.FC = () => {
   return (
     <Layout p="1.25rem">
-      <Box>
+      <BackButton title="Buscar productos" route="/" />
+
+      <Box mt="1.25rem">
         <InputUI placeholder="Buscar productos" />
       </Box>
 

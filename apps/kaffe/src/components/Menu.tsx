@@ -2,13 +2,15 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
-import { IoShirtSharp } from 'react-icons/io5'
-import { FaTimes } from 'react-icons/fa'
+import { IoSearch, IoShirtSharp } from 'react-icons/io5'
+import { FaTimes, FaWallet } from 'react-icons/fa'
+import { HiSearch } from 'react-icons/hi'
 
 import BoxColor from '../ui/BoxColor'
 import HeadingUI from '../ui/Heading'
 import TextUI from '../ui/Text'
 import { closeMenu } from '../features/menuSlice'
+import { BsChatLeftDotsFill, BsThreeDotsVertical } from 'react-icons/bs'
 
 const Menu: React.FC = () => {
   const dispatch = useDispatch()
@@ -97,24 +99,35 @@ const Menu: React.FC = () => {
           </Flex>
         </Link>
 
-        <Link to="/posted-posts">
+        <Link to="/">
           <Flex alignItems="center" mb="1rem">
-            <BoxColor bgColor="#FF5555">
-              <IoShirtSharp />
+            <BoxColor bgColor="#FFC300">
+              <FaWallet />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Realizar entrega de producto
+              Enviar dinero
             </TextUI>
           </Flex>
         </Link>
 
-        <Link to="/posted-posts">
+        <Link to="/search">
           <Flex alignItems="center" mb="1rem">
-            <BoxColor bgColor="#FFC300">
-              <IoShirtSharp />
+            <BoxColor bgColor="#219EBC">
+              <IoSearch />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Enviar dinero
+              Buscar producto
+            </TextUI>
+          </Flex>
+        </Link>
+
+        <Link to="/messages">
+          <Flex alignItems="center" mb="1rem">
+            <BoxColor bgColor="#34C659">
+              <BsChatLeftDotsFill />
+            </BoxColor>
+            <TextUI ml="0.75rem" color="secondary-gray">
+              Mis mensajes
             </TextUI>
           </Flex>
         </Link>
@@ -146,23 +159,35 @@ const Menu: React.FC = () => {
         </Link>
 
         {/* Subscription */}
-        <Box>
-          <HeadingUI
-            fontSize="1.5rem"
-            textTransform="uppercase"
-            mb="0.5rem"
-            fontWeight="normal"
-          >
-            Suscripcion{' '}
-            <Text
-              fontWeight="bold"
-              color={isSubscribe ? '#2A9D8F' : '#DC2F02'}
-              as="span"
+        <Box mt="1.5rem">
+          <Flex alignItems="center" justifyContent="space-between">
+            <HeadingUI
+              fontSize="1.5rem"
               textTransform="uppercase"
+              fontWeight="normal"
             >
-              {isSubscribe ? 'activa' : 'inactiva'}
-            </Text>
-          </HeadingUI>
+              Suscripcion{' '}
+              <Text
+                fontWeight="bold"
+                color={isSubscribe ? '#2A9D8F' : '#DC2F02'}
+                as="span"
+                textTransform="uppercase"
+              >
+                {isSubscribe ? 'activa' : 'inactiva'}
+              </Text>
+            </HeadingUI>
+
+            <Button
+              minW="initial"
+              p="0.5rem"
+              h="auto"
+              m="0"
+              border="1px solid"
+              borderColor="gray.400"
+            >
+              <BsThreeDotsVertical />
+            </Button>
+          </Flex>
 
           <Box>
             {!isSubscribe ? (
@@ -195,7 +220,7 @@ const Menu: React.FC = () => {
             )}
           </Box>
 
-          <Button
+          {/* <Button
             mt="0.5rem"
             h="3.125rem"
             border="1px solid"
@@ -207,7 +232,7 @@ const Menu: React.FC = () => {
             color={isSubscribe ? '#DC2F02' : 'primary'}
           >
             {isSubscribe ? 'Cancelar suscripcion' : 'Suscribirse'}
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </>

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
+import { Box, BoxProps, Button } from '@chakra-ui/react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, BoxProps, Button } from '@chakra-ui/react'
 import { SlEnergy } from 'react-icons/sl'
 
-import { openMenu } from '../features/menuSlice'
+import { openMenu, closeMenu } from '../features/menuSlice'
 import Menu from '../components/Menu'
 
 interface LayoutProps extends BoxProps {
@@ -13,7 +13,6 @@ interface LayoutProps extends BoxProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
   const { pathname } = useLocation()
-
   const dispatch = useDispatch()
 
   const show = useSelector(
@@ -23,6 +22,10 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
   const handleOpenMenu = () => {
     dispatch(openMenu())
   }
+
+  useEffect(() => {
+    dispatch(closeMenu())
+  }, [dispatch])
 
   useEffect(() => {
     window.scrollTo(0, 0)

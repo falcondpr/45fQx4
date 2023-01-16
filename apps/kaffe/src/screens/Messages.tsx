@@ -6,18 +6,15 @@ import InputUI from '../ui/Input'
 import TextUI from '../ui/Text'
 
 import ProfileTagChat from '../components/ProfileTagChat'
+import BackButton from '../components/BackButton'
 
 const Messages: React.FC = () => {
   return (
     <Layout p="1.25rem">
-      <Box>
-        <TextUI color="primary" fontWeight="normal" fontSize="1.15rem">
-          Mensajes
-        </TextUI>
+      <BackButton title="Mensajes" route="/" />
 
-        <Box mt="0.5rem">
-          <InputUI placeholder="Buscar usuario" />
-        </Box>
+      <Box mt="1.25rem">
+        <InputUI placeholder="Buscar usuario" />
       </Box>
 
       {/* List of users */}
