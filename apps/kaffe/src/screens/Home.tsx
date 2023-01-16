@@ -6,6 +6,8 @@ import HeaderProfile from '../components/HeaderProfile'
 import CardProduct from '../components/CardProduct'
 import Layout from '../layout'
 import { categories } from '../data/categories'
+import { FaInfo } from 'react-icons/fa'
+import TextUI from '../ui/Text'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
@@ -18,18 +20,51 @@ const Home: React.FC = () => {
         userAvatar={'https://bit.ly/3FpDJGG'}
       />
 
-      <Box px="1.25rem">
-        <Image
-          rounded="0.375rem"
+      <Box position="relative">
+        <Box
+          bgImage="linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 80%)"
+          h="full"
           w="full"
-          boxShadow="4px 4px 12px rgba(0, 0, 0, 0.52)"
-          h="10rem"
+          position="absolute"
+          left="0"
+        />
+
+        <TextUI
+          color="white"
+          pl="20px"
+          // mb="10px"
+          position="absolute"
+          bottom="0.75rem"
+          left="0"
+        >
+          Copa vacia, 1982
+        </TextUI>
+        <Image
+          w="full"
+          shadow="xl"
+          h="14rem"
           objectFit="cover"
-          objectPosition="top"
-          src="https://bit.ly/3FnuneC"
+          objectPosition="center"
+          src="https://bit.ly/3klqHls"
           fallbackSrc="../assets/fallback-image.png"
           alt="Banner ad"
         />
+        <Button
+          rounded="full"
+          display="grid"
+          placeItems="center"
+          minW="initial"
+          w="2.5rem"
+          h="2.5rem"
+          color="primary"
+          bgColor="white"
+          fontSize="1rem"
+          position="absolute"
+          bottom="1rem"
+          right="1rem"
+        >
+          <FaInfo />
+        </Button>
       </Box>
 
       {/* Categories */}

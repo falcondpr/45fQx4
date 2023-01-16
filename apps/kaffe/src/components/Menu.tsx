@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { IoSearch, IoShirtSharp } from 'react-icons/io5'
 import { FaTimes, FaWallet } from 'react-icons/fa'
-import { HiSearch } from 'react-icons/hi'
 
 import BoxColor from '../ui/BoxColor'
 import HeadingUI from '../ui/Heading'

@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { FaAngleLeft, FaUser } from 'react-icons/fa'
 import { SiMaildotru } from 'react-icons/si'
-import { FiLogOut } from 'react-icons/fi'
 import { IoShirtSharp } from 'react-icons/io5'
 import { GiInjustice } from 'react-icons/gi'
 import { BsPatchCheckFill, BsThreeDotsVertical } from 'react-icons/bs'
