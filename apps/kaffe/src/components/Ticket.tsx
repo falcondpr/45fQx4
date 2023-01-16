@@ -1,5 +1,6 @@
-import { Box, Flex, Grid } from '@chakra-ui/react'
 import React from 'react'
+import { Box, Flex, Grid } from '@chakra-ui/react'
+
 import TextUI from '../ui/Text'
 
 const Ticket: React.FC = () => {

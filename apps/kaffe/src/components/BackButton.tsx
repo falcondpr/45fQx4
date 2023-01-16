@@ -5,7 +5,10 @@ import { useNavigate } from 'react-router-dom'
 
 import TextUI from '../ui/Text'
 
-const BackButton: React.FC<{ title: string }> = ({ title }) => {
+const BackButton: React.FC<{ title: string; route?: string }> = ({
+  title,
+  route,
+}) => {
   const navigate = useNavigate()
 
   return (
@@ -17,7 +20,11 @@ const BackButton: React.FC<{ title: string }> = ({ title }) => {
         w="2.85rem"
         h="2.85rem"
         fontSize="1.2rem"
-        onClick={() => navigate(-1)}
+        onClick={() => {
+          if (route) return navigate(route)
+          navigate(-1)
+        }}
+        px="0.9rem"
       >
         <FaAngleLeft />
       </Button>
