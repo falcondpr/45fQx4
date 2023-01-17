@@ -7,6 +7,7 @@ import { UserModule } from '../user/user.module'
 import { TeamModule } from '../team/team.module'
 import { MessageModule } from '../message/message.module'
 import { TransactionModule } from '../transaction/transaction.module'
+import { TicketModule } from '../ticket/ticket.module'
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { TransactionModule } from '../transaction/transaction.module'
     TeamModule,
     MessageModule,
     TransactionModule,
+    TicketModule,
   ],
 })
 export class AppModule {}

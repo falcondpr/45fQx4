@@ -22,8 +22,8 @@ export class MessageController {
   }
 
   @Get()
-  findAll() {
-    return this.messageService.findAll()
+  findAll(@Param('id_team') id_team: string) {
+    return this.messageService.findAll(id_team)
   }
 
   @Get(':id')
