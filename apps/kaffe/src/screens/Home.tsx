@@ -37,7 +37,7 @@ const Home: React.FC = () => {
           bottom="0.75rem"
           left="0"
         >
-          Copa vacia, 1982
+          Marca ropa, verano
         </TextUI>
         <Image
           w="full"
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
           h="14rem"
           objectFit="cover"
           objectPosition="center"
-          src="https://bit.ly/3klqHls"
+          src="https://bit.ly/3GMtXhB"
           fallbackSrc="../assets/fallback-image.png"
           alt="Banner ad"
         />
