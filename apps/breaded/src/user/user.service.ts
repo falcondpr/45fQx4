@@ -10,9 +10,10 @@ import {
 import { InjectModel } from '@nestjs/mongoose'
 import { JwtService } from '@nestjs/jwt'
 
+import { User } from './entities/user.entity'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
-import { User } from './entities/user.entity'
+import { LoginUserDto } from './dto/login-user.dto'
 
 @Injectable()
 export class UserService {
@@ -59,7 +60,7 @@ export class UserService {
     }
   }
 
-  async login(dto: CreateUserDto) {
+  async login(dto: LoginUserDto) {
     const foundUser = await this.userModel.findOne({ email: dto.email })
     if (!foundUser)
       throw new NotFoundException(
@@ -108,16 +109,17 @@ export class UserService {
   }
 
   async update(term: string, dto: UpdateUserDto) {
-    const foundUser = await this.findOne(term)
+    const currentUser = dto
+    const user = await this.findOne(term)
+
+    if (!user) throw new NotFoundException(`User with id ${term} not found`)
+    if (dto.password)
+      currentUser.password = await argon.hash(currentUser.password)
 
     try {
-      const user = await this.userModel.findByIdAndUpdate(
-        term,
-        { ...dto, messages: [...foundUser.messages, dto.messages] },
-        { new: true },
-      )
-
-      return user
+      return this.userModel.findByIdAndUpdate(term, currentUser, {
+        new: true,
+      })
     } catch (error) {
       this.handleException(error)
     }
