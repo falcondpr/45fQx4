@@ -93,7 +93,7 @@ const Menu: React.FC = () => {
               <IoShirtSharp />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Publicar un producto/servicio
+              Hacer una publicacion
             </TextUI>
           </Flex>
         </Link>
@@ -120,17 +120,6 @@ const Menu: React.FC = () => {
           </Flex>
         </Link>
 
-        <Link to="/messages">
-          <Flex alignItems="center" mb="1rem">
-            <BoxColor bgColor="#34C659">
-              <BsChatLeftDotsFill />
-            </BoxColor>
-            <TextUI ml="0.75rem" color="secondary-gray">
-              Mis mensajes
-            </TextUI>
-          </Flex>
-        </Link>
-
         <TextUI textTransform="uppercase" fontSize="1.125rem" my="0.7rem">
           LISTA
         </TextUI>
@@ -146,13 +135,13 @@ const Menu: React.FC = () => {
           </Flex>
         </Link>
 
-        <Link to="/posted-posts">
+        <Link to="/messages">
           <Flex alignItems="center" mb="1rem">
-            <BoxColor bgColor="#DC2F02">
-              <IoShirtSharp />
+            <BoxColor bgColor="#34C659">
+              <BsChatLeftDotsFill />
             </BoxColor>
             <TextUI ml="0.75rem" color="secondary-gray">
-              Historial de pagos
+              Mis mensajes
             </TextUI>
           </Flex>
         </Link>
