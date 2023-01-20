@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString } from 'class-validator'
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator'
 
 export class CreateTicketDto {
   @IsString()
@@ -13,9 +19,10 @@ export class CreateTicketDto {
   @IsNotEmpty()
   id_product: string
 
-  @IsString()
-  @IsNotEmpty()
-  id_transaction: string
+  @IsNumber()
+  @IsPositive()
+  @IsOptional()
+  price?: string
 
   @IsString()
   @IsNotEmpty()

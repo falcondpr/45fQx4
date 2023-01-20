@@ -1,3 +1,4 @@
+import { Model } from 'mongoose'
 import {
   BadRequestException,
   Injectable,
@@ -5,7 +6,6 @@ import {
   NotFoundException,
 } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { Model } from 'mongoose'
 
 import { CreateTicketDto } from './dto/create-ticket.dto'
 import { UpdateTicketDto } from './dto/update-ticket.dto'
@@ -20,7 +20,7 @@ export class TicketService {
   async create(dto: CreateTicketDto) {
     try {
       const ticket = await this.ticketModel.create({
-        dto,
+        ...dto,
         created_at: new Date().toISOString(),
       })
       return ticket
@@ -38,11 +38,13 @@ export class TicketService {
   }
 
   async update(id: string, dto: UpdateTicketDto) {
-    const ticket = await this.findOne(id)
-
     try {
-      await ticket.updateOne({ ...dto, updated_at: new Date().toISOString() })
-      return { ...ticket.toJSON(), ...dto }
+      const ticketUpdated = await this.ticketModel.findByIdAndUpdate(
+        id,
+        { ...dto, updated_at: new Date().toISOString() },
+        { new: true },
+      )
+      return ticketUpdated
     } catch (error) {
       this.handleException(error)
     }
