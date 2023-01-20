@@ -109,14 +109,17 @@ export class UserService {
   }
 
   async update(term: string, dto: UpdateUserDto) {
-    try {
-      const user = await this.userModel.findByIdAndUpdate(
-        term,
-        { ...dto },
-        { new: true },
-      )
+    const currentUser = dto
+    const user = await this.findOne(term)
 
-      return user
+    if (!user) throw new NotFoundException(`User with id ${term} not found`)
+    if (dto.password)
+      currentUser.password = await argon.hash(currentUser.password)
+
+    try {
+      return this.userModel.findByIdAndUpdate(term, currentUser, {
+        new: true,
+      })
     } catch (error) {
       this.handleException(error)
     }
