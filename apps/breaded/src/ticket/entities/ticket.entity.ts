@@ -12,8 +12,8 @@ export class Ticket extends Document {
   @Prop({ type: String, required: true })
   id_product: string
 
-  @Prop({ type: String, required: true })
-  id_transaction: string
+  @Prop({ type: Number })
+  price?: number
 
   @Prop({ type: String, required: true })
   status_ticket: string

@@ -6,7 +6,6 @@ import { TesterModule } from '../tester/tester.module'
 import { UserModule } from '../user/user.module'
 import { TeamModule } from '../team/team.module'
 import { MessageModule } from '../message/message.module'
-import { TransactionModule } from '../transaction/transaction.module'
 import { TicketModule } from '../ticket/ticket.module'
 
 @Module({
@@ -17,7 +16,6 @@ import { TicketModule } from '../ticket/ticket.module'
     UserModule,
     TeamModule,
     MessageModule,
-    TransactionModule,
     TicketModule,
   ],
 })
