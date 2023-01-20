@@ -8,6 +8,10 @@ import {
 
 export class CreateTicketDto {
   @IsString()
+  @IsOptional()
+  _id?: string
+
+  @IsString()
   @IsNotEmpty()
   id_user_vendor: string
 
