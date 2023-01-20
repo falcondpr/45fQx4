@@ -1,10 +1,4 @@
-import {
-  IsArray,
-  IsEmail,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator'
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
 export class CreateUserDto {
   @IsString()
@@ -35,12 +29,4 @@ export class CreateUserDto {
 
   @IsOptional()
   is_premium: { is_valid: boolean; updated_at: string }
-
-  @IsOptional()
-  messages: {
-    id_user_transmitter: string
-    content: string
-    id_user_receiver: string
-    created_at: string
-  }
 }

@@ -34,16 +34,6 @@ export class User extends Document {
   @Prop({ type: IS_PREMIUM_SCHEMA, _id: false })
   is_premium: { is_valid: boolean; updated_at: string }
 
-  @Prop({ type: Array, default: [] })
-  messages: [
-    {
-      id_user_transmitter: string
-      content: string
-      id_user_receiver: string
-      created_at: string
-    },
-  ]
-
   @Prop({ type: String })
   created_at: string
 
