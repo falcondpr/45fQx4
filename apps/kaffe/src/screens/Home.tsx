@@ -13,6 +13,11 @@ const Home: React.FC = () => {
   const navigate = useNavigate()
   const [categorySelected, setCategorySelected] = useState<string>('todas')
 
+  // React.useEffect(() => {
+  //   const env = import.meta.env.VITE_API_ENDPOINT
+  //   console.log(env)
+  // }, [])
+
   return (
     <Layout>
       <HeaderProfile
