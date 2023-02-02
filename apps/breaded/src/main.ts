@@ -13,6 +13,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   )
+  app.enableCors()
   const port = process.env.PORT || 3333
   await app.listen(port)
 }

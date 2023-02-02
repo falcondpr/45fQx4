@@ -25,7 +25,7 @@ const Login: React.FC = () => {
         </Box>
       </Grid>
 
-      <Box position="absolute" w="full" bottom="0" right="0" py="0.8rem">
+      <Box position="absolute" w="full" bottom="0.7rem" right="0" py="0.8rem">
         <TextUI textAlign="center">
           Aun no tienes una cuenta?{' '}
           <Link to="/register">
