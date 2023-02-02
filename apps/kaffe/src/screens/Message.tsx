@@ -5,7 +5,7 @@ import { IoSend } from 'react-icons/io5'
 import Empty from '../layout/Empty'
 import BackButton from '../components/BackButton'
 import MessagePill from '../components/MessagePill'
-import InputUI from '../ui/Input'
+import { InputUI } from '../ui'
 
 const Message: React.FC = () => {
   return (

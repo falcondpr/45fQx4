@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box, Flex } from '@chakra-ui/react'
 
-import ButtonUI from '../ui/Button'
-import TextUI from '../ui/Text'
+import { TextUI, ButtonUI } from '../ui'
 
 const ScrollBanner: React.FC = () => {
   return (

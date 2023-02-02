@@ -6,7 +6,7 @@ import { FaInfo } from 'react-icons/fa'
 import HeaderProfile from '../components/HeaderProfile'
 import CardProduct from '../components/CardProduct'
 import Layout from '../layout'
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui'
 import { categories } from '../data/categories'
 
 const Home: React.FC = () => {

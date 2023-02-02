@@ -3,7 +3,7 @@ import { Box, Button, Flex, Image } from '@chakra-ui/react'
 
 import BackButton from '../components/BackButton'
 import Empty from '../layout/Empty'
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui'
 import ScrollBanner from '../components/ScrollBanner'
 import { images } from '../data/gallery'
 

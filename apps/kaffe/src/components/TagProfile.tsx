@@ -1,6 +1,5 @@
 import { Box, Flex, Image } from '@chakra-ui/react'
-import React from 'react'
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui'
 
 const TagProfile = () => {
   return (

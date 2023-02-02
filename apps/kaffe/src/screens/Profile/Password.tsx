@@ -3,8 +3,7 @@ import { Box } from '@chakra-ui/react'
 
 import BackButton from '../../components/BackButton'
 import Empty from '../../layout/Empty'
-import ButtonUI from '../../ui/Button'
-import InputUI from '../../ui/Input'
+import { ButtonUI, InputUI } from '../../ui'
 
 const Password: React.FC = () => {
   return (

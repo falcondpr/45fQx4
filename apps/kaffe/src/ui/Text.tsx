@@ -5,12 +5,10 @@ interface TextUIProps extends TextProps {
   children?: React.ReactNode
 }
 
-const TextUI: React.FC<TextUIProps> = ({ children, ...rest }) => {
+export const TextUI: React.FC<TextUIProps> = ({ children, ...rest }) => {
   return (
     <Text color="light-gray" {...rest}>
       {children}
     </Text>
   )
 }
-
-export default TextUI
