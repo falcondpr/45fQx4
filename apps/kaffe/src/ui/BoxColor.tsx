@@ -5,7 +5,7 @@ interface BoxColorIprops extends GridProps {
   children?: React.ReactNode
 }
 
-const BoxColor: React.FC<BoxColorIprops> = ({ children, ...rest }) => {
+export const BoxColor: React.FC<BoxColorIprops> = ({ children, ...rest }) => {
   return (
     <Grid
       rounded="4px"
@@ -19,5 +19,3 @@ const BoxColor: React.FC<BoxColorIprops> = ({ children, ...rest }) => {
     </Grid>
   )
 }
-
-export default BoxColor

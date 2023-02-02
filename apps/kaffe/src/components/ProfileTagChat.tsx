@@ -1,7 +1,8 @@
 import { Box, Flex, Grid, Image } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import TextUI from '../ui/Text'
+
+import { TextUI } from '../ui'
 
 const ProfileTagChat: React.FC = () => {
   return (

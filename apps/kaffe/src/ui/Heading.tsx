@@ -5,7 +5,7 @@ interface HeadingUIProps extends HeadingProps {
   children?: React.ReactNode
 }
 
-const HeadingUI: React.FC<HeadingUIProps> = ({ children, ...rest }) => {
+export const HeadingUI: React.FC<HeadingUIProps> = ({ children, ...rest }) => {
   return (
     <Heading
       fontSize={{ base: '2rem' }}
@@ -18,5 +18,3 @@ const HeadingUI: React.FC<HeadingUIProps> = ({ children, ...rest }) => {
     </Heading>
   )
 }
-
-export default HeadingUI

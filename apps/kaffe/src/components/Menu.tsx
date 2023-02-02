@@ -5,9 +5,7 @@ import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { IoSearch, IoShirtSharp } from 'react-icons/io5'
 import { FaTimes, FaWallet } from 'react-icons/fa'
 
-import BoxColor from '../ui/BoxColor'
-import HeadingUI from '../ui/Heading'
-import TextUI from '../ui/Text'
+import { BoxColor, HeadingUI, TextUI } from '../ui'
 import { closeMenu } from '../features/menuSlice'
 import { BsChatLeftDotsFill, BsThreeDotsVertical } from 'react-icons/bs'
 

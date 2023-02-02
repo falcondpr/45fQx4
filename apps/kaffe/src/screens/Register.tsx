@@ -3,10 +3,7 @@ import { Box, Grid } from '@chakra-ui/react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
-import HeadingUI from '../ui/Heading'
-import TextUI from '../ui/Text'
-import InputUI from '../ui/Input'
-import ButtonUI from '../ui/Button'
+import { HeadingUI, TextUI, InputUI, ButtonUI } from '../ui'
 import { AuthLogin } from '../helpers/auth'
 import { ValidationUserRegister } from '../validations/register'
 

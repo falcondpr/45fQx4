@@ -2,9 +2,7 @@ import React from 'react'
 import { Box, Grid } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
-import HeadingUI from '../ui/Heading'
-import TextUI from '../ui/Text'
-import ButtonUI from '../ui/Button'
+import { HeadingUI, TextUI, ButtonUI } from '../ui'
 
 const Auth: React.FC = () => {
   const navigate = useNavigate()

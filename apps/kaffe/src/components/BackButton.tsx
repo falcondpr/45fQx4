@@ -3,7 +3,7 @@ import { Button, Flex } from '@chakra-ui/react'
 import { FaAngleLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui'
 
 const BackButton: React.FC<{ title: string; route?: string }> = ({
   title,

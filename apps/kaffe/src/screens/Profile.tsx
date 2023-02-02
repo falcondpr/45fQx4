@@ -12,8 +12,7 @@ import { GoKey } from 'react-icons/go'
 import { MdLocalGroceryStore } from 'react-icons/md'
 
 import Layout from '../layout'
-import BoxColor from '../ui/BoxColor'
-import TextUI from '../ui/Text'
+import { BoxColor, TextUI } from '../ui'
 import Logout from '../components/Logout'
 
 const Profile: React.FC = () => {

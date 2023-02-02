@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@chakra-ui/react'
 
 import Layout from '../layout'
-import InputUI from '../ui/Input'
+import { InputUI } from '../ui'
 
 import ProfileTagChat from '../components/ProfileTagChat'
 import BackButton from '../components/BackButton'

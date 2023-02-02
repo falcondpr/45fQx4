@@ -3,7 +3,7 @@ import { Box, Flex, Grid, Image } from '@chakra-ui/react'
 import { CiDeliveryTruck } from 'react-icons/ci'
 import { MdOutlineWatchLater } from 'react-icons/md'
 
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui'
 
 const Ticket: React.FC = () => {
   return (

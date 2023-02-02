@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Button, Flex, Image } from '@chakra-ui/react'
 import { NavigateFunction } from 'react-router-dom'
 
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui/'
 
 const HeaderProfile: React.FC<{
   navigate: NavigateFunction

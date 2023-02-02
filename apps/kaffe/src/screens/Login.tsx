@@ -2,10 +2,7 @@ import React from 'react'
 import { Box, Grid } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-import HeadingUI from '../ui/Heading'
-import TextUI from '../ui/Text'
-import InputUI from '../ui/Input'
-import ButtonUI from '../ui/Button'
+import { HeadingUI, TextUI, InputUI, ButtonUI } from '../ui'
 
 const Login: React.FC = () => {
   return (

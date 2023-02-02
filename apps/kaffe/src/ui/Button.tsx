@@ -6,7 +6,11 @@ interface ButtonUIProps extends ButtonProps {
   onClick?: () => void
 }
 
-const ButtonUI: React.FC<ButtonUIProps> = ({ children, onClick, ...rest }) => {
+export const ButtonUI: React.FC<ButtonUIProps> = ({
+  children,
+  onClick,
+  ...rest
+}) => {
   return (
     <Button
       w="full"
@@ -32,5 +36,3 @@ const ButtonUI: React.FC<ButtonUIProps> = ({ children, onClick, ...rest }) => {
     </Button>
   )
 }
-
-export default ButtonUI

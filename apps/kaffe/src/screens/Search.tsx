@@ -3,7 +3,7 @@ import { Box, Grid } from '@chakra-ui/react'
 
 import CardProduct from '../components/CardProduct'
 import Layout from '../layout'
-import InputUI from '../ui/Input'
+import { InputUI } from '../ui'
 import BackButton from '../components/BackButton'
 
 const Search: React.FC = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex } from '@chakra-ui/react'
 
-import TextUI from '../ui/Text'
+import { TextUI } from '../ui'
 
 const MessagePill: React.FC<{ title: string; type: string }> = ({
   title,
