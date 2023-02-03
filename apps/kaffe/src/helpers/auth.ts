@@ -8,7 +8,7 @@ export const AuthLogin = () => {
   const { setUser } = React.useContext(UserContext)
 
   // eslint-disable-next-line
-  const login = async (data: any) => {
+  const register = async (data: any) => {
     const response = await REGISTER_USER(data)
     if (!response?.data) throw Error('Ha ocurrido un problema')
 
@@ -18,5 +18,5 @@ export const AuthLogin = () => {
     }
   }
 
-  return { login }
+  return { register }
 }
