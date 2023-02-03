@@ -44,8 +44,8 @@ const Register: React.FC = () => {
 
   return (
     <Box p="20px" position="relative" minH="100vh">
-      <Grid placeItems="center" py="2rem">
-        <HeadingUI>Bienvenido!</HeadingUI>
+      <Grid pt="2rem" pb="0.5rem">
+        <HeadingUI textAlign="center">Bienvenido!</HeadingUI>
         <TextUI textAlign="center" mt="10px">
           Si aun no tienes una cuenta debes registrarte
         </TextUI>
@@ -93,7 +93,7 @@ const Register: React.FC = () => {
         </Grid>
       </Grid>
 
-      <Box position="absolute" w="full" bottom="0.7rem" right="0" py="0.8rem">
+      <Box position="static" w="full" right="0" py="0.5rem">
         <TextUI textAlign="center">
           Ya tienes una cuenta?{' '}
           <Link to="/login">
