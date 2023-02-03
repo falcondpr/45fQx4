@@ -9,7 +9,7 @@ import { ValidationUserRegister } from '../validations/register'
 
 const Register: React.FC = () => {
   const navigate = useNavigate()
-  const { login } = AuthLogin()
+  const { register } = AuthLogin()
 
   const [userInfo, setUserInfo] = React.useState<{
     fullname: string
@@ -33,7 +33,7 @@ const Register: React.FC = () => {
     delete dataUserInfo.confirmPassword
 
     try {
-      await login(dataUserInfo)
+      await register(dataUserInfo)
       navigate('/')
     } catch (error) {
       console.log(error)

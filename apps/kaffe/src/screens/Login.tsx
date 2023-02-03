@@ -1,13 +1,40 @@
 import React from 'react'
 import { Box, Grid } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { HeadingUI, TextUI, InputUI, ButtonUI } from '../ui'
+import { ValidationUserLogin } from '../validations/login'
+import { toast } from 'react-hot-toast'
+import { AuthLogin } from '../helpers/auth'
 
 const Login: React.FC = () => {
+  const { login } = AuthLogin()
+  const navigate = useNavigate()
+
+  const [userInfo, setUserInfo] = React.useState<{
+    email?: string
+    password: string
+  }>({
+    email: '',
+    password: '',
+  })
+
+  const handleLoginUser = async (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    ValidationUserLogin(userInfo)
+
+    try {
+      await login(userInfo)
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+      toast.error('Ha ocurrido un error. Intentelo de nuevo.')
+    }
+  }
+
   return (
     <Box p="20px" position="relative" minH="100vh">
-      <Grid w="full" py="2rem">
+      <Grid as="form" w="full" py="2rem" onSubmit={handleLoginUser}>
         <HeadingUI textAlign="center">Hola de nuevo!</HeadingUI>
         <TextUI textAlign="center" mt="10px">
           Si ya tienes una cuenta
@@ -15,10 +42,23 @@ const Login: React.FC = () => {
         </TextUI>
 
         <Box mt="1rem">
-          <InputUI title="username o email" />
-          <InputUI title="contrasena" />
+          <InputUI
+            value={userInfo.email}
+            onChange={(e) =>
+              setUserInfo({ ...userInfo, email: e.target.value })
+            }
+            title="username o email"
+          />
+          <InputUI
+            type="password"
+            value={userInfo.password}
+            onChange={(e) =>
+              setUserInfo({ ...userInfo, password: e.target.value })
+            }
+            title="contrasena"
+          />
 
-          <ButtonUI>Ingresa</ButtonUI>
+          <ButtonUI type="submit">Ingresa</ButtonUI>
         </Box>
       </Grid>
 
