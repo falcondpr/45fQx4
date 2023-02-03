@@ -7,8 +7,8 @@ import { HeadingUI, TextUI, InputUI, ButtonUI } from '../ui'
 const Login: React.FC = () => {
   return (
     <Box p="20px" position="relative" minH="100vh">
-      <Grid placeItems="center" py="2rem">
-        <HeadingUI>Hola de nuevo!</HeadingUI>
+      <Grid w="full" py="2rem">
+        <HeadingUI textAlign="center">Hola de nuevo!</HeadingUI>
         <TextUI textAlign="center" mt="10px">
           Si ya tienes una cuenta
           <br /> ahora ingresa
