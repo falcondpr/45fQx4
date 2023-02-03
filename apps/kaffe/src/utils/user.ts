@@ -5,7 +5,7 @@ export const LOGIN_USER = (data: any) => {
   try {
     const response = axios({
       method: 'POST',
-      url: '/user/register',
+      url: '/user/login',
       data: JSON.stringify(data),
     })
     return response
