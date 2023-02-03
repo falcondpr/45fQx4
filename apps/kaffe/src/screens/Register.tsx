@@ -1,14 +1,14 @@
 import React from 'react'
 import { Box, Grid } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import { HeadingUI, TextUI, InputUI, ButtonUI } from '../ui'
 import { AuthLogin } from '../helpers/auth'
 import { ValidationUserRegister } from '../validations/register'
+import { ResponseValidation } from '../interfaces/validation'
 
 const Register: React.FC = () => {
-  const navigate = useNavigate()
   const { register } = AuthLogin()
 
   const [userInfo, setUserInfo] = React.useState<{
@@ -27,18 +27,22 @@ const Register: React.FC = () => {
 
   const handleRegisterUser = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
-    ValidationUserRegister(userInfo)
+
+    const responseValidation = ValidationUserRegister(
+      userInfo,
+    ) as ResponseValidation
+
+    // TODO: refactor to delete this line
+    if (!responseValidation.success) return
 
     const dataUserInfo = { ...userInfo }
     delete dataUserInfo.confirmPassword
 
     try {
       await register(dataUserInfo)
-      navigate('/')
     } catch (error) {
       console.log(error)
       toast.error('Ha ocurrido al crear la cuenta. Intentelo de nuevo')
-      return
     }
   }
 
