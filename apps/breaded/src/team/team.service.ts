@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 
-import { CreateTeamDto } from './dto/create-team.dto'
+import { CreateTeamDto } from './dto'
 import { Team } from './entities/team.entity'
 
 @Injectable()

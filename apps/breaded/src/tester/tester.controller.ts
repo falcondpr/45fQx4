@@ -9,8 +9,7 @@ import {
 } from '@nestjs/common'
 
 import { TesterService } from './tester.service'
-import { CreateTesterDto } from './dto/create-tester.dto'
-import { UpdateTesterDto } from './dto/update-tester.dto'
+import { CreateTesterDto, UpdateTesterDto } from './dto'
 
 @Controller('tester')
 export class TesterController {

@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 
-import { CreateTesterDto } from './dto/create-tester.dto'
-import { UpdateTesterDto } from './dto/update-tester.dto'
+import { CreateTesterDto, UpdateTesterDto } from './dto'
 import { Tester } from './entities/tester.entity'
 
 @Injectable()
