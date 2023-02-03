@@ -11,9 +11,7 @@ import { InjectModel } from '@nestjs/mongoose'
 import { JwtService } from '@nestjs/jwt'
 
 import { User } from './entities/user.entity'
-import { CreateUserDto } from './dto/create-user.dto'
-import { UpdateUserDto } from './dto/update-user.dto'
-import { LoginUserDto } from './dto/login-user.dto'
+import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto'
 
 @Injectable()
 export class UserService {

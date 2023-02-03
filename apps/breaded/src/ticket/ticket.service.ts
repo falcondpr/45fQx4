@@ -7,8 +7,7 @@ import {
 } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 
-import { CreateTicketDto } from './dto/create-ticket.dto'
-import { UpdateTicketDto } from './dto/update-ticket.dto'
+import { CreateTicketDto, UpdateTicketDto } from './dto'
 import { Ticket } from './entities/ticket.entity'
 
 @Injectable()

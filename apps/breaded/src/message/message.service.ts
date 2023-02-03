@@ -7,8 +7,7 @@ import {
 } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 
-import { CreateMessageDto } from './dto/create-message.dto'
-import { UpdateMessageDto } from './dto/update-message.dto'
+import { CreateMessageDto, UpdateMessageDto } from './dto'
 import { Message } from './entities/message.entity'
 
 @Injectable()
