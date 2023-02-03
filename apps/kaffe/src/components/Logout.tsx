@@ -1,11 +1,14 @@
 import React from 'react'
 import { Box, Flex, Grid, Text, Button, Image } from '@chakra-ui/react'
+import { AuthLogin } from '../helpers/auth'
 
 interface LogoutProps {
   setShowLogoutModal: (value: boolean) => void
 }
 
 const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
+  const { logout } = AuthLogin()
+
   return (
     <Flex
       h="100vh"
@@ -57,6 +60,7 @@ const Logout: React.FC<LogoutProps> = ({ setShowLogoutModal }) => {
             alignItems="center"
             justifyContent="center"
             rounded="2px"
+            onClick={logout}
           >
             Si, cerrar
           </Button>

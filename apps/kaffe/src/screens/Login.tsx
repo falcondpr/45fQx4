@@ -1,15 +1,15 @@
 import React from 'react'
 import { Box, Grid } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import { HeadingUI, TextUI, InputUI, ButtonUI } from '../ui'
 import { ValidationUserLogin } from '../validations/login'
-import { toast } from 'react-hot-toast'
 import { AuthLogin } from '../helpers/auth'
+import { ResponseValidation } from '../interfaces/validation'
 
 const Login: React.FC = () => {
   const { login } = AuthLogin()
-  const navigate = useNavigate()
 
   const [userInfo, setUserInfo] = React.useState<{
     email?: string
@@ -21,11 +21,15 @@ const Login: React.FC = () => {
 
   const handleLoginUser = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
-    ValidationUserLogin(userInfo)
+
+    const responseValidation = ValidationUserLogin(
+      userInfo,
+    ) as ResponseValidation
+
+    if (!responseValidation.success) return
 
     try {
       await login(userInfo)
-      navigate('/')
     } catch (error) {
       console.log(error)
       toast.error('Ha ocurrido un error. Intentelo de nuevo.')

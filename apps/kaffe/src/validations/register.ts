@@ -1,20 +1,21 @@
 import { toast } from 'react-hot-toast'
+import { ResponseValidation } from '../interfaces/validation'
 
 // eslint-disable-next-line
 export const ValidationUserRegister = (userInfo: any) => {
   const { fullname, username, email, password, confirmPassword } = userInfo
 
   if (
-    !fullname ||
     fullname === '' ||
-    !email ||
+    !fullname ||
     email === '' ||
-    !username ||
+    !email ||
     username === '' ||
-    !password ||
+    !username ||
     password === '' ||
-    !confirmPassword ||
-    confirmPassword === ''
+    !password ||
+    confirmPassword === '' ||
+    !confirmPassword
   ) {
     return toast.error('Todos los campos son obligatorios')
   }
@@ -37,5 +38,5 @@ export const ValidationUserRegister = (userInfo: any) => {
   return {
     success: true,
     message: 'Validacion correcta',
-  }
+  } as ResponseValidation
 }
