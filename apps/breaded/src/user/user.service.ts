@@ -61,21 +61,30 @@ export class UserService {
   }
 
   async login(dto: LoginUserDto) {
-    const foundUser = await this.userModel.findOne({ email: dto.email })
-    if (!foundUser)
+    // eslint-disable-next-line
+    let currentUser: any
+
+    // eslint-disable-next-line
+    currentUser = await this.userModel.findOne({ email: dto.email })
+
+    if (!currentUser) {
+      currentUser = await this.userModel.findOne({ username: dto.email })
+    }
+
+    if (!currentUser)
       throw new NotFoundException(
-        `Username ${foundUser.username} does not exist`,
+        `Username ${currentUser.username} does not exist`,
       )
 
-    const pwMatches = await argon.verify(foundUser.password, dto.password)
+    const pwMatches = await argon.verify(currentUser.password, dto.password)
     if (!pwMatches)
       throw new ForbiddenException(`The credentials are not correct`)
 
     try {
       return this.signInToken(
-        foundUser._id,
-        foundUser.email,
-        foundUser.fullname,
+        currentUser._id,
+        currentUser.email,
+        currentUser.fullname,
       )
     } catch (error) {
       this.handleException(error)
