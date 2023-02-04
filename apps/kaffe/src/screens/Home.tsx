@@ -8,6 +8,7 @@ import CardProduct from '../components/CardProduct'
 import Layout from '../layout'
 import { TextUI } from '../ui'
 import { categories } from '../data/categories'
+import ProfileAvatar from '../assets/avatar.svg'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
@@ -20,10 +21,7 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <HeaderProfile
-        navigate={navigate}
-        userAvatar={'https://bit.ly/3FpDJGG'}
-      />
+      <HeaderProfile navigate={navigate} userAvatar={ProfileAvatar} />
 
       <Box position="relative">
         <Box
@@ -73,7 +71,7 @@ const Home: React.FC = () => {
       </Box>
 
       {/* Categories */}
-      <Box mt="1.875rem">
+      <Box mt="1.275rem">
         <Flex overflowX="auto" className="hide-scroll">
           {categories.map((category, index) => (
             <Button

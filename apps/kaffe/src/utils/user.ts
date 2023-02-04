@@ -29,3 +29,16 @@ export const REGISTER_USER = (data: any) => {
     return null
   }
 }
+
+export const GET_USER = (id: string) => {
+  try {
+    const response = axios({
+      method: 'GET',
+      url: `/user/${id}`,
+    })
+    return response
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
