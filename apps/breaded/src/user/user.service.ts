@@ -37,6 +37,12 @@ export class UserService {
     if (foundUser)
       throw new ForbiddenException(`Email ${foundUser.email} is already in use`)
 
+    if (foundUser.username === dto.username) {
+      throw new ForbiddenException(
+        `Username ${foundUser.username} is already in use`,
+      )
+    }
+
     try {
       const user = await this.userModel.create({
         ...dto,
@@ -122,6 +128,16 @@ export class UserService {
     if (!user) throw new NotFoundException(`User with id ${term} not found`)
     if (dto.password)
       currentUser.password = await argon.hash(currentUser.password)
+
+    if (user.username === dto.username) {
+      throw new ForbiddenException(
+        `Username ${user.username} is already in use`,
+      )
+    }
+
+    if (user.email === dto.email) {
+      throw new ForbiddenException(`Email ${user.email} is already in use`)
+    }
 
     try {
       return this.userModel.findByIdAndUpdate(term, currentUser, {
