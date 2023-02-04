@@ -1,74 +1,23 @@
 import React, { useState } from 'react'
-import { Box, Button, Flex, Grid, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { FaInfo } from 'react-icons/fa'
 
 import HeaderProfile from '../components/HeaderProfile'
 import CardProduct from '../components/CardProduct'
 import Layout from '../layout'
-import { TextUI } from '../ui'
 import { categories } from '../data/categories'
 import ProfileAvatar from '../assets/avatar.svg'
+import BannerHome from '../components/BannerHome'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
   const [categorySelected, setCategorySelected] = useState<string>('todas')
 
-  // React.useEffect(() => {
-  //   const env = import.meta.env.VITE_API_ENDPOINT
-  //   console.log(env)
-  // }, [])
-
   return (
     <Layout>
       <HeaderProfile navigate={navigate} userAvatar={ProfileAvatar} />
 
-      <Box position="relative">
-        <Box
-          bgImage="linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 80%)"
-          h="full"
-          w="full"
-          position="absolute"
-          left="0"
-        />
-
-        <TextUI
-          color="white"
-          pl="20px"
-          // mb="10px"
-          position="absolute"
-          bottom="0.75rem"
-          left="0"
-        >
-          Marca ropa, verano
-        </TextUI>
-        <Image
-          w="full"
-          shadow="xl"
-          h="14rem"
-          objectFit="cover"
-          objectPosition="center"
-          src="https://bit.ly/3GMtXhB"
-          fallbackSrc="../assets/fallback-image.png"
-          alt="Banner ad"
-        />
-        <Button
-          rounded="full"
-          display="grid"
-          placeItems="center"
-          minW="initial"
-          w="2.5rem"
-          h="2.5rem"
-          color="primary"
-          bgColor="white"
-          fontSize="1rem"
-          position="absolute"
-          bottom="1rem"
-          right="1rem"
-        >
-          <FaInfo />
-        </Button>
-      </Box>
+      <BannerHome />
 
       {/* Categories */}
       <Box mt="1.275rem">
