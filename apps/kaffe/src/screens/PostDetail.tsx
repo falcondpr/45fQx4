@@ -3,8 +3,9 @@ import { Box, Button, Flex, Image } from '@chakra-ui/react'
 
 import BackButton from '../components/BackButton'
 import Empty from '../layout/Empty'
-import { TextUI } from '../ui'
 import ScrollBanner from '../components/ScrollBanner'
+import TablePostDetail from '../components/TablePostDetail'
+import { TextUI } from '../ui'
 import { images } from '../data/gallery'
 
 const PostDetail: React.FC = () => {
@@ -79,8 +80,10 @@ const PostDetail: React.FC = () => {
         </TextUI>
       </Box>
 
+      <TablePostDetail />
+
       {/* Vendor */}
-      <Box px="1.25rem" mb="1.25rem">
+      <Box px="1.25rem" mb="2rem">
         <TextUI
           fontWeight="semibold"
           mb="0.5rem"
