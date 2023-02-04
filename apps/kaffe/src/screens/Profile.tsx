@@ -14,10 +14,22 @@ import { MdLocalGroceryStore } from 'react-icons/md'
 import Layout from '../layout'
 import { BoxColor, TextUI } from '../ui'
 import Logout from '../components/Logout'
+import ProfileAvatar from '../assets/avatar.svg'
+import { UserContext } from '../context/UserContext'
+import { useQuery } from '@tanstack/react-query'
+import { GET_USER } from '../utils/user'
+import { UserIProps } from '../interfaces/user'
 
 const Profile: React.FC = () => {
+  const { user: userContext } = React.useContext(UserContext)
   const navigate = useNavigate()
+
   const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false)
+
+  const { data: dataUserFetch } = useQuery(['user', userContext?.id], () =>
+    GET_USER(userContext?.id),
+  )
+  const user: UserIProps = dataUserFetch?.data
 
   return showLogoutModal ? (
     <Logout setShowLogoutModal={setShowLogoutModal} />
@@ -78,14 +90,15 @@ const Profile: React.FC = () => {
       {/* Profile */}
       <Box pl="1.25rem" mt="-3.125rem" position="relative" zIndex="10">
         <Image
-          src="https://bit.ly/3PlI4hH"
+          opacity={0.9}
+          src={ProfileAvatar}
           fallbackSrc="../assets/fallback-image.png"
           alt="Profile picture"
           w="6.25rem"
           h="6.25rem"
           objectFit="cover"
           rounded="full"
-          border="3px solid"
+          // border="3px solid"
           borderColor="white"
         />
       </Box>
@@ -94,14 +107,14 @@ const Profile: React.FC = () => {
       <Box p="0.3125rem 1.25rem">
         <Flex alignItems="center">
           <TextUI fontWeight="bold" color="primary">
-            Lujan Vera
+            {user?.fullname}
           </TextUI>
-          <Text color="light-gray" ml="0.35rem" fontSize="1.2rem">
+          <Text color="#1DA1F2" ml="0.35rem" fontSize="1.2rem">
             <BsPatchCheckFill />
           </Text>
         </Flex>
         <TextUI fontSize="0.8rem" color="light-gray">
-          @lujan_vera
+          @{user?.username}
         </TextUI>
       </Box>
 
