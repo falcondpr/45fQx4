@@ -8,7 +8,7 @@ const ScrollBanner: React.FC = () => {
     <Box p="1.25rem" h="6.25rem" bgColor="primary" position="sticky" bottom="0">
       <Flex alignItems="center" gap="0 1rem">
         <Box flex="1">
-          <TextUI color="white" fontSize="1.25rem" fontWeight="bold">
+          <TextUI color="white" fontSize="1.25rem" fontWeight="semibold">
             Gs. 200.000
           </TextUI>
           <TextUI color="border-color" fontSize="0.9rem">
