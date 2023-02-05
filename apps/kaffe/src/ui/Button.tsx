@@ -30,6 +30,9 @@ export const ButtonUI: React.FC<ButtonUIProps> = ({
         borderColor: 'primary',
         color: 'primary',
       }}
+      _active={{ bgColor: 'primary', color: 'white' }}
+      _focusWithin={{ bgColor: 'primary', color: 'white' }}
+      _focusVisible={{ bgColor: 'primary', color: 'white' }}
       {...rest}
     >
       {children}

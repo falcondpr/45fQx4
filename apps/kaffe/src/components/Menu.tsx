@@ -85,7 +85,7 @@ const Menu: React.FC = () => {
           Acciones
         </TextUI>
 
-        <Link to="/posted-posts">
+        <Link to="/create-post">
           <Flex alignItems="center" mb="1rem">
             <BoxColor bgColor="#023E8A">
               <IoShirtSharp />

@@ -23,6 +23,7 @@ import Username from '../screens/Profile/Username'
 import Password from '../screens/Profile/Password'
 import Message from '../screens/Message'
 import Ticket from '../screens/Tickets'
+import CreatePost from '../screens/CreatePost'
 
 const Navigation: React.FC = () => {
   return (
@@ -54,6 +55,9 @@ const Navigation: React.FC = () => {
 
         {/* Tickets */}
         <Route path="/tickets" element={<Ticket />} />
+
+        {/* Post */}
+        <Route path="create-post" element={<CreatePost />} />
       </Routes>
     </BrowserRouter>
   )

@@ -18,7 +18,13 @@ export const InputUI: React.FC<InputUIProps> = ({ title, ...rest }) => {
       >
         {title}
       </Text>
-      <Input id={title} borderColor="border-color" h="50px" {...rest} />
+      <Input
+        id={title}
+        borderColor="border-color"
+        h="50px"
+        _placeholder={{ color: '#a9a9a9' }}
+        {...rest}
+      />
     </Box>
   )
 }
