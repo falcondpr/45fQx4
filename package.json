@@ -6,7 +6,8 @@
     "nx": "nx",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "kaffe": "nx serve kaffe"
   },
   "private": true,
   "dependencies": {
