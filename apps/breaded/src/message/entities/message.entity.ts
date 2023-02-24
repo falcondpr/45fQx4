@@ -1,22 +1,22 @@
-import { Document } from 'mongoose'
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class Message extends Document {
   @Prop({ type: String, required: true })
-  id_team: string
+  id_team: string;
 
   @Prop({ type: String, required: true })
-  id_user_transmitter: string
+  id_user_transmitter: string;
 
   @Prop({ type: String, required: true })
-  id_user_receiver: string
+  id_user_receiver: string;
 
   @Prop({ type: String, required: true })
-  content: string
+  content: string;
 
   @Prop({ type: String })
-  created_at: string
+  created_at: string;
 }
 
-export const MessageSchema = SchemaFactory.createForClass(Message)
+export const MessageSchema = SchemaFactory.createForClass(Message);

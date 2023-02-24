@@ -3,11 +3,11 @@ import {
   SubscribeMessage,
   MessageBody,
   WebSocketServer,
-} from '@nestjs/websockets'
-import { Server } from 'socket.io'
+} from '@nestjs/websockets';
+import { Server } from 'socket.io';
 
-import { CreateMessageDto } from '../message/dto/create-message.dto'
-import { MessageService } from '../message/message.service'
+import { CreateMessageDto } from '../message/dto/create-message.dto';
+import { MessageService } from '../message/message.service';
 
 @WebSocketGateway({
   cors: {
@@ -16,19 +16,19 @@ import { MessageService } from '../message/message.service'
 })
 export class ChatGateway {
   @WebSocketServer()
-  server: Server
+  server: Server;
 
   constructor(private readonly messageService: MessageService) {}
 
   @SubscribeMessage('createMessage')
   create(@MessageBody() dto: CreateMessageDto) {
-    const messages = this.messageService.create(dto)
-    this.server.emit('message', messages)
-    return messages
+    const messages = this.messageService.create(dto);
+    this.server.emit('message', messages);
+    return messages;
   }
 
   @SubscribeMessage('findAllChat')
   findAll(@MessageBody() id_team: string) {
-    return this.messageService.findAll(id_team)
+    return this.messageService.findAll(id_team);
   }
 }

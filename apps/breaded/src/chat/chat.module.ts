@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common'
-import { MongooseModule } from '@nestjs/mongoose'
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
-import { ChatGateway } from './chat.gateway'
-import { MessageService } from '../message/message.service'
-import { Message, MessageSchema } from '../message/entities/message.entity'
-import { Team, TeamSchema } from '../team/entities/team.entity'
+import { ChatGateway } from './chat.gateway';
+import { MessageService } from '../message/message.service';
+import { Message, MessageSchema } from '../message/entities/message.entity';
+import { Team, TeamSchema } from '../team/entities/team.entity';
 
 @Module({
   imports: [

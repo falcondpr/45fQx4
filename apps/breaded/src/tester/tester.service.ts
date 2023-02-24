@@ -1,13 +1,13 @@
-import { Model } from 'mongoose'
+import { Model } from 'mongoose';
 import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
-} from '@nestjs/common'
-import { InjectModel } from '@nestjs/mongoose'
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 
-import { CreateTesterDto, UpdateTesterDto } from './dto'
-import { Tester } from './entities/tester.entity'
+import { CreateTesterDto, UpdateTesterDto } from './dto';
+import { Tester } from './entities/tester.entity';
 
 @Injectable()
 export class TesterService {
@@ -17,47 +17,47 @@ export class TesterService {
 
   async create(dto: CreateTesterDto) {
     try {
-      const tester = await this.testerModel.create(dto)
-      return tester
+      const tester = await this.testerModel.create(dto);
+      return tester;
     } catch (error) {
-      console.log(error)
-      this.handleException(error)
+      console.log(error);
+      this.handleException(error);
     }
   }
 
   findAll() {
-    return this.testerModel.find()
+    return this.testerModel.find();
   }
 
   async findOne(id: string) {
     try {
-      const tester = await this.testerModel.findById(id)
-      return tester
+      const tester = await this.testerModel.findById(id);
+      return tester;
     } catch (error) {
-      console.log(error)
-      this.handleException(error)
+      console.log(error);
+      this.handleException(error);
     }
   }
 
   async update(id: string, dto: UpdateTesterDto) {
-    const tester = await this.findOne(id)
+    const tester = await this.findOne(id);
 
     try {
-      await tester.updateOne(dto)
-      return { ...tester.toJSON(), ...dto }
+      await tester.updateOne(dto);
+      return { ...tester.toJSON(), ...dto };
     } catch (error) {
-      console.log(error)
-      this.handleException(error)
+      console.log(error);
+      this.handleException(error);
     }
   }
 
   async remove(id: string) {
-    const { deletedCount } = await this.testerModel.deleteOne({ _id: id })
+    const { deletedCount } = await this.testerModel.deleteOne({ _id: id });
 
     if (deletedCount === 0)
-      throw new BadRequestException(`Tester with id ${id} not exists`)
+      throw new BadRequestException(`Tester with id ${id} not exists`);
 
-    return `Tester with id ${id} deteled!`
+    return `Tester with id ${id} deteled!`;
   }
 
   // eslint-disable-next-line
@@ -65,12 +65,12 @@ export class TesterService {
     if (error.code === 11000) {
       throw new BadRequestException(
         `Tester exists in db ${JSON.stringify(error.keyValue)}`,
-      )
+      );
     }
 
-    console.log(error)
+    console.log(error);
     throw new InternalServerErrorException(
       `Can't create Tester - Check server logs`,
-    )
+    );
   }
 }

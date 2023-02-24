@@ -1,14 +1,14 @@
-import { Model } from 'mongoose'
+import { Model } from 'mongoose';
 import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-} from '@nestjs/common'
-import { InjectModel } from '@nestjs/mongoose'
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 
-import { CreateMessageDto, UpdateMessageDto } from './dto'
-import { Message } from './entities/message.entity'
+import { CreateMessageDto, UpdateMessageDto } from './dto';
+import { Message } from './entities/message.entity';
 
 @Injectable()
 export class MessageService {
@@ -21,48 +21,48 @@ export class MessageService {
       const message = await this.messageModel.create({
         ...dto,
         created_at: new Date().toISOString(),
-      })
+      });
 
-      return message
+      return message;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   findAll(id_team: string) {
-    return this.messageModel.find({ id_team })
+    return this.messageModel.find({ id_team });
   }
 
   async findOne(id: string) {
     try {
-      const message = await this.messageModel.findById(id)
-      return message
+      const message = await this.messageModel.findById(id);
+      return message;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   async update(id: string, dto: UpdateMessageDto) {
-    const message = await this.findOne(id)
+    const message = await this.findOne(id);
 
     try {
-      await message.updateOne(dto)
-      return { ...message.toJSON(), ...dto }
+      await message.updateOne(dto);
+      return { ...message.toJSON(), ...dto };
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   async remove(id: string) {
     try {
-      const { deletedCount } = await this.messageModel.deleteOne({ _id: id })
+      const { deletedCount } = await this.messageModel.deleteOne({ _id: id });
 
       if (deletedCount === 0)
-        throw new NotFoundException(`Message with id ${id} does not exist`)
+        throw new NotFoundException(`Message with id ${id} does not exist`);
 
-      return `Message with id ${id} deleted!`
+      return `Message with id ${id} deleted!`;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
@@ -71,13 +71,13 @@ export class MessageService {
     if (error.code === 11000) {
       throw new BadRequestException(
         `User exists in db ${JSON.stringify(error.keyvalue)}`,
-      )
+      );
     }
 
-    console.log(error)
+    console.log(error);
 
     throw new InternalServerErrorException(
       `Can't create User - Check server logs`,
-    )
+    );
   }
 }

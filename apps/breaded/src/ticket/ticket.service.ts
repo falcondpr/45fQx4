@@ -1,14 +1,14 @@
-import { Model } from 'mongoose'
+import { Model } from 'mongoose';
 import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-} from '@nestjs/common'
-import { InjectModel } from '@nestjs/mongoose'
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 
-import { CreateTicketDto, UpdateTicketDto } from './dto'
-import { Ticket } from './entities/ticket.entity'
+import { CreateTicketDto, UpdateTicketDto } from './dto';
+import { Ticket } from './entities/ticket.entity';
 
 @Injectable()
 export class TicketService {
@@ -21,19 +21,19 @@ export class TicketService {
       const ticket = await this.ticketModel.create({
         ...dto,
         created_at: new Date().toISOString(),
-      })
-      return ticket
+      });
+      return ticket;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   findAll() {
-    return this.ticketModel.find()
+    return this.ticketModel.find();
   }
 
   findOne(id: string) {
-    return this.ticketModel.findById(id)
+    return this.ticketModel.findById(id);
   }
 
   async update(id: string, dto: UpdateTicketDto) {
@@ -42,23 +42,23 @@ export class TicketService {
         id,
         { ...dto, updated_at: new Date().toISOString() },
         { new: true },
-      )
-      return ticketUpdated
+      );
+      return ticketUpdated;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   async remove(id: string) {
     try {
-      const { deletedCount } = await this.ticketModel.deleteOne({ _id: id })
+      const { deletedCount } = await this.ticketModel.deleteOne({ _id: id });
 
       if (deletedCount === 0)
-        throw new NotFoundException(`Ticket with id ${id} does not exist`)
+        throw new NotFoundException(`Ticket with id ${id} does not exist`);
 
-      return `Ticket with id ${id} deleted!`
+      return `Ticket with id ${id} deleted!`;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
@@ -67,13 +67,13 @@ export class TicketService {
     if (error.code === 11000) {
       throw new BadRequestException(
         `Ticket exists in db ${JSON.stringify(error.keyvalue)}`,
-      )
+      );
     }
 
-    console.log(error)
+    console.log(error);
 
     throw new InternalServerErrorException(
       `Can't create User - Check server logs`,
-    )
+    );
   }
 }

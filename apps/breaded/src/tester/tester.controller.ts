@@ -6,10 +6,10 @@ import {
   Patch,
   Param,
   Delete,
-} from '@nestjs/common'
+} from '@nestjs/common';
 
-import { TesterService } from './tester.service'
-import { CreateTesterDto, UpdateTesterDto } from './dto'
+import { TesterService } from './tester.service';
+import { CreateTesterDto, UpdateTesterDto } from './dto';
 
 @Controller('tester')
 export class TesterController {
@@ -17,26 +17,26 @@ export class TesterController {
 
   @Post()
   create(@Body() dto: CreateTesterDto) {
-    return this.testerService.create(dto)
+    return this.testerService.create(dto);
   }
 
   @Get()
   findAll() {
-    return this.testerService.findAll()
+    return this.testerService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.testerService.findOne(id)
+    return this.testerService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() dto: UpdateTesterDto) {
-    return this.testerService.update(id, dto)
+    return this.testerService.update(id, dto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.testerService.remove(id)
+    return this.testerService.remove(id);
   }
 }

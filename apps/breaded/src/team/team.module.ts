@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common'
-import { TeamService } from './team.service'
-import { TeamController } from './team.controller'
-import { MongooseModule } from '@nestjs/mongoose'
-import { Team, TeamSchema } from './entities/team.entity'
+import { Module } from '@nestjs/common';
+import { TeamService } from './team.service';
+import { TeamController } from './team.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Team, TeamSchema } from './entities/team.entity';
 
 @Module({
   imports: [

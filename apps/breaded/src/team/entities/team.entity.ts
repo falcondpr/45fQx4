@@ -1,15 +1,15 @@
-import { Document } from 'mongoose'
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 // const members: string[]
 
 @Schema()
 export class Team extends Document {
   @Prop({ type: Array, of: String, required: true })
-  members: string[]
+  members: string[];
 
   @Prop({ type: String })
-  created_at: string
+  created_at: string;
 }
 
-export const TeamSchema = SchemaFactory.createForClass(Team)
+export const TeamSchema = SchemaFactory.createForClass(Team);

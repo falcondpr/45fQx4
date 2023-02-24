@@ -4,31 +4,31 @@ import {
   IsOptional,
   IsPositive,
   IsString,
-} from 'class-validator'
+} from 'class-validator';
 
 export class CreateTicketDto {
   @IsString()
   @IsOptional()
-  _id?: string
+  _id?: string;
 
   @IsString()
   @IsNotEmpty()
-  id_user_vendor: string
+  id_user_vendor: string;
 
   @IsString()
   @IsNotEmpty()
-  id_user_buyer: string
+  id_user_buyer: string;
 
   @IsString()
   @IsNotEmpty()
-  id_product: string
+  id_product: string;
 
   @IsNumber()
   @IsPositive()
   @IsOptional()
-  price?: string
+  price?: string;
 
   @IsString()
   @IsNotEmpty()
-  status_ticket: string
+  status_ticket: string;
 }

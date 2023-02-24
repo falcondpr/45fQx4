@@ -1,17 +1,17 @@
-import * as argon from 'argon2'
-import { isValidObjectId, Model } from 'mongoose'
+import * as argon from 'argon2';
+import { isValidObjectId, Model } from 'mongoose';
 import {
   BadRequestException,
   ForbiddenException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-} from '@nestjs/common'
-import { InjectModel } from '@nestjs/mongoose'
-import { JwtService } from '@nestjs/jwt'
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { JwtService } from '@nestjs/jwt';
 
-import { User } from './entities/user.entity'
-import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto'
+import { User } from './entities/user.entity';
+import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 
 @Injectable()
 export class UserService {
@@ -21,26 +21,28 @@ export class UserService {
   ) {}
 
   async signInToken(id: string, email: string, fullname: string) {
-    const payload = { id, email, fullname }
+    const payload = { id, email, fullname };
     const config = {
       secret: process.env.SECRET_KEY,
       expiresIn: process.env.EXPIRES_IN_KEY,
-    }
+    };
 
-    return this.jwtService.signAsync(payload, config)
+    return this.jwtService.signAsync(payload, config);
   }
 
   async register(dto: CreateUserDto) {
-    const passwordHash = await argon.hash(dto.password)
+    const passwordHash = await argon.hash(dto.password);
 
-    const foundUser = await this.userModel.findOne({ email: dto.email })
+    const foundUser = await this.userModel.findOne({ email: dto.email });
     if (foundUser)
-      throw new ForbiddenException(`Email ${foundUser.email} is already in use`)
+      throw new ForbiddenException(
+        `Email ${foundUser.email} is already in use`,
+      );
 
     if (foundUser.username === dto.username) {
       throw new ForbiddenException(
         `Username ${foundUser.username} is already in use`,
-      )
+      );
     }
 
     try {
@@ -56,105 +58,105 @@ export class UserService {
           updated_at: new Date().toISOString(),
         },
         created_at: new Date().toISOString(),
-      })
+      });
 
-      return this.signInToken(user._id, user.email, user.fullname)
+      return this.signInToken(user._id, user.email, user.fullname);
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   async login(dto: LoginUserDto) {
     // eslint-disable-next-line
-    let currentUser: any
+    let currentUser: any;
 
     // eslint-disable-next-line
-    currentUser = await this.userModel.findOne({ email: dto.email })
+    currentUser = await this.userModel.findOne({ email: dto.email });
 
     if (!currentUser) {
-      currentUser = await this.userModel.findOne({ username: dto.email })
+      currentUser = await this.userModel.findOne({ username: dto.email });
     }
 
     if (!currentUser)
       throw new NotFoundException(
         `Username ${currentUser.username} does not exist`,
-      )
+      );
 
-    const pwMatches = await argon.verify(currentUser.password, dto.password)
+    const pwMatches = await argon.verify(currentUser.password, dto.password);
     if (!pwMatches)
-      throw new ForbiddenException(`The credentials are not correct`)
+      throw new ForbiddenException(`The credentials are not correct`);
 
     try {
       return this.signInToken(
         currentUser._id,
         currentUser.email,
         currentUser.fullname,
-      )
+      );
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   findAll() {
-    return this.userModel.find()
+    return this.userModel.find();
   }
 
   async findOne(term: string) {
-    let user: User
+    let user: User;
 
     try {
       if (isValidObjectId(term)) {
-        user = await this.userModel.findById(term)
+        user = await this.userModel.findById(term);
       }
 
       if (!user) {
-        user = await this.userModel.findOne({ email: term })
+        user = await this.userModel.findOne({ email: term });
       }
 
       if (!user) {
-        user = await this.userModel.findOne({ username: term })
+        user = await this.userModel.findOne({ username: term });
       }
 
-      return user
+      return user;
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   async update(term: string, dto: UpdateUserDto) {
-    const currentUser = dto
-    const user = await this.findOne(term)
+    const currentUser = dto;
+    const user = await this.findOne(term);
 
-    if (!user) throw new NotFoundException(`User with id ${term} not found`)
+    if (!user) throw new NotFoundException(`User with id ${term} not found`);
     if (dto.password)
-      currentUser.password = await argon.hash(currentUser.password)
+      currentUser.password = await argon.hash(currentUser.password);
 
     if (user.username === dto.username) {
       throw new ForbiddenException(
         `Username ${user.username} is already in use`,
-      )
+      );
     }
 
     if (user.email === dto.email) {
-      throw new ForbiddenException(`Email ${user.email} is already in use`)
+      throw new ForbiddenException(`Email ${user.email} is already in use`);
     }
 
     try {
       return this.userModel.findByIdAndUpdate(term, currentUser, {
         new: true,
-      })
+      });
     } catch (error) {
-      this.handleException(error)
+      this.handleException(error);
     }
   }
 
   async remove(id: string) {
-    const { deletedCount } = await this.userModel.deleteOne({ _id: id })
+    const { deletedCount } = await this.userModel.deleteOne({ _id: id });
 
     if (deletedCount === 0)
-      throw new NotFoundException(`User with id ${id} does not exist`)
+      throw new NotFoundException(`User with id ${id} does not exist`);
 
-    return `User with id ${id} deleted!`
+    return `User with id ${id} deleted!`;
   }
 
   // eslint-disable-next-line
@@ -162,13 +164,13 @@ export class UserService {
     if (error.code === 11000) {
       throw new BadRequestException(
         `User exists in db ${JSON.stringify(error.keyvalue)}`,
-      )
+      );
     }
 
-    console.log(error)
+    console.log(error);
 
     throw new InternalServerErrorException(
       `Can't create User - Check server logs`,
-    )
+    );
   }
 }

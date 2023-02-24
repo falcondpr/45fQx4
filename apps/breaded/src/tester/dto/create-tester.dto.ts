@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateTesterDto {
   @IsString()
   @IsOptional()
-  name: string
+  name: string;
 
   @IsString()
   @IsNotEmpty()
-  username: string
+  username: string;
 
   @IsString()
   @IsNotEmpty()
-  email: string
+  email: string;
 }
