@@ -1,7 +1,9 @@
 {
   "scripts": {
     "format": "prettier --write .",
-    "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "serve:web": "cd apps/kaffe && yarn dev",
+    "serve:api": "cd apps/breaded && yarn start:dev"
   },
   "devDependencies": {
     "react": "18.2.0",
