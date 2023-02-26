@@ -6,10 +6,10 @@ import {
   Patch,
   Param,
   Delete,
-} from '@nestjs/common';
+} from '@nestjs/common'
 
-import { TicketService } from './ticket.service';
-import { CreateTicketDto, UpdateTicketDto } from './dto';
+import { TicketService } from './ticket.service'
+import { CreateTicketDto, UpdateTicketDto } from './dto'
 
 @Controller('ticket')
 export class TicketController {
@@ -17,26 +17,26 @@ export class TicketController {
 
   @Post()
   create(@Body() createTicketDto: CreateTicketDto) {
-    return this.ticketService.create(createTicketDto);
+    return this.ticketService.create(createTicketDto)
   }
 
   @Get()
   findAll() {
-    return this.ticketService.findAll();
+    return this.ticketService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ticketService.findOne(id);
+    return this.ticketService.findOne(id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
-    return this.ticketService.update(id, updateTicketDto);
+    return this.ticketService.update(id, updateTicketDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ticketService.remove(id);
+    return this.ticketService.remove(id)
   }
 }

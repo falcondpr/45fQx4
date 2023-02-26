@@ -6,10 +6,10 @@ import {
   Patch,
   Param,
   Delete,
-} from '@nestjs/common';
+} from '@nestjs/common'
 
-import { UserService } from './user.service';
-import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
+import { UserService } from './user.service'
+import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto'
 
 @Controller('user')
 export class UserController {
@@ -17,31 +17,31 @@ export class UserController {
 
   @Post('register')
   register(@Body() dto: CreateUserDto) {
-    return this.userService.register(dto);
+    return this.userService.register(dto)
   }
 
   @Post('login')
   login(@Body() dto: LoginUserDto) {
-    return this.userService.login(dto);
+    return this.userService.login(dto)
   }
 
   @Get()
   findAll() {
-    return this.userService.findAll();
+    return this.userService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
+    return this.userService.findOne(id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    return this.userService.update(id, dto);
+    return this.userService.update(id, dto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.userService.remove(id);
+    return this.userService.remove(id)
   }
 }

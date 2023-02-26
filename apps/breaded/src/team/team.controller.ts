@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common'
 
-import { TeamService } from './team.service';
-import { CreateTeamDto } from './dto';
+import { TeamService } from './team.service'
+import { CreateTeamDto } from './dto'
 
 @Controller('team')
 export class TeamController {
@@ -9,31 +9,31 @@ export class TeamController {
 
   @Post()
   create(@Body() createTeamDto: CreateTeamDto) {
-    return this.teamService.create(createTeamDto);
+    return this.teamService.create(createTeamDto)
   }
 
   @Get()
   findAll() {
-    return this.teamService.findAll();
+    return this.teamService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.teamService.getTeamByUser(id);
+    return this.teamService.getTeamByUser(id)
   }
 
   @Get('/members/:id_users')
   async existTeam(@Param('id_users') id_users: string) {
-    return this.teamService.existsTeam(id_users);
+    return this.teamService.existsTeam(id_users)
   }
 
   @Get(':id')
   async getTeamsByUser(@Param('id') id: string) {
-    return this.teamService.getTeamByUser(id);
+    return this.teamService.getTeamByUser(id)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.teamService.remove(id);
+    return this.teamService.remove(id)
   }
 }
