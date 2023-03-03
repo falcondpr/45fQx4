@@ -1,16 +1,24 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # compiled output
-apps/breaded/dist
-apps/kaffe/.next
-/tmp
-/out-tsc
-/postgres
-# dependencies
-node_modules
+/dist
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
 
 # IDEs and editors
-.env
 /.idea
 .project
 .classpath
@@ -25,20 +33,3 @@ node_modules
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
-.DS_Store
-Thumbs.db
-
-# Next.js
-.next
