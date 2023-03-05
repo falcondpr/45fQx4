@@ -1,0 +1,55 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Tester {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type User {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  tester(id: Int!): Tester!
+  user(id: Int!): User!
+}
+
+type Mutation {
+  createTester(createTesterInput: CreateTesterInput!): Tester!
+  updateTester(updateTesterInput: UpdateTesterInput!): Tester!
+  removeTester(id: Int!): Tester!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+}
+
+input CreateTesterInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateTesterInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateUserInput {
+  fullname: String!
+  username: String!
+  email: String!
+  password: String!
+  avatar: String!
+}
+
+input UpdateUserInput {
+  fullname: String
+  username: String
+  email: String
+  password: String
+  avatar: String
+  id: Int!
+}

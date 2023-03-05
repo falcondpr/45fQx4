@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Avatar {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  url         String
+  isApproved  Boolean
+  userId      String    @db.ObjectId @unique
+  user        User      @relation(fields: [userId], references: [id])
+  updatedAt   DateTime
+}
+
+model Banner {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  url         String
+  userId      String    @db.ObjectId @unique
+  user        User      @relation(fields: [userId], references: [id])
+  updatedAt   DateTime
+}
+
+model IsPremium {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  isValid     Boolean
+  userId      String    @db.ObjectId @unique
+  user        User      @relation(fields: [userId], references: [id])
+  updatedAt   DateTime
+}
+
+model IsVerified {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  isValid     Boolean
+  userId      String    @db.ObjectId @unique
+  user        User      @relation(fields: [userId], references: [id])
+  updatedAt   DateTime
+}
+
+model User {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  email       String    @unique
+  fullname    String
+  username    String
+  password    String
+
+  avatar      Avatar?
+  banner      Banner?
+  isVerified  IsVerified?
+  isPremium   IsPremium?
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+}

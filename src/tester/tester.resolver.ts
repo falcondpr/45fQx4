@@ -9,7 +9,9 @@ export class TesterResolver {
   constructor(private readonly testerService: TesterService) {}
 
   @Mutation(() => Tester)
-  createTester(@Args('createTesterInput') createTesterInput: CreateTesterInput) {
+  createTester(
+    @Args('createTesterInput') createTesterInput: CreateTesterInput,
+  ) {
     return this.testerService.create(createTesterInput);
   }
 
@@ -24,7 +26,9 @@ export class TesterResolver {
   }
 
   @Mutation(() => Tester)
-  updateTester(@Args('updateTesterInput') updateTesterInput: UpdateTesterInput) {
+  updateTester(
+    @Args('updateTesterInput') updateTesterInput: UpdateTesterInput,
+  ) {
     return this.testerService.update(updateTesterInput.id, updateTesterInput);
   }
 
