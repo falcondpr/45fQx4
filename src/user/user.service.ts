@@ -10,7 +10,11 @@ import { JwtService } from '@nestjs/jwt';
 
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User, UserDocument } from './entities/user.entity';
-import { ITokenDTO } from '../interfaces/token';
+import {
+  ITokenDTO,
+  IUserPremium,
+  IUserVerified,
+} from '../interfaces';
 
 @Injectable()
 export class UserService {
@@ -53,7 +57,7 @@ export class UserService {
       };
 
       const token = await this.singInToken(params);
-      return { token }
+      return { token };
     } catch (error) {
       console.log(error);
     }
@@ -92,8 +96,31 @@ export class UserService {
     return this.userModel.find();
   }
 
-  findOne(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id);
+  async findUserByPremium(param: string, value: string): Promise<IUserPremium> {
+    const user: User = await this.userModel.findOne({ [param]: value });
+    return {
+      _id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+      isPremium: user.isPremium,
+    };
+  }
+
+  async findUserByVerified(
+    param: string,
+    value: string,
+  ): Promise<IUserVerified> {
+    const user: User = await this.userModel.findOne({ [param]: value });
+    return {
+      _id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+      isVerified: user.isPremium,
+    };
+  }
+
+  findOne(param: string, value: string): Promise<UserDocument> {
+    return this.userModel.findOne({ [param]: value });
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<UserDocument> {
