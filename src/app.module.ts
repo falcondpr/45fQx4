@@ -4,6 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose/dist';
 
 import { UserModule } from './user/user.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { UserModule } from './user/user.module';
     MongooseModule.forRoot(process.env.DATABASE_URL),
     JwtModule,
     UserModule,
+    ProductModule,
   ],
 })
 export class AppModule {}
