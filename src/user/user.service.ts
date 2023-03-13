@@ -92,8 +92,8 @@ export class UserService {
     return this.userModel.find();
   }
 
-  findOne(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id);
+  findOne(param: string, value: string): Promise<UserDocument> {
+    return this.userModel.findOne({ [param]: value });
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<UserDocument> {

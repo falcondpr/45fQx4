@@ -30,9 +30,9 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
+  @Get(':param/:value')
+  findOne(@Param('param') param: string, @Param('value') value: string) {
+    return this.userService.findOne(param, value);
   }
 
   @Patch(':id')
