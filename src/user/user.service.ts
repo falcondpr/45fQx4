@@ -28,7 +28,7 @@ export class UserService {
     return this.jwtService.signAsync(payload, { expiresIn: '72h', secret });
   }
 
-  async register(dto: CreateUserDto): Promise<string> {
+  async register(dto: CreateUserDto): Promise<{ token: string }> {
     const hash = await argon.hash(dto.password);
 
     const foundUserByEmail = await this.userModel.findOne({
@@ -51,7 +51,9 @@ export class UserService {
         email: userCreated.email,
         fullname: userCreated.fullname,
       };
-      return this.singInToken(params);
+
+      const token = await this.singInToken(params);
+      return { token }
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +81,8 @@ export class UserService {
         fullname: userLogged.fullname,
       };
 
-      return await this.singInToken(params);
+      const token = await this.singInToken(params);
+      return { token };
     } catch (error) {
       console.log(error);
     }
