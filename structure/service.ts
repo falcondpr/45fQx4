@@ -4,6 +4,10 @@ export type Service = {
   description: string
   images: Image[]
   price_start: number
+  location: {
+    city: string
+    department: string
+  }
   created_at: string
   updated_at: string
 }
