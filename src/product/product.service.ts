@@ -7,8 +7,11 @@ import { Product, ProductDocument } from './entities/product.entity';
 
 @Injectable()
 export class ProductService {
-  constructor(@InjectModel(Product.name) private readonly productModel: Model<ProductDocument>) {}
-  
+  constructor(
+    @InjectModel(Product.name)
+    private readonly productModel: Model<ProductDocument>,
+  ) {}
+
   create(dto: CreateProductDto): Promise<ProductDocument> {
     return this.productModel.create({
       ...dto,
@@ -16,7 +19,7 @@ export class ProductService {
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
-        .replaceAll(' ', ('-'))
+        .replaceAll(' ', '-'),
     });
   }
 
@@ -24,15 +27,27 @@ export class ProductService {
     return this.productModel.find();
   }
 
+  findManyByStatusProduct(statusProduct: string): Promise<ProductDocument[]> {
+    return this.productModel.find({ statusProduct });
+  }
+
+  findManyByStatusSale(statusSale: string): Promise<ProductDocument[]> {
+    return this.productModel.find({ "statusSale.value": statusSale });
+  }
+
   findOne(param: string, value: string): Promise<ProductDocument> {
     return this.productModel.findOne({ [param]: value });
   }
 
   update(id: string, dto: UpdateProductDto) {
-    return this.productModel.findByIdAndUpdate(id, {
-      ...dto,
-      updatedAt: new Date().toISOString()
-    }, { new: true });
+    return this.productModel.findByIdAndUpdate(
+      id,
+      {
+        ...dto,
+        updatedAt: new Date().toISOString(),
+      },
+      { new: true },
+    );
   }
 
   remove(id: string): Promise<ProductDocument> {
