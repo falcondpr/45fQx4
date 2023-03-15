@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose/dist';
 
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
+import { ServiceModule } from './service/service.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ProductModule } from './product/product.module';
     JwtModule,
     UserModule,
     ProductModule,
+    ServiceModule,
   ],
 })
 export class AppModule {}
