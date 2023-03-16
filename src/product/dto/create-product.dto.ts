@@ -1,5 +1,12 @@
-import { Types } from "mongoose";
-import { IsArray, IsNotEmpty, IsNumber, IsObject, IsPositive, IsString } from "class-validator";
+import { Types } from 'mongoose';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsNumber,
+  IsObject,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
 export class CreateProductDto {
   @IsString()
@@ -18,13 +25,14 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   ownerId: Types.ObjectId;
-  
+
   @IsArray()
-  images: [{ url: string }];
+  @IsNotEmpty()
+  images: string[];
 
   @IsObject()
-  location: { city: string, department: string };
+  location: { city: string; department: string };
 
   @IsArray()
-  tags: [{ text: string, slug: string }];
+  tags: [{ text: string; slug: string }];
 }
