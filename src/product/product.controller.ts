@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 
 import { ProductService } from './product.service';
 import { CreateProductDto, UpdateProductDto } from './dto';
@@ -9,8 +17,8 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post('create')
-  create(@Body() createProductDto: CreateProductDto): Promise<ProductDocument> {
-    return this.productService.create(createProductDto);
+  create(@Body() dto: CreateProductDto): Promise<ProductDocument> {
+    return this.productService.create(dto);
   }
 
   @Get()
@@ -21,7 +29,7 @@ export class ProductController {
   @Get('param/:param/:value')
   findOne(
     @Param('param') param: string,
-    @Param('value') value: string
+    @Param('value') value: string,
   ): Promise<ProductDocument> {
     return this.productService.findOne(param, value);
   }
@@ -41,8 +49,11 @@ export class ProductController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto): Promise<ProductDocument> {
-    return this.productService.update(id, updateProductDto);
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateProductDto,
+  ): Promise<ProductDocument> {
+    return this.productService.update(id, dto);
   }
 
   @Delete(':id')

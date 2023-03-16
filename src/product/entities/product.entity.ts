@@ -1,16 +1,7 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument, Types } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 
 export type ProductDocument = HydratedDocument<Product>;
-
-@Schema()
-class Image {
-  @Prop({ type: String, required: true })
-  url: string
-
-  @Prop({ type: Date, default: new Date().toISOString() })
-  createdAt: Date
-}
 
 @Schema()
 export class Product {
@@ -28,8 +19,8 @@ export class Product {
   @Prop({ type: Types.ObjectId, required: true })
   ownerId: Types.ObjectId;
 
-  @Prop({ type: Array, required: true })
-  images: Image[];
+  @Prop({ type: Array(String), required: true })
+  images: string[];
 
   @Prop({ type: String, default: 'NEW' })
   statusProduct: string;
@@ -40,11 +31,15 @@ export class Product {
       value: 'AVAILABLE',
       updatedAt: new Date().toISOString(),
     },
-    _id: false
+    _id: false,
   })
   statusSale: { value: string; updatedAt: Date };
 
-  @Prop({ type: { city: String, department: String }, required: true, _id: false })
+  @Prop({
+    type: { city: String, department: String },
+    required: true,
+    _id: false,
+  })
   location: { city: string; department: string };
 
   @Prop({ type: Array({ text: String, slug: String }) })
