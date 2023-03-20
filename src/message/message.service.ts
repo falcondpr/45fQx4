@@ -13,11 +13,11 @@ export class MessageService {
   ) {}
 
   create(dto: CreateMessageDto) {
-    return this.messageModel.create(dto);
+    return this.messageModel.create({ ...dto, status: true });
   }
 
-  findAll() {
-    return this.messageModel.find();
+  findAll(idTeam: string) {
+    return this.messageModel.find({ idTeam });
   }
 
   findOne(id: string) {
