@@ -19,6 +19,9 @@ export class Message {
   @Prop({ type: String, required: true })
   content: string;
 
+  @Prop({ type: Boolean })
+  status: boolean;
+
   @Prop({ type: Date, default: new Date().toISOString() })
   createdAt: Date;
 

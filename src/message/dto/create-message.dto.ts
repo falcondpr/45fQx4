@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateMessageDto {
   @IsString()
@@ -12,6 +12,10 @@ export class CreateMessageDto {
   @IsString()
   @IsNotEmpty()
   content: string;
+
+  @IsBoolean()
+  @IsOptional()
+  status: string;
 
   @IsString()
   @IsNotEmpty()
