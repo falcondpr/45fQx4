@@ -28,6 +28,8 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-socket.io": "^9.3.12",
+    "@nestjs/websockets": "^9.3.12",
     "@prisma/client": "^4.11.0",
     "apollo-server-express": "^3.12.0",
     "argon2": "^0.30.3",
@@ -37,6 +39,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "socket.io": "^4.6.1",
     "ts-morph": "^17.0.1"
   },
   "devDependencies": {
