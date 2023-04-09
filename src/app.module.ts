@@ -11,6 +11,7 @@ import { MessageModule } from './message/message.module';
 import { TeamModule } from './team/team.module';
 import { ChatModule } from './chat/chat.module';
 import { TransactionModule } from './transaction/transaction.module';
+import { SaveModule } from './save/save.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { TransactionModule } from './transaction/transaction.module';
     TeamModule,
     ChatModule,
     TransactionModule,
+    SaveModule,
   ],
 })
 export class AppModule {}
