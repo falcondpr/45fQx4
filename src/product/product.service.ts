@@ -32,7 +32,7 @@ export class ProductService {
   }
 
   findManyByStatusSale(statusSale: string): Promise<ProductDocument[]> {
-    return this.productModel.find({ "statusSale.value": statusSale });
+    return this.productModel.find({ 'statusSale.value': statusSale });
   }
 
   findOne(param: string, value: string): Promise<ProductDocument> {
