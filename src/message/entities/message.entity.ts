@@ -1,32 +1,28 @@
-import { HydratedDocument, Types } from 'mongoose';
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 
-export type MessageDocument = HydratedDocument<Message>;
-
-@Schema()
+@Entity()
 export class Message {
-  _id: Types.ObjectId;
+  @ObjectIdColumn()
+  id: ObjectId;
 
-  @Prop({ type: Types.ObjectId, required: true })
-  idTeam: Types.ObjectId;
+  @ObjectIdColumn()
+  idTeam: ObjectId;
 
-  @Prop({ type: Types.ObjectId, required: true })
-  idUserTransmitter: Types.ObjectId;
+  @ObjectIdColumn()
+  idUserTransmitter: ObjectId;
 
-  @Prop({ type: Types.ObjectId, required: true })
-  idUserReceiver: Types.ObjectId;
+  @ObjectIdColumn()
+  idUserReceiver: ObjectId;
 
-  @Prop({ type: String, required: true })
+  @Column({ type: 'string', nullable: false })
   content: string;
 
-  @Prop({ type: Boolean })
+  @Column({ type: 'boolean', default: true })
   status: boolean;
 
-  @Prop({ type: Date, default: new Date().toISOString() })
+  @Column({ type: 'date', default: new Date().toISOString() })
   createdAt: Date;
 
-  @Prop({ type: Date, default: new Date().toISOString() })
+  @Column({ type: 'date', nullable: true })
   updatedAt: Date;
 }
-
-export const MessageSchema = SchemaFactory.createForClass(Message);

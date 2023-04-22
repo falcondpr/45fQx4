@@ -1,13 +1,19 @@
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateMessageDto {
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  idTeam: string;
+  idTeam: number;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  idUserTransmitter: string;
+  idUserTransmitter: number;
 
   @IsString()
   @IsNotEmpty()
@@ -15,9 +21,9 @@ export class CreateMessageDto {
 
   @IsBoolean()
   @IsOptional()
-  status: string;
+  status: boolean;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  idUserReceiver: string;
+  idUserReceiver: number;
 }
