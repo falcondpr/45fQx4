@@ -1,0 +1,15 @@
+{
+  "type": "postgres",
+  "host": "breaded-cluster-do-user-9959481-0.b.db.ondigitalocean.com",
+  "port": 25060,
+  "username": "doadmin",
+  "password": "AVNS_m1qEJ8HTWxMxWAv1luJ",
+  "database": "defaultdb",
+  "entities": ["src/**/*.entity.ts"],
+  "synchronize": false,
+  "migrationsTableName": "migrations",
+  "migrations": ["src/database/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "src/database/migrations"
+  }
+}

@@ -1,38 +1,35 @@
-import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ObjectId, Repository } from 'typeorm';
 
-import { CreateMessageDto, UpdateMessageDto } from './dto';
-import { Message, MessageDocument } from './entities/message.entity';
+import { Message } from './entities/message.entity';
 
 @Injectable()
 export class MessageService {
   constructor(
-    @InjectModel(Message.name)
-    private readonly messageModel: Model<MessageDocument>,
+    @InjectRepository(Message)
+    private messageRepo: Repository<Message>,
   ) {}
 
-  create(dto: CreateMessageDto) {
-    return this.messageModel.create({ ...dto, status: true });
+  create(dto: any) {
+    return this.messageRepo.save(dto);
   }
 
-  findAll(idTeam: string) {
-    return this.messageModel.find({ idTeam });
+  findAll(idTeam: ObjectId) {
+    return this.messageRepo.findBy({ idTeam });
   }
 
-  findOne(id: string) {
-    return this.messageModel.findById(id);
+  findOne(id: ObjectId) {
+    return this.messageRepo.findOneByOrFail({ id });
   }
 
-  update(id: string, dto: UpdateMessageDto) {
-    return this.messageModel.findByIdAndUpdate(
-      id,
-      { ...dto, updatedAt: new Date().toISOString() },
-      { new: true },
-    );
+  async update(id: ObjectId, dto: any) {
+    const message = await this.messageRepo.findOneBy({ id });
+    this.messageRepo.merge(message, dto);
+    return this.messageRepo.save(message);
   }
 
   remove(id: string) {
-    return this.messageModel.findByIdAndDelete(id);
+    return this.messageRepo.delete(id);
   }
 }

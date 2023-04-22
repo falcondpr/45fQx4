@@ -9,29 +9,29 @@ import {
 } from '@nestjs/common';
 
 import { MessageService } from './message.service';
-import { CreateMessageDto, UpdateMessageDto } from './dto';
+import { ObjectId } from 'typeorm';
 
 @Controller('message')
 export class MessageController {
-  constructor(private readonly messageService: MessageService) {}
+  constructor(private messageService: MessageService) {}
 
   @Post('create')
-  create(@Body() dto: CreateMessageDto) {
+  create(@Body() dto: any) {
     return this.messageService.create(dto);
   }
 
   @Get('idTeam/:idTeam')
-  findAll(@Param('idTeam') idTeam: string) {
+  findAll(@Param('idTeam') idTeam: ObjectId) {
     return this.messageService.findAll(idTeam);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: ObjectId) {
     return this.messageService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateMessageDto) {
+  update(@Param('id') id: ObjectId, @Body() dto: any) {
     return this.messageService.update(id, dto);
   }
 
