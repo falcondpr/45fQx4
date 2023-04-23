@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtModule } from '@nestjs/jwt';
 
 import { MessageModule } from './message/message.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -11,12 +13,14 @@ import { MessageModule } from './message/message.module';
       type: 'mongodb',
       url: process.env.MONGO_HOST,
       entities: ['dist/**/*.entity{.ts,.js}'],
-      database: process.env.MONGO_DATABASE,
       synchronize: true,
       useNewUrlParser: true,
       logging: true,
+      autoLoadEntities: true,
     }),
+    JwtModule,
     MessageModule,
+    UserModule,
   ],
 })
 export class AppModule {}
