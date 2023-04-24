@@ -5,6 +5,7 @@ import {
   ObjectId,
   ObjectIdColumn,
 } from 'typeorm';
+import { STATUS_POST, STATUS_PRODUCT } from '../enum/product.enum';
 
 @Entity()
 export class Product {
@@ -29,11 +30,14 @@ export class Product {
   @Column({ type: 'array', nullable: false })
   images: string[];
 
-  @Column({ type: 'string', nullable: false })
-  productStatus: string;
+  @Column({
+    type: 'enum',
+    enum: STATUS_PRODUCT,
+  })
+  productStatus: STATUS_PRODUCT;
 
   @Column('simple-json')
-  status: { value: string; updatedAt: Date };
+  statusPost: { value: STATUS_POST; updatedAt: Date };
 
   @Column('simple-json')
   location: { city: string; country: string; state: string };

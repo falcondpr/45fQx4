@@ -1,0 +1,11 @@
+export enum STATUS_PRODUCT {
+  NEW = 'NEW',
+  USED = 'USED',
+  ALMOST_NEW = 'ALMOST_NEW',
+}
+
+export enum STATUS_POST {
+  SOLD_OUT = 'SOLD_OUT',
+  AVAILABLE = 'AVAILABLE',
+  INVISIBLE = 'INVISIBLE',
+}

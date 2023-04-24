@@ -7,6 +7,7 @@ import {
   IsString,
   IsNotEmpty,
 } from 'class-validator';
+import { STATUS_POST, STATUS_PRODUCT } from '../enum/product.enum';
 
 export class CreateProductDto {
   @IsString()
@@ -36,11 +37,11 @@ export class CreateProductDto {
 
   @IsString()
   @IsNotEmpty()
-  productStatus: string;
+  productStatus: STATUS_PRODUCT;
 
   @IsObject()
   @IsNotEmpty()
-  status: { value: string; updatedAt: Date };
+  statusPost: { value: STATUS_POST; updatedAt: Date };
 
   @IsObject()
   @IsNotEmpty()
