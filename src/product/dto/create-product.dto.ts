@@ -41,7 +41,7 @@ export class CreateProductDto {
 
   @IsObject()
   @IsNotEmpty()
-  statusPost: { value: STATUS_POST; updatedAt: Date };
+  postStatus: { value: STATUS_POST; updatedAt: Date };
 
   @IsObject()
   @IsNotEmpty()
