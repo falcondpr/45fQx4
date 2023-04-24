@@ -4,7 +4,7 @@ export type Product = {
   description: string;
   price: number;
   owner_id: string;
-  imagenes: Image[];
+  images: string[];
   product_status: STATUS_PRODUCT;
   status: {
     value: SALE_STATUS;
@@ -19,12 +19,6 @@ export type Product = {
   };
   created_at: string;
   updated_at: string;
-};
-
-type Image = {
-  id: string;
-  url_image: string;
-  created_at: string;
 };
 
 enum SALE_STATUS {
