@@ -17,6 +17,9 @@ export class Product {
   @Column({ type: 'string', nullable: false })
   description: string;
 
+  @Column({ type: 'string', nullable: true })
+  businessId?: string;
+
   @Column({ type: 'number', nullable: false })
   price: number;
 

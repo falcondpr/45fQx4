@@ -17,6 +17,10 @@ export class CreateProductDto {
   @IsNotEmpty()
   description: string;
 
+  @IsString()
+  @IsOptional()
+  businessId?: string;
+
   @IsNumber()
   @IsNotEmpty()
   @IsPositive()
