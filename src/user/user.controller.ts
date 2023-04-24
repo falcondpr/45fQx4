@@ -32,9 +32,12 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get('id/:id')
-  findOneById(@Param('id') id: ObjectId): Promise<User> {
-    return this.userService.findOneById(id);
+  @Get(':param/:value')
+  findOneById(
+    @Param('value') value: ObjectId | string,
+    @Param('param') param: string,
+  ): Promise<User> {
+    return this.userService.findOneBy(value, param);
   }
 
   @Patch(':id')

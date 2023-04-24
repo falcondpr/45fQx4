@@ -85,12 +85,16 @@ export class UserService {
     return this.userRepo.find();
   }
 
-  async findOneById(id: ObjectId): Promise<any> {
-    return this.userRepo.findOneBy({ _id: new ObjectID(id) });
+  async findOneBy(value: ObjectId | string, param: string): Promise<User> {
+    if (ObjectID.isValid(value) && param === 'id') {
+      return this.userRepo.findOneByOrFail({ _id: new ObjectID(value) });
+    }
+
+    return this.userRepo.findOneByOrFail({ [param]: value });
   }
 
   async update(id: ObjectId, dto: UpdateUserDto): Promise<User> {
-    const user = await this.findOneById(id);
+    const user = await this.findOneBy(id, 'id');
     this.userRepo.merge(user, dto);
     return this.userRepo.save(user);
   }
