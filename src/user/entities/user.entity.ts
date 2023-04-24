@@ -23,6 +23,18 @@ export class User {
   @Column({ type: 'string', nullable: false })
   password: string;
 
+  @Column('simple-json')
+  verified: { value: boolean; updatedAt: Date };
+
+  @Column('simple-json')
+  banner: { url: string; updatedAt: Date };
+
+  @Column('simple-json')
+  avatar: { url: string; approved: boolean; updatedAt: Date };
+
+  @Column('simple-json')
+  premium: { value: boolean; updatedAt: Date };
+
   @CreateDateColumn()
   createdAt: Date;
 
