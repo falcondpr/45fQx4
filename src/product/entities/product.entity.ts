@@ -37,7 +37,7 @@ export class Product {
   productStatus: STATUS_PRODUCT;
 
   @Column('simple-json')
-  statusPost: { value: STATUS_POST; updatedAt: Date };
+  postStatus: { value: STATUS_POST; updatedAt: Date };
 
   @Column('simple-json')
   location: { city: string; country: string; state: string };
