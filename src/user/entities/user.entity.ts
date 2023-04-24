@@ -25,4 +25,7 @@ export class User {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @Column({ type: 'date' })
+  updatedAt: Date;
 }

@@ -7,11 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ObjectId } from 'typeorm';
 
 import { UserService } from './user.service';
 import { RegisterUserDto, LoginUserDTO, UpdateUserDto } from './dto';
 import { User } from './entities/user.entity';
-import { ObjectId } from 'typeorm';
 
 @Controller('user')
 export class UserController {

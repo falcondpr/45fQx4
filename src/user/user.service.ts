@@ -95,7 +95,11 @@ export class UserService {
 
   async update(id: ObjectId, dto: UpdateUserDto): Promise<User> {
     const user = await this.findOneBy(id, 'id');
-    this.userRepo.merge(user, dto);
+    const updatedDTO = {
+      ...dto,
+      updatedAt: new Date().toISOString(),
+    };
+    this.userRepo.merge(user, updatedDTO);
     return this.userRepo.save(user);
   }
 

@@ -1,9 +1,9 @@
 export type Product = {
   id: string;
-  name: string;
+  title: string;
   description: string;
   price: number;
-  owner_id: string;
+  ownerId: string;
   images: string[];
   product_status: STATUS_PRODUCT;
   status: {
