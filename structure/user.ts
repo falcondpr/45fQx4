@@ -5,6 +5,7 @@ export type User = {
   username: string;
   email: string;
   password: string;
+  type: string;
   avatar: {
     url_image: string;
     is_approved: boolean;
