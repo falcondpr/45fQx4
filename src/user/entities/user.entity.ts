@@ -23,6 +23,9 @@ export class User {
   @Column({ type: 'string', nullable: false })
   password: string;
 
+  @Column({ type: 'string', nullable: false })
+  type: string;
+
   @Column('simple-json')
   verified: { value: boolean; updatedAt: Date };
 
