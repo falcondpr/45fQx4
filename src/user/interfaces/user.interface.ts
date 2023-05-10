@@ -1,7 +1,5 @@
-import { ObjectId } from 'typeorm';
-
 export interface ITokenDTO {
-  id: ObjectId;
+  id: string;
   email: string;
   fullname: string;
 }

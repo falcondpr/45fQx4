@@ -1,11 +1,18 @@
-import { ObjectType, Field } from '@nestjs/graphql';
+import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { IsEmail, MinLength } from 'class-validator';
-import { ObjectId } from 'typeorm';
+import { PrimaryGeneratedColumn } from 'typeorm';
+import {
+  AvatarType,
+  BannerType,
+  PremiumType,
+  VerifiedType,
+} from '../dto/update-user.dto';
 
-@ObjectType()
+@ObjectType('User')
 export class User {
-  @Field(() => ObjectId)
-  _id: ObjectId;
+  @Field(() => ID)
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Field(() => String)
   @IsEmail()
@@ -25,17 +32,17 @@ export class User {
   @Field(() => String)
   type: string;
 
-  @Field(() => Object, { nullable: true })
-  verified: { value: boolean; updatedAt: Date };
+  @Field(() => VerifiedType, { nullable: true })
+  verified: object;
 
-  @Field(() => Object, { nullable: true })
-  banner: { url: string; updatedAt: Date };
+  @Field(() => BannerType, { nullable: true })
+  banner: object;
 
-  @Field(() => Object, { nullable: true })
-  avatar: { url: string; approved: boolean; updatedAt: Date };
+  @Field(() => AvatarType, { nullable: true })
+  avatar: object;
 
-  @Field(() => Object, { nullable: true })
-  premium: { value: boolean; updatedAt: Date };
+  @Field(() => PremiumType, { nullable: true })
+  premium: object;
 
   @Field(() => Date)
   createdAt: Date;

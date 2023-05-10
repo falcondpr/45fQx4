@@ -1,6 +1,6 @@
 import * as argon from 'argon2';
 import { ObjectId as ObjectID } from 'mongodb';
-import { ObjectId, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import {
   Injectable,
   ForbiddenException,
@@ -9,10 +9,9 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 
-import { RegisterUserDto, UpdateUserDto } from './dto';
 import { User } from './entities/user.entity';
 import { ITokenDTO } from './interfaces/user.interface';
-import { LoginUserDTO } from './dto/create-user.dto';
+import { UpdateUserDto, RegisterUserDto, LoginUserDTO } from './dto';
 
 @Injectable()
 export class UserService {
@@ -45,7 +44,7 @@ export class UserService {
     try {
       const userCreated = await this.userRepo.save(paramsUserToCreate);
       const paramsToCreateToken: any = {
-        id: userCreated._id,
+        id: userCreated.id,
         email: userCreated.email,
         fullname: userCreated.fullname,
       };
@@ -70,7 +69,7 @@ export class UserService {
 
     try {
       const paramsToCreateToken: any = {
-        id: userLogged._id,
+        id: userLogged.id,
         email: userLogged.email,
         fullname: userLogged.fullname,
       };
@@ -85,15 +84,15 @@ export class UserService {
     return this.userRepo.find();
   }
 
-  async findOneBy(value: ObjectId | string, param: string): Promise<User> {
+  async findOneBy(value: string, param: string): Promise<User> {
     if (ObjectID.isValid(value) && param === 'id') {
-      return this.userRepo.findOneByOrFail({ _id: new ObjectID(value) });
+      return this.userRepo.findOneByOrFail({ id: value });
     }
 
     return this.userRepo.findOneByOrFail({ [param]: value });
   }
 
-  async update(id: ObjectId, dto: UpdateUserDto): Promise<User> {
+  async update(id: string, dto: UpdateUserDto): Promise<User> {
     const user = await this.findOneBy(id, 'id');
     const updatedDTO = {
       ...dto,
@@ -103,7 +102,7 @@ export class UserService {
     return this.userRepo.save(user);
   }
 
-  remove(id: ObjectId) {
+  remove(id: string) {
     return this.userRepo.delete(id);
   }
 }
