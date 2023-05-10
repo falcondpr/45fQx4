@@ -30,7 +30,7 @@ export class UserService {
     });
   }
 
-  async register(dto: RegisterUserDto): Promise<{ token: string }> {
+  async register(dto: RegisterUserDto): Promise<string> {
     const { password, username, email } = dto;
 
     const hash = await argon.hash(password);
@@ -51,7 +51,7 @@ export class UserService {
       };
 
       const token = await this.signInToken(paramsToCreateToken);
-      return { token };
+      return token;
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +75,7 @@ export class UserService {
         fullname: userLogged.fullname,
       };
       const token = await this.signInToken(paramsToCreateToken);
-      return { token };
+      return token;
     } catch (error) {
       console.log(error);
     }

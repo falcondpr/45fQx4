@@ -1,46 +1,45 @@
-import {
-  ObjectId,
-  Column,
-  CreateDateColumn,
-  Entity,
-  ObjectIdColumn,
-} from 'typeorm';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { IsEmail, MinLength } from 'class-validator';
+import { ObjectId } from 'typeorm';
 
-@Entity()
+@ObjectType()
 export class User {
-  @ObjectIdColumn()
+  @Field(() => ObjectId)
   _id: ObjectId;
 
-  @Column({ type: 'string', nullable: false })
-  fullname: string;
-
-  @Column({ type: 'string', nullable: false })
+  @Field(() => String)
+  @IsEmail()
   email: string;
 
-  @Column({ type: 'string', nullable: false })
+  @Field(() => String)
+  @MinLength(6)
+  fullname: string;
+
+  @Field(() => String)
   username: string;
 
-  @Column({ type: 'string', nullable: false })
+  @Field(() => String)
+  @MinLength(6)
   password: string;
 
-  @Column({ type: 'string', nullable: false })
+  @Field(() => String)
   type: string;
 
-  @Column('simple-json')
+  @Field(() => Object, { nullable: true })
   verified: { value: boolean; updatedAt: Date };
 
-  @Column('simple-json')
+  @Field(() => Object, { nullable: true })
   banner: { url: string; updatedAt: Date };
 
-  @Column('simple-json')
+  @Field(() => Object, { nullable: true })
   avatar: { url: string; approved: boolean; updatedAt: Date };
 
-  @Column('simple-json')
+  @Field(() => Object, { nullable: true })
   premium: { value: boolean; updatedAt: Date };
 
-  @CreateDateColumn()
+  @Field(() => Date)
   createdAt: Date;
 
-  @Column({ type: 'date' })
-  updatedAt: Date;
+  @Field(() => Date, { nullable: true })
+  updatedAt?: Date;
 }

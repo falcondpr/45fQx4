@@ -7,39 +7,36 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Business {
+export class User {
   @ObjectIdColumn()
   _id: ObjectId;
 
   @Column({ type: 'string', nullable: false })
-  name: string;
+  fullname: string;
 
   @Column({ type: 'string', nullable: false })
-  banner: string;
-
-  @Column('simple-json')
-  verified: { value: boolean; updatedAt: Date };
-
-  @Column({ type: 'string', nullable: false })
-  avatar: string;
-
-  @Column({ type: 'string', nullable: false })
-  category: string;
-
-  @Column('simple-array')
-  tags: string[];
+  email: string;
 
   @Column({ type: 'string', nullable: false })
   username: string;
 
-  @Column('simple-array')
-  ownerId: string[];
+  @Column({ type: 'string', nullable: false })
+  password: string;
+
+  @Column({ type: 'string', nullable: false })
+  type: string;
 
   @Column('simple-json')
-  location: { state: string; city: string; country: string };
+  verified: { value: boolean; updatedAt: Date };
 
   @Column('simple-json')
-  address: { name: string; latitude: string; longitude: string };
+  banner: { url: string; updatedAt: Date };
+
+  @Column('simple-json')
+  avatar: { url: string; approved: boolean; updatedAt: Date };
+
+  @Column('simple-json')
+  premium: { value: boolean; updatedAt: Date };
 
   @CreateDateColumn()
   createdAt: Date;
