@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { objectEnumValues } from '@prisma/client/runtime';
 
 import { PrismaService } from '@sura/prisma';
 
@@ -14,18 +15,31 @@ export class UserService {
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.prisma.user.findMany();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} user`;
+  findOne(query: { [key: string]: string }) {
+    const key = Object.keys(query)[0];
+    const value = Object.values(query)[0];
+
+    return this.prisma.user.findFirst({
+      where: { [key]: value },
+    });
   }
 
-  update(id: string, dto: any) {
-    return `This action updates a #${id} user`;
+  update(id: string, dto: Prisma.UserUpdateInput) {
+    return this.prisma.user.update({
+      where: { id },
+      data: {
+        ...dto,
+        updatedAt: new Date(),
+      },
+    });
   }
 
   remove(id: string) {
-    return `This action removes a #${id} user`;
+    return this.prisma.user.delete({
+      where: { id },
+    });
   }
 }

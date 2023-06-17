@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 
@@ -25,9 +26,9 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
+  @Get('find')
+  findOne(@Query() query: { [key: string]: string }) {
+    return this.userService.findOne(query);
   }
 
   @Patch(':id')
