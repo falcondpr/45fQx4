@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { objectEnumValues } from '@prisma/client/runtime';
 
 import { PrismaService } from '@sura/prisma';
 
