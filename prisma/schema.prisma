@@ -6,3 +6,57 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model TypeUser {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  User User[]
+}
+
+model Affiliated {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  User User[]
+}
+
+model GenderUser {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  User User[]
+}
+
+model VerifiedUser {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  value     Boolean
+  updatedAt DateTime?
+  User      User[]
+}
+
+model PremiumUser {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  value     Boolean
+  updatedAt DateTime?
+  User      User[]
+}
+
+model User {
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  fullname      String
+  username      String
+  email         String
+  password      String
+  typeUserId    String        @db.ObjectId
+  typeUser      TypeUser      @relation(fields: [typeUserId], references: [id])
+  affiliatedId  String?       @db.ObjectId
+  affiliated    Affiliated?   @relation(fields: [affiliatedId], references: [id])
+  genderId      String        @db.ObjectId
+  gender        GenderUser    @relation(fields: [genderId], references: [id])
+  avatar        String
+  banner        String
+  verifiedId    String?       @db.ObjectId
+  verified      VerifiedUser? @relation(fields: [verifiedId], references: [id])
+  premiumUser   PremiumUser?  @relation(fields: [premiumUserId], references: [id])
+  premiumUserId String?       @db.ObjectId
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now())
+}
