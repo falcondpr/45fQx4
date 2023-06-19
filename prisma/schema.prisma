@@ -39,24 +39,35 @@ model PremiumUser {
   User      User[]
 }
 
+model SkinUser {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  image     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  User      User[]
+}
+
 model User {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  fullname      String
-  username      String
-  email         String
-  password      String
-  typeUserId    String        @db.ObjectId
-  typeUser      TypeUser      @relation(fields: [typeUserId], references: [id])
-  affiliatedId  String?       @db.ObjectId
-  affiliated    Affiliated?   @relation(fields: [affiliatedId], references: [id])
-  genderId      String        @db.ObjectId
-  gender        GenderUser    @relation(fields: [genderId], references: [id])
-  avatar        String
-  banner        String
-  verifiedId    String?       @db.ObjectId
-  verified      VerifiedUser? @relation(fields: [verifiedId], references: [id])
-  premiumUser   PremiumUser?  @relation(fields: [premiumUserId], references: [id])
-  premiumUserId String?       @db.ObjectId
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now())
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  fullname       String
+  username       String
+  email          String
+  password       String
+  typeUserId     String        @db.ObjectId
+  typeUser       TypeUser      @relation(fields: [typeUserId], references: [id])
+  affiliatedId   String?       @db.ObjectId
+  affiliated     Affiliated?   @relation(fields: [affiliatedId], references: [id])
+  genderId       String        @db.ObjectId
+  gender         GenderUser    @relation(fields: [genderId], references: [id])
+  avatar         String
+  banner         String
+  verifiedUserId String?       @db.ObjectId
+  verifiedUser   VerifiedUser? @relation(fields: [verifiedUserId], references: [id])
+  skinUserId     String?       @db.ObjectId
+  skinUser       SkinUser?     @relation(fields: [skinUserId], references: [id])
+  premiumUser    PremiumUser?  @relation(fields: [premiumUserId], references: [id])
+  premiumUserId  String?       @db.ObjectId
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @default(now())
 }
