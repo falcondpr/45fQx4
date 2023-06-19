@@ -16,9 +16,14 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
+  @Post('register')
   create(@Body() createUserDto: Prisma.UserCreateInput) {
     return this.userService.create(createUserDto);
+  }
+
+  @Post('login')
+  login(@Body() createUserDto: Prisma.UserCreateInput) {
+    return this.userService.login(createUserDto);
   }
 
   @Get()
@@ -32,7 +37,10 @@ export class UserController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: any) {
+  update(
+    @Param('id') id: string,
+    @Body() updateUserDto: Prisma.UserUpdateInput
+  ) {
     return this.userService.update(id, updateUserDto);
   }
 

@@ -7,9 +7,11 @@
   "dependencies": {
     "@nestjs/common": "^9.1.1",
     "@nestjs/core": "^9.1.1",
+    "@nestjs/jwt": "^10.1.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.1.1",
     "@prisma/client": "^4.15.0",
+    "argon2": "^0.30.3",
     "axios": "^1.0.0",
     "next": "13.4.1",
     "react": "18.2.0",
