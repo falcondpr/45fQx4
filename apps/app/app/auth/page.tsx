@@ -6,9 +6,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Auth() {
   const router = useRouter();
+  const innerHeight = window.innerHeight;
 
   return (
-    <Box h="100vh" overflow="hidden">
+    <Box h={`${innerHeight}px`} overflow="hidden">
       <Box
         height="70vh"
         bgColor="pink.100"
