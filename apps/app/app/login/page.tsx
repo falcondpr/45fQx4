@@ -36,9 +36,9 @@ export default function Login() {
           </Button>
 
           <Text color="brand.700" marginTop="10px" textAlign="center">
-            Ya tienes una cuenta?{' '}
-            <Link href="/login" as={NextLink} textDecor="underline">
-              Inicia sesion
+            Aun no tienes una cuenta?{' '}
+            <Link href="/register" as={NextLink} textDecor="underline">
+              Registrate
             </Link>
           </Text>
         </Box>
