@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { Box, Button, Grid, Heading, Text, VStack } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 export default function Auth() {
+  const router = useRouter();
+
   return (
     <Box h="100vh" overflow="hidden">
       <Box
@@ -28,7 +31,7 @@ export default function Auth() {
         position="absolute"
         zIndex="10"
       >
-        <Heading fontWeight="bold" fontSize="36px">
+        <Heading variant="base">
           Empieza a comprar y vender de forma segura
         </Heading>
         <Text variant="base" mt="10px">
@@ -37,7 +40,9 @@ export default function Auth() {
         </Text>
 
         <VStack spacing={4} flexDir="row" marginTop="16px">
-          <Button variant="base">Crear cuenta</Button>
+          <Button variant="base" onClick={() => router.push('/register')}>
+            Crear cuenta
+          </Button>
           <Button variant="outline">Inicia sesion</Button>
         </VStack>
       </Grid>
