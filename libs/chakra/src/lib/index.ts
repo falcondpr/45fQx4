@@ -4,6 +4,7 @@ import { fonts } from './fonts';
 import { colors } from './colors';
 import { config } from './config';
 import { buttonTheme } from './components/button';
+import { textTheme } from './components/text';
 
 const theme = extendTheme({
   fonts,
@@ -11,6 +12,7 @@ const theme = extendTheme({
   config,
   components: {
     Button: buttonTheme,
+    Text: textTheme,
   },
 });
 

@@ -1,11 +1,14 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
 
 const base = defineStyle({
-  height: '58px',
+  height: '60px',
   bgColor: 'brand.900',
   borderRadius: '6px',
   color: 'white',
   width: '100%',
+  fontSize: '20px',
+  fontWeight: 'medium',
+  boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.1)',
 
   _hover: {
     opacity: 0.95,
@@ -18,6 +21,14 @@ const base = defineStyle({
   },
 });
 
+const outline = defineStyle({
+  ...base,
+  bgColor: 'white',
+  border: '1px solid',
+  borderColor: 'brand.900',
+  color: 'brand.900',
+});
+
 export const buttonTheme = defineStyleConfig({
-  variants: { base },
+  variants: { base, outline },
 });

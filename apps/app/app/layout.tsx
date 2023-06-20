@@ -1,5 +1,14 @@
 import './global.css';
+
+import { Roboto } from 'next/font/google';
 import Providers from '../components/Providers';
+
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Welcome to app',
@@ -12,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="es" className={roboto.className}>
       <body>
         <Providers>{children}</Providers>
       </body>
