@@ -5,7 +5,7 @@ const extendColors: DeepPartial<Record<string, Theme['colors']['blackAlpha']>> =
     brand: {
       100: '#d9d9d9',
       200: '',
-      300: '',
+      900: '#333',
     },
   };
 

@@ -1,15 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Box, Link as LinkChakraUI } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Box, Button } from '@chakra-ui/react';
 
 export default function Auth() {
   return (
-    <Box color="brand.100">
-      <LinkChakraUI as={Link} fontSize="32px" href="/">
-        Inicio
-      </LinkChakraUI>
+    <Box p="2">
+      <Button variant="base">he</Button>
     </Box>
   );
 }
