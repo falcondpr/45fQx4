@@ -1,0 +1,26 @@
+{
+  "name": "chakra",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/chakra/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/chakra",
+        "main": "libs/chakra/src/index.ts",
+        "tsConfig": "libs/chakra/tsconfig.lib.json",
+        "assets": ["libs/chakra/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/chakra/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
