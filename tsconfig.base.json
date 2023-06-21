@@ -17,6 +17,7 @@
     "paths": {
       "@sura/axios": ["libs/axios/src/index.ts"],
       "@sura/chakra": ["libs/chakra/src/index.ts"],
+      "@sura/interfaces": ["libs/interfaces/src/index.ts"],
       "@sura/prisma": ["libs/prisma/src/index.ts"],
       "@sura/prisma.service.ts": ["libs/prisma.service.ts/src/index.ts"],
       "@sura/services": ["libs/services/src/index.ts"],

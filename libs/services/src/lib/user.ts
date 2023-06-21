@@ -9,6 +9,15 @@ const user = {
 
     return user;
   },
+  register: async (data: any) => {
+    const user = await axios({
+      method: 'POST',
+      url: '/register',
+      data: JSON.stringify(data),
+    });
+
+    return user;
+  },
 };
 
 export default user;
