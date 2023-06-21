@@ -35,7 +35,7 @@ export default function Login() {
             Inicia sesion
           </Button>
 
-          <Text color="brand.700" marginTop="10px" textAlign="center">
+          <Text color="brand.700" marginTop="12px" textAlign="center">
             Aun no tienes una cuenta?{' '}
             <Link href="/register" as={NextLink} textDecor="underline">
               Registrate
