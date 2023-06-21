@@ -1,15 +1,21 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Grid, Heading, Text, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
 export default function Auth() {
   const router = useRouter();
-  const innerHeight = window.innerHeight;
+
+  const [height, setHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const innerHeight = window.innerHeight;
+    setHeight(innerHeight);
+  }, []);
 
   return (
-    <Box h={`${innerHeight}px`} overflow="hidden">
+    <Box h={`${height}px`} overflow="hidden">
       <Box
         height="70vh"
         bgColor="pink.100"
