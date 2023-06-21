@@ -47,10 +47,20 @@ export default function Auth() {
         </Text>
 
         <VStack spacing={4} flexDir="row" marginTop="16px">
-          <Button variant="base" onClick={() => router.push('/register')}>
+          <Button
+            fontSize="18px"
+            variant="base"
+            onClick={() => router.push('/register')}
+          >
             Crear cuenta
           </Button>
-          <Button variant="outline">Inicia sesion</Button>
+          <Button
+            fontSize="18px"
+            variant="outline"
+            onClick={() => router.push('/login')}
+          >
+            Inicia sesion
+          </Button>
         </VStack>
       </Grid>
     </Box>
