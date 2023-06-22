@@ -48,11 +48,21 @@ model SkinUser {
   User      User[]
 }
 
+model LocationUser {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  latitude    Int
+  longitude   Int
+  city        String
+  area        String
+  country     String
+  userId      String
+}
+
 model User {
   id             String        @id @default(auto()) @map("_id") @db.ObjectId
   fullname       String
-  username       String
-  email          String
+  username       String        @unique
+  email          String        @unique
   password       String
   typeUserId     String        @db.ObjectId
   typeUser       TypeUser      @relation(fields: [typeUserId], references: [id])

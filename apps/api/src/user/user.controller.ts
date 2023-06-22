@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 
+import { IUser } from '@sura/interfaces';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -17,7 +18,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('register')
-  create(@Body() createUserDto: Prisma.UserCreateInput) {
+  create(@Body() createUserDto: IUser) {
     return this.userService.create(createUserDto);
   }
 

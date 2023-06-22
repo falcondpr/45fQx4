@@ -1,8 +1,10 @@
 import * as argon from 'argon2';
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
+
 import { PrismaService } from '@sura/prisma';
+import { IStatus, IUser } from '@sura/interfaces';
 
 @Injectable()
 export class UserService {
@@ -21,7 +23,7 @@ export class UserService {
     return token;
   }
 
-  async create(dto: Prisma.UserCreateInput) {
+  async create(dto: IUser) {
     const hash = await argon.hash(dto.password);
 
     const foundUser = await this.prisma.user.findFirst({
@@ -56,13 +58,17 @@ export class UserService {
     return this.prisma.user.findMany();
   }
 
-  findOne(query: { [key: string]: string }) {
+  async findOne(query: { [key: string]: string }): Promise<IUser | IStatus> {
     const key = Object.keys(query)[0];
     const value = Object.values(query)[0];
 
-    return this.prisma.user.findFirst({
+    const user = await this.prisma.user.findUnique({
       where: { [key]: value },
     });
+
+    if (!user) throw new NotFoundException('No se ha encontrado el usuario');
+
+    return user;
   }
 
   update(id: string, dto: Prisma.UserUpdateInput) {
