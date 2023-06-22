@@ -2,7 +2,9 @@
   "name": "@sura/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prisma:generate": "prisma generate"
+  },
   "private": true,
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.4",
