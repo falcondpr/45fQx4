@@ -11,10 +11,8 @@ import { Input } from '@sura/ui';
 import DotActive from '../../components/auth/DotActive';
 
 const registerValidationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Debe ser un correo válido')
-    .required('El correo es obligatorio'),
+  password: yup.string().required('La contrasena es obligatorio'),
+  confirmPassword: yup.string().required('Confirme la contrasena'),
 });
 
 export default function Register() {
@@ -22,7 +20,7 @@ export default function Register() {
 
   // eslint-disable-next-line
   const handleRegisterUser = (values: any): void => {
-    router.push('/register/fullname');
+    router.push('/register/username');
     console.log({ values });
   };
 
@@ -57,7 +55,8 @@ export default function Register() {
           <Formik
             validationSchema={registerValidationSchema}
             initialValues={{
-              email: '',
+              password: '',
+              confirmPassword: '',
             }}
             // eslint-disable-next-line
             onSubmit={(values: any) => handleRegisterUser(values)}
@@ -66,19 +65,35 @@ export default function Register() {
               <Box as="form" onSubmit={handleSubmit}>
                 <Box>
                   <Input
-                    label="email"
-                    value={values.email}
-                    onChange={handleChange('email')}
-                    onBlur={handleBlur('email')}
+                    label="contrasena"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange('password')}
+                    onBlur={handleBlur('password')}
                   />
-                  {errors.email && (
+                  {errors.password && (
                     <Text fontSize="14px" mt="-12px" mb="12px" color="red.400">
-                      {errors.email as string}
+                      {errors.password as string}
                     </Text>
                   )}
                 </Box>
 
-                <DotActive value={1} />
+                <Box>
+                  <Input
+                    label="confirmar contrasena"
+                    value={values.confirmPassword}
+                    type="password"
+                    onChange={handleChange('confirmPassword')}
+                    onBlur={handleBlur('confirmPassword')}
+                  />
+                  {errors.confirmPassword && (
+                    <Text fontSize="14px" mt="-12px" mb="12px" color="red.400">
+                      {errors.confirmPassword as string}
+                    </Text>
+                  )}
+                </Box>
+
+                <DotActive value={5} />
 
                 <Flex gap="16px" mt="20px">
                   <Button
