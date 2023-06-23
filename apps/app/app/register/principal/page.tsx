@@ -36,6 +36,7 @@ export default function PrincipalRegister() {
         position="relative"
         w="full"
         height="100%"
+        bgPos="bottom"
       >
         <Box
           position="absolute"
