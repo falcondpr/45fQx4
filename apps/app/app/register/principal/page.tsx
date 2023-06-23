@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import {
   Box,
   Button,
-  Flex,
   Grid,
   Heading,
   Image,
@@ -14,12 +13,10 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
-// bg-auth-principal
-
 export default function PrincipalRegister() {
   const router = useRouter();
 
-  const [height, setHeight] = useState<number | string>(768);
+  const [height, setHeight] = useState<number | string>(0);
 
   useEffect(() => {
     const innerHeight = window.innerHeight;
@@ -27,8 +24,19 @@ export default function PrincipalRegister() {
   }, []);
 
   return (
-    <Flex flexDir="column" height={height} overflow="hidden">
-      <Box position="relative" w="full" height="72vh">
+    <Grid
+      gridTemplateRows="3fr 1fr"
+      flexDir="column"
+      height={height}
+      overflow="hidden"
+    >
+      <Box
+        bgImage="url('/images/bg-auth-principal.png')"
+        bgSize="cover"
+        position="relative"
+        w="full"
+        height="100%"
+      >
         <Box
           position="absolute"
           top="0"
@@ -36,14 +44,14 @@ export default function PrincipalRegister() {
           w="full"
           h="full"
           zIndex="10"
-          bg="linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%), url('/images/bg-auth-principal.png'), lightgray 50% / cover no-repeat"
+          bg="linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%)"
         />
 
         <Grid
           h="full"
           position="relative"
           zIndex="20"
-          p="20px"
+          p="0 20px"
           pb="32px"
           alignContent="flex-end"
         >
@@ -55,7 +63,7 @@ export default function PrincipalRegister() {
         </Grid>
       </Box>
 
-      <Box p="20px" position="fixed" left="0" bottom="0" w="full">
+      <Box p="20px" left="0" bottom="0" w="full" bgColor="white">
         <Button
           shadow="none"
           variant="base"
@@ -96,6 +104,6 @@ export default function PrincipalRegister() {
           </Link>
         </Text>
       </Box>
-    </Flex>
+    </Grid>
   );
 }
