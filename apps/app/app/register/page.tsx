@@ -21,6 +21,7 @@ const registerValidationSchema = yup.object().shape({
 });
 
 export default function Register() {
+  // eslint-disable-next-line
   const handleRegisterUser = (values: any): void => {
     console.log({ values });
   };
@@ -57,6 +58,7 @@ export default function Register() {
             password: '',
             confirmPassword: '',
           }}
+          // eslint-disable-next-line
           onSubmit={(values: any) => handleRegisterUser(values)}
         >
           {({ handleBlur, handleChange, values, handleSubmit, errors }) => (
