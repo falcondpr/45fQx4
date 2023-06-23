@@ -11,10 +11,7 @@ import { Input } from '@sura/ui';
 import DotActive from '../../components/auth/DotActive';
 
 const registerValidationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Debe ser un correo válido')
-    .required('El correo es obligatorio'),
+  fullname: yup.string().required('El nombre es obligatorio'),
 });
 
 export default function Register() {
@@ -22,7 +19,7 @@ export default function Register() {
 
   // eslint-disable-next-line
   const handleRegisterUser = (values: any): void => {
-    router.push('/register/fullname');
+    router.push('/register/username');
     console.log({ values });
   };
 
@@ -57,7 +54,7 @@ export default function Register() {
           <Formik
             validationSchema={registerValidationSchema}
             initialValues={{
-              email: '',
+              fullname: '',
             }}
             // eslint-disable-next-line
             onSubmit={(values: any) => handleRegisterUser(values)}
@@ -66,19 +63,19 @@ export default function Register() {
               <Box as="form" onSubmit={handleSubmit}>
                 <Box>
                   <Input
-                    label="email"
-                    value={values.email}
-                    onChange={handleChange('email')}
-                    onBlur={handleBlur('email')}
+                    label="nombre completo"
+                    value={values.fullname}
+                    onChange={handleChange('fullname')}
+                    onBlur={handleBlur('fullname')}
                   />
-                  {errors.email && (
+                  {errors.fullname && (
                     <Text fontSize="14px" mt="-12px" mb="12px" color="red.400">
-                      {errors.email as string}
+                      {errors.fullname as string}
                     </Text>
                   )}
                 </Box>
 
-                <DotActive value={1} />
+                <DotActive value={2} />
 
                 <Flex gap="16px" mt="20px">
                   <Button
