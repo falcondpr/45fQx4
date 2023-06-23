@@ -49,35 +49,91 @@ model SkinUser {
 }
 
 model LocationUser {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  latitude    Int
-  longitude   Int
-  city        String
-  area        String
-  country     String
-  userId      String
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  latitude  Int
+  longitude Int
+  city      String
+  area      String
+  country   String
+  userId    String
+}
+
+model CategoryProduct {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  User    User[]
+  Product Product[]
+}
+
+model TypeProduct {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  Product Product[]
+}
+
+model StatusProduct {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  Product Product[]
+}
+
+model SaleStatusProduct {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  Product Product[]
+}
+
+model TypeAdProduct {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  Product Product[]
+}
+
+model Product {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  description     String
+  price           Int
+  categoryId      String?           @db.ObjectId
+  category        CategoryProduct?  @relation(fields: [categoryId], references: [id])
+  images          String[]
+  typeId          String            @db.ObjectId
+  type            TypeProduct       @relation(fields: [typeId], references: [id])
+  statusProductId String            @db.ObjectId
+  statusProduct   StatusProduct     @relation(fields: [statusProductId], references: [id])
+  saleStatusId    String            @db.ObjectId
+  saleStatus      SaleStatusProduct @relation(fields: [saleStatusId], references: [id])
+  userId          String            @db.ObjectId
+  user            User              @relation(fields: [userId], references: [id])
+  typeAdId        String            @db.ObjectId
+  typeAd          TypeAdProduct     @relation(fields: [typeAdId], references: [id])
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
 }
 
 model User {
-  id             String        @id @default(auto()) @map("_id") @db.ObjectId
-  fullname       String
-  username       String        @unique
-  email          String        @unique
-  password       String
-  typeUserId     String        @db.ObjectId
-  typeUser       TypeUser      @relation(fields: [typeUserId], references: [id])
-  affiliatedId   String?       @db.ObjectId
-  affiliated     Affiliated?   @relation(fields: [affiliatedId], references: [id])
-  genderId       String        @db.ObjectId
-  gender         GenderUser    @relation(fields: [genderId], references: [id])
-  avatar         String
-  banner         String
-  verifiedUserId String?       @db.ObjectId
-  verifiedUser   VerifiedUser? @relation(fields: [verifiedUserId], references: [id])
-  skinUserId     String?       @db.ObjectId
-  skinUser       SkinUser?     @relation(fields: [skinUserId], references: [id])
-  premiumUser    PremiumUser?  @relation(fields: [premiumUserId], references: [id])
-  premiumUserId  String?       @db.ObjectId
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @default(now())
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  fullname          String
+  username          String           @unique
+  email             String           @unique
+  password          String
+  typeUserId        String           @db.ObjectId
+  typeUser          TypeUser         @relation(fields: [typeUserId], references: [id])
+  affiliatedId      String?          @db.ObjectId
+  affiliated        Affiliated?      @relation(fields: [affiliatedId], references: [id])
+  genderId          String           @db.ObjectId
+  gender            GenderUser       @relation(fields: [genderId], references: [id])
+  avatar            String
+  banner            String
+  verifiedUserId    String?          @db.ObjectId
+  verifiedUser      VerifiedUser?    @relation(fields: [verifiedUserId], references: [id])
+  skinUserId        String?          @db.ObjectId
+  skinUser          SkinUser?        @relation(fields: [skinUserId], references: [id])
+  premiumUser       PremiumUser?     @relation(fields: [premiumUserId], references: [id])
+  premiumUserId     String?          @db.ObjectId
+  CategoryProduct   CategoryProduct? @relation(fields: [categoryProductId], references: [id])
+  categoryProductId String?          @db.ObjectId
+  Product           Product[]
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @default(now())
 }
