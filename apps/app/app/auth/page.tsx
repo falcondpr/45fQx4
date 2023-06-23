@@ -27,6 +27,7 @@ export default function Auth() {
         position="relative"
         w="full"
         height="100%"
+        bgPos="bottom"
       >
         <Box
           position="absolute"
