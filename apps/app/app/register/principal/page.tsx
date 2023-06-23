@@ -71,7 +71,7 @@ export default function PrincipalRegister() {
           bgColor="white"
           border="1px solid"
           borderColor="brand.700"
-          onClick={() => router.push('/register')}
+          onClick={() => router.push('/register/email')}
         >
           <Image src="/icons/mail-auth.svg" alt="" w="36px" h="36px" />
           <Text ml="10px" fontSize="16px" color="brand.900">
