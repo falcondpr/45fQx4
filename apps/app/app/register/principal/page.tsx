@@ -10,11 +10,14 @@ import {
   Image,
   Link,
   Text,
+  useColorMode,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
 export default function PrincipalRegister() {
   const router = useRouter();
+  const { colorMode } = useColorMode();
+  console.log(colorMode);
 
   const [height, setHeight] = useState<number | string>(0);
 
