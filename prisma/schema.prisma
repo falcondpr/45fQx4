@@ -97,6 +97,7 @@ model Product {
   categoryId      String?           @db.ObjectId
   category        CategoryProduct?  @relation(fields: [categoryId], references: [id])
   images          String[]
+  tags            String[]
   typeId          String            @db.ObjectId
   type            TypeProduct       @relation(fields: [typeId], references: [id])
   statusProductId String            @db.ObjectId
