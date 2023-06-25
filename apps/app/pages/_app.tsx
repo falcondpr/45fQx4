@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
 
 import { theme } from '@sura/chakra';
+import '../styles/globals.css';
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
