@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import * as yup from 'yup';
@@ -7,14 +5,11 @@ import { Box, Button, Grid, Heading, Text, Link, Flex } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { useRouter } from 'next/navigation';
 
-import { Input } from '@sura/ui';
-import DotActive from '../../components/auth/DotActive';
+import { Select } from '@sura/ui';
+import DotActive from '../../../components/auth/DotActive';
 
 const registerValidationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Debe ser un correo válido')
-    .required('El correo es obligatorio'),
+  genderId: yup.string().required('Es un campo obligatorio'),
 });
 
 export default function Register() {
@@ -22,7 +17,7 @@ export default function Register() {
 
   // eslint-disable-next-line
   const handleRegisterUser = (values: any): void => {
-    router.push('/register/fullname');
+    router.push('/register/password');
     console.log({ values });
   };
 
@@ -57,7 +52,7 @@ export default function Register() {
           <Formik
             validationSchema={registerValidationSchema}
             initialValues={{
-              email: '',
+              genderId: '',
             }}
             // eslint-disable-next-line
             onSubmit={(values: any) => handleRegisterUser(values)}
@@ -65,20 +60,25 @@ export default function Register() {
             {({ handleBlur, handleChange, values, handleSubmit, errors }) => (
               <Box as="form" onSubmit={handleSubmit}>
                 <Box>
-                  <Input
-                    label="email"
-                    value={values.email}
-                    onChange={handleChange('email')}
-                    onBlur={handleBlur('email')}
-                  />
-                  {errors.email && (
+                  <Select
+                    value={values.genderId}
+                    onChange={handleChange('genderId')}
+                    onBlur={handleBlur('genderId')}
+                    placeholder="Seleccione un genero"
+                  >
+                    <option value="0">Hombre</option>
+                    <option value="1">Mujer</option>
+                    <option value="2">Prefiero no decirlo</option>
+                  </Select>
+
+                  {errors.genderId && (
                     <Text fontSize="14px" mt="-12px" mb="12px" color="red.400">
-                      {errors.email as string}
+                      {errors.genderId as string}
                     </Text>
                   )}
                 </Box>
 
-                <DotActive value={1} />
+                <DotActive value={4} />
 
                 <Flex gap="16px" mt="20px">
                   <Button

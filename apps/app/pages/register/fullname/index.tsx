@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import * as yup from 'yup';
@@ -8,10 +6,10 @@ import { Formik } from 'formik';
 import { useRouter } from 'next/navigation';
 
 import { Input } from '@sura/ui';
-import DotActive from '../../components/auth/DotActive';
+import DotActive from '../../../components/auth/DotActive';
 
 const registerValidationSchema = yup.object().shape({
-  username: yup.string().required('El nombre de usuario es obligatorio'),
+  fullname: yup.string().required('El nombre es obligatorio'),
 });
 
 export default function Register() {
@@ -19,7 +17,7 @@ export default function Register() {
 
   // eslint-disable-next-line
   const handleRegisterUser = (values: any): void => {
-    router.push('/register/gender');
+    router.push('/register/username');
     console.log({ values });
   };
 
@@ -54,7 +52,7 @@ export default function Register() {
           <Formik
             validationSchema={registerValidationSchema}
             initialValues={{
-              username: '',
+              fullname: '',
             }}
             // eslint-disable-next-line
             onSubmit={(values: any) => handleRegisterUser(values)}
@@ -63,19 +61,19 @@ export default function Register() {
               <Box as="form" onSubmit={handleSubmit}>
                 <Box>
                   <Input
-                    label="nombre de usuario"
-                    value={values.username}
-                    onChange={handleChange('username')}
-                    onBlur={handleBlur('username')}
+                    label="nombre completo"
+                    value={values.fullname}
+                    onChange={handleChange('fullname')}
+                    onBlur={handleBlur('fullname')}
                   />
-                  {errors.username && (
+                  {errors.fullname && (
                     <Text fontSize="14px" mt="-12px" mb="12px" color="red.400">
-                      {errors.username as string}
+                      {errors.fullname as string}
                     </Text>
                   )}
                 </Box>
 
-                <DotActive value={3} />
+                <DotActive value={2} />
 
                 <Flex gap="16px" mt="20px">
                   <Button

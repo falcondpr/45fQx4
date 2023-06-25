@@ -1,11 +1,19 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Grid, Heading, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Grid,
+  Heading,
+  Text,
+  VStack,
+  useColorMode,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
 export default function Auth() {
   const router = useRouter();
+  const { colorMode } = useColorMode();
+  console.log(colorMode);
 
   const [height, setHeight] = useState<number | string>(0);
 
@@ -20,6 +28,7 @@ export default function Auth() {
       flexDir="column"
       height={height}
       overflow="hidden"
+      bgColor={colorMode === 'dark' ? 'brand.900' : '#fff'}
     >
       <Box
         bgImage="url('/images/bg-auth-principal.png')"
@@ -36,7 +45,11 @@ export default function Auth() {
           w="full"
           h="full"
           zIndex="10"
-          bg="linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%)"
+          bg={
+            colorMode === 'dark'
+              ? 'linear-gradient(0deg, rgba(51,51,51,1) 10%, rgba(255,255,255,0) 100%)'
+              : 'linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%)'
+          }
         />
 
         <Grid
@@ -47,7 +60,10 @@ export default function Auth() {
           gridTemplateRows="repeat(3, min-content)"
           alignContent="center"
         >
-          <Heading variant="base">
+          <Heading
+            variant="base"
+            color={colorMode === 'dark' ? 'white' : 'initial'}
+          >
             Empieza a comprar y vender de forma segura
           </Heading>
           <Text variant="base" mt="10px">
@@ -60,6 +76,8 @@ export default function Auth() {
               fontSize="18px"
               variant="base"
               onClick={() => router.push('/register/principal')}
+              border={colorMode === 'dark' ? '1px solid' : 'initial'}
+              borderColor={colorMode === 'dark' ? 'white' : 'initial'}
             >
               Crear cuenta
             </Button>
