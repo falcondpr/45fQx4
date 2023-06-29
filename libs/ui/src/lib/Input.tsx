@@ -22,6 +22,7 @@ export default function Input({ label, ...rest }: IInput) {
         {label}
       </Text>
       <InputChakraUI
+        w="full"
         height="58px"
         rounded="6px"
         borderColor="brand.200"
