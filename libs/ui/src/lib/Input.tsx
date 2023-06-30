@@ -7,6 +7,7 @@ import {
   Switch,
   Flex,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 interface IInput extends InputProps {
   story?: boolean;
@@ -15,8 +16,19 @@ interface IInput extends InputProps {
 
 export default function Input({ label, story, ...rest }: IInput) {
   const { colorMode, toggleColorMode } = useColorMode();
-  const isDarkMode = colorMode === "dark" ? true : false;
-  
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (colorMode === 'dark') {
+      toggleColorMode();
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsDarkMode(colorMode === 'dark' ? true : false);
+  }, [colorMode]);
+
   return (
     <>
       <Box mb="20px">
