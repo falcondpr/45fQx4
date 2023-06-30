@@ -9,9 +9,12 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const Primary: Story = {
+  args: {
+    variant: 'base'
+  },
   argTypes: {
     variant: {
-      options: ['base', 'outline'],
+      options: ['base'],
       control: { type: 'select' },
     },
   },

@@ -1,4 +1,5 @@
 import { ButtonProps, Button as ButtonUI, Flex, Switch, Text, useColorMode } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 interface IButtonUI extends ButtonProps {
   story?: boolean;
@@ -6,7 +7,18 @@ interface IButtonUI extends ButtonProps {
 
 export default function Button({ children, ...rest }: IButtonUI) {
   const { colorMode, toggleColorMode } = useColorMode();
-  const isDarkMode = colorMode === 'dark' ? true : false;
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (colorMode === 'dark') {
+      toggleColorMode();
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsDarkMode(colorMode === 'dark' ? true : false);
+  }, [colorMode]);
 
   return (
     <>

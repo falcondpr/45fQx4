@@ -1,4 +1,4 @@
-import { Box, ChakraProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
 

@@ -10,6 +10,11 @@ const base = defineStyle({
   fontWeight: 'medium',
   boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.1)',
 
+  _dark: {
+    backgroundColor: 'white',
+    color: 'brand.900'
+  },
+
   _hover: {
     opacity: 0.95,
   },
@@ -27,6 +32,12 @@ const outline = defineStyle({
   border: '1px solid',
   borderColor: 'brand.900',
   color: 'brand.900',
+
+  _dark: {
+    borderColor: 'white',
+    backgroundColor: 'brand.900',
+    color: 'white'
+  }
 });
 
 export const buttonTheme = defineStyleConfig({
