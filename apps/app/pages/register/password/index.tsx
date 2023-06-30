@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import * as yup from 'yup';
-import { Box, Button, Grid, Heading, Text, Link, Flex } from '@chakra-ui/react';
+import { Box, Grid, Heading, Text, Link, Flex } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { useRouter } from 'next/navigation';
 
-import { Input } from '@sura/ui';
+import { Input, Button } from '@sura/ui';
 import DotActive from '../../../components/auth/DotActive';
 
 const registerValidationSchema = yup.object().shape({
@@ -108,7 +108,7 @@ export default function Register() {
                   >
                     Volver
                   </Button>
-                  <Button type="submit" flex="1" variant="base" fontSize="18px">
+                  <Button type="submit" flex="1" fontSize="18px">
                     Siguiente
                   </Button>
                 </Flex>

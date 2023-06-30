@@ -4,7 +4,6 @@ import {
   Box,
   Input as InputChakraUI,
   useColorMode,
-  Button,
   Switch,
   Flex,
 } from '@chakra-ui/react';

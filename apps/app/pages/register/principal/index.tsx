@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import {
   Box,
-  Button,
   Grid,
   Heading,
   Image,
@@ -11,6 +10,8 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
+
+import { Button } from '@sura/ui'
 
 export default function PrincipalRegister() {
   const router = useRouter();
@@ -68,7 +69,6 @@ export default function PrincipalRegister() {
       <Box p="20px" left="0" bottom="0" w="full" bgColor="white">
         <Button
           shadow="none"
-          variant="base"
           bgColor="white"
           border="1px solid"
           borderColor="brand.700"
@@ -83,7 +83,6 @@ export default function PrincipalRegister() {
         <Button
           mt="16px"
           shadow="none"
-          variant="base"
           bgColor="white"
           border="1px solid"
           borderColor="brand.700"
