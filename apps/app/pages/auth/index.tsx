@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   Box,
-  Button,
   Grid,
   Heading,
   Text,
@@ -9,6 +8,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
+import { Button } from '@sura/ui';
 
 export default function Auth() {
   const router = useRouter();

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, Button, Grid, Heading, Text, Link } from '@chakra-ui/react';
+import { Box, Grid, Heading, Text, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { Input } from '@sura/ui';
+import { Input, Button } from '@sura/ui';
 
 export default function Login() {
   return (
@@ -29,7 +29,7 @@ export default function Login() {
           <Input label="email" value="Hello" />
           <Input label="contraseña" value="Hello" />
 
-          <Button marginTop="10px" variant="base">
+          <Button marginTop="10px">
             Inicia sesion
           </Button>
 
