@@ -32,20 +32,32 @@ export default function Register() {
     <Flex flexDir="column" height={height} justifyContent="space-between">
       <Box>
         <Grid
-          height="200px"
+          height="160px"
           bgSize="cover"
           bgPos="center"
           width="100%"
-          bgImage="url('/images/bg-register.png')"
+          bgImage="url('/images/bg-register-gender.jpg')"
           p="20px"
           alignContent="flex-end"
           gridTemplateRows="repeat(2, min-content)"
+          position="relative"
         >
-          <Heading variant="base">Bienvenido!</Heading>
-          <Text>
-            Si aun no tienes
-            <br /> una cuenta debes registrarte
-          </Text>
+          <Box
+            position="absolute"
+            bottom="0"
+            right="0"
+            w="full"
+            h="full"
+            bgColor="white"
+            opacity="0.5"
+          />
+
+          <Box position="relative">
+            <Heading variant="base" fontSize="28px">
+              Datos personales
+            </Heading>
+            <Text>Selecciona tu genero</Text>
+          </Box>
         </Grid>
 
         <Box p="20px">
@@ -64,7 +76,7 @@ export default function Register() {
                     value={values.genderId}
                     onChange={handleChange('genderId')}
                     onBlur={handleBlur('genderId')}
-                    placeholder="Seleccione un genero"
+                    placeholder="Seleccione una opcion"
                   >
                     <option value="0">Hombre</option>
                     <option value="1">Mujer</option>
@@ -78,39 +90,46 @@ export default function Register() {
                   )}
                 </Box>
 
-                <DotActive value={4} />
+                <Box
+                  position="fixed"
+                  w="calc(100% - 40px)"
+                  left="20px"
+                  bottom="30px"
+                >
+                  <DotActive value={4} />
 
-                <Flex gap="16px" mt="20px">
-                  <Button
-                    type="button"
-                    flex="1"
-                    variant="base"
-                    color="brand.900"
-                    fontSize="18px"
-                    bgColor="white"
-                    shadow="none"
-                    border="1px solid"
-                    borderColor="brand.700"
-                    onClick={() => router.back()}
-                  >
-                    Volver
-                  </Button>
-                  <Button type="submit" flex="1" fontSize="18px">
-                    Siguiente
-                  </Button>
-                </Flex>
+                  <Flex gap="16px" mt="20px">
+                    <Button
+                      type="button"
+                      flex="1"
+                      variant="base"
+                      color="brand.900"
+                      fontSize="18px"
+                      bgColor="white"
+                      shadow="none"
+                      border="1px solid"
+                      borderColor="brand.700"
+                      onClick={() => router.back()}
+                    >
+                      Volver
+                    </Button>
+                    <Button type="submit" flex="1" fontSize="18px">
+                      Siguiente
+                    </Button>
+                  </Flex>
+
+                  <Text pt="20px" color="brand.700" textAlign="center">
+                    Ya tienes una cuenta?{' '}
+                    <Link href="/login" as={NextLink} textDecor="underline">
+                      Inicia sesion
+                    </Link>
+                  </Text>
+                </Box>
               </Box>
             )}
           </Formik>
         </Box>
       </Box>
-
-      <Text pb="32px" color="brand.700" textAlign="center">
-        Ya tienes una cuenta?{' '}
-        <Link href="/login" as={NextLink} textDecor="underline">
-          Inicia sesion
-        </Link>
-      </Text>
     </Flex>
   );
 }

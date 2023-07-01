@@ -32,20 +32,32 @@ export default function Register() {
     <Flex flexDir="column" height={height} justifyContent="space-between">
       <Box>
         <Grid
-          height="200px"
+          height="160px"
           bgSize="cover"
           bgPos="center"
           width="100%"
-          bgImage="url('/images/bg-register.png')"
+          bgImage="url('/images/bg-register-fullname.jpg')"
           p="20px"
           alignContent="flex-end"
           gridTemplateRows="repeat(2, min-content)"
+          position="relative"
         >
-          <Heading variant="base">Bienvenido!</Heading>
-          <Text>
-            Si aun no tienes
-            <br /> una cuenta debes registrarte
-          </Text>
+          <Box
+            position="absolute"
+            bottom="0"
+            right="0"
+            w="full"
+            h="full"
+            bgColor="white"
+            opacity="0.8"
+          />
+
+          <Box position="relative">
+            <Heading variant="base" fontSize="28px">
+              Datos personales
+            </Heading>
+            <Text>Introduce tu nombre completo</Text>
+          </Box>
         </Grid>
 
         <Box p="20px">
@@ -73,34 +85,40 @@ export default function Register() {
                   )}
                 </Box>
 
-                <DotActive value={2} />
+                <Box
+                  position="fixed"
+                  w="calc(100% - 40px)"
+                  left="20px"
+                  bottom="30px"
+                >
+                  <DotActive value={2} />
 
-                <Flex gap="16px" mt="20px">
-                  <Button
-                    type="button"
-                    flex="1"
-                    variant="outline"
-                    fontSize="18px"
-                    onClick={() => router.back()}
-                  >
-                    Volver
-                  </Button>
-                  <Button type="submit" flex="1" fontSize="18px">
-                    Siguiente
-                  </Button>
-                </Flex>
+                  <Flex gap="16px" mt="20px">
+                    <Button
+                      type="button"
+                      flex="1"
+                      variant="outline"
+                      fontSize="18px"
+                      onClick={() => router.back()}
+                    >
+                      Volver
+                    </Button>
+                    <Button type="submit" flex="1" fontSize="18px">
+                      Siguiente
+                    </Button>
+                  </Flex>
+                  <Text pt="20px" color="brand.700" textAlign="center">
+                    Ya tienes una cuenta?{' '}
+                    <Link href="/login" as={NextLink} textDecor="underline">
+                      Inicia sesion
+                    </Link>
+                  </Text>
+                </Box>
               </Box>
             )}
           </Formik>
         </Box>
       </Box>
-
-      <Text pb="32px" color="brand.700" textAlign="center">
-        Ya tienes una cuenta?{' '}
-        <Link href="/login" as={NextLink} textDecor="underline">
-          Inicia sesion
-        </Link>
-      </Text>
     </Flex>
   );
 }
