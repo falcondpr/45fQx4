@@ -8,11 +8,13 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { Input, Button } from '@sura/ui';
 import DotActive from '../../../components/auth/DotActive';
+import { mailformat } from '../../../constants/regex';
 
 const registerValidationSchema = yup.object().shape({
   email: yup
     .string()
     .email('Debe ser un correo válido')
+    .matches(new RegExp(mailformat), 'Debe ser un correo válido')
     .required('El correo es obligatorio'),
 });
 
