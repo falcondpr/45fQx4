@@ -12,7 +12,13 @@ const base = defineStyle({
 
   _dark: {
     backgroundColor: 'white',
-    color: 'brand.900'
+    color: 'brand.900',
+
+    _focusWithin: {
+      outline: '2px solid',
+      outlineColor: 'white',
+      outlineOffset: '2px',
+    },
   },
 
   _hover: {
@@ -36,8 +42,14 @@ const outline = defineStyle({
   _dark: {
     borderColor: 'white',
     backgroundColor: 'brand.900',
-    color: 'white'
-  }
+    color: 'white',
+
+    _focusWithin: {
+      outline: '2px solid',
+      outlineColor: 'white',
+      outlineOffset: '2px',
+    },
+  },
 });
 
 export const buttonTheme = defineStyleConfig({
