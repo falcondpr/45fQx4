@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import * as yup from 'yup';
-import { Box, Grid, Heading, Text, Link, Flex } from '@chakra-ui/react';
+import { Box, Grid, Heading, Text, Link, Flex, Image } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { useRouter } from 'next/navigation';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { Input, Button } from '@sura/ui';
 import DotActive from '../../../components/auth/DotActive';
@@ -33,15 +34,24 @@ export default function Register() {
       <Box>
         <Grid
           height="160px"
-          bgSize="cover"
-          bgPos="center"
           width="100%"
-          bgImage="url('/images/bg-register-username.jpg')"
-          p="20px"
           alignContent="flex-end"
           gridTemplateRows="repeat(2, min-content)"
           position="relative"
+          className="header-register"
         >
+          <Box w="full" h="160px" position="absolute" top="0" left="0">
+            <Image
+              as={LazyLoadImage}
+              src="/images/bg-register-username.jpg"
+              w="full"
+              h="full"
+              alt=""
+              effect="blur"
+              objectFit="cover"
+            />
+          </Box>
+
           <Box
             position="absolute"
             bottom="0"
@@ -52,7 +62,7 @@ export default function Register() {
             opacity="0.5"
           />
 
-          <Box position="relative">
+          <Box position="relative" p="20px">
             <Heading variant="base" fontSize="28px">
               Datos personales
             </Heading>
