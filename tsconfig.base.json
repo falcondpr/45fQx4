@@ -22,7 +22,8 @@
       "@sura/prisma.service.ts": ["libs/prisma.service.ts/src/index.ts"],
       "@sura/services": ["libs/services/src/index.ts"],
       "@sura/ui": ["libs/ui/src/index.ts"],
-      "@sura/ui/server": ["libs/ui/src/server.ts"]
+      "@sura/ui/server": ["libs/ui/src/server.ts"],
+      "@app/component": ["apps/app/components/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
