@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { Input, Button } from '@sura/ui';
-import DotActive from '../../../components/auth/DotActive';
+import { DotActive } from '@app/component';
 
 const registerValidationSchema = yup.object().shape({
   fullname: yup.string().required('El nombre es obligatorio'),
