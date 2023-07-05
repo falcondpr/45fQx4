@@ -1,7 +1,10 @@
+import { Button, Text } from '@sura/ui-web';
+
 export function App() {
   return (
-    <div className="grid place-items-center h-screen bg-black">
-      <p className="text-white text-2xl">Hello world from tailwind</p>
+    <div className="grid grid-cols-2 place-items-center h-screen container mx-auto">
+      <Text>Hello</Text>
+      <Button>Hello</Button>
     </div>
   );
 }

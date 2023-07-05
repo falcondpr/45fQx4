@@ -11,14 +11,7 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        custom: ['Roboto', 'sans-serif'],
-      },
-      colors: {
-        '@sura-primary': '#333',
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
