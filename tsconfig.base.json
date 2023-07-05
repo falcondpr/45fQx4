@@ -23,6 +23,7 @@
       "@sura/prisma.service.ts": ["libs/prisma.service.ts/src/index.ts"],
       "@sura/services": ["libs/services/src/index.ts"],
       "@sura/ui": ["libs/ui/src/index.ts"],
+      "@sura/ui-web": ["libs/ui-web/src/index.ts"],
       "@sura/ui/server": ["libs/ui/src/server.ts"]
     }
   },
