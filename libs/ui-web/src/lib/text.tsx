@@ -5,13 +5,16 @@ interface IText {
   className?: string;
 }
 
-export default function Text({ children, className, ...rest }: IText) {
-  const buttonClasses = classnames(
-    'text-base font-custom text-@sura-primary',
-    className
+export default function Text({ children, className = "", ...rest }: IText) {
+  // const buttonClasses = classnames(
+  //   className,
+  //   'text-base font-custom text-@sura-primary',
+  // );
+  const baseStyles = `text-base font-custom text-@sura-primary ${className}`;
+
+  return (
+    <p className={baseStyles} {...rest}>
+      {children}
+    </p>
   );
-
-  console.log({ buttonClasses });
-
-  return <p className={buttonClasses}>{children}</p>;
 }
