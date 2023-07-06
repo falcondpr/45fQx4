@@ -1,11 +1,14 @@
-import { Button, Text } from '@sura/ui-web';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
+import Root from '../pages/Root';
 
 export function App() {
   return (
-    <div className="grid grid-cols-2 place-items-center h-screen container mx-auto">
-      <Text>Hello</Text>
-      <Button>Hello</Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Root />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

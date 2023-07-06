@@ -6,12 +6,19 @@ module.exports = {
   content: [
     join(
       __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
+      '{src,pages,components,app,lib}/**/*!(*.stories|*.spec).{ts,tsx,html}'
     ),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ['Roboto', 'sans-serif'],
+      },
+      colors: {
+        '@sura-primary': '#333',
+      },
+    },
   },
   plugins: [],
 };
