@@ -17,6 +17,8 @@ module.exports = {
       },
       colors: {
         '@sura-primary': '#333',
+        '@sura-gray': '#777',
+        '@sura-border': '#999',
       },
     },
   },

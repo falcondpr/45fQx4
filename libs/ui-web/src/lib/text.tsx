@@ -1,20 +1,17 @@
-import classnames from 'classnames';
-
 interface IText {
   children?: React.ReactNode;
-  className?: string;
+  variant?: 'base' | 'heading' | 'subtitle';
 }
 
-export default function Text({ children, className = "", ...rest }: IText) {
-  // const buttonClasses = classnames(
-  //   className,
-  //   'text-base font-custom text-@sura-primary',
-  // );
-  const baseStyles = `text-base font-custom text-@sura-primary ${className}`;
+export default function Text({ children, variant = 'base' }: IText) {
+  const baseStyles = `font-custom text-@sura-primary`;
 
-  return (
-    <p className={baseStyles} {...rest}>
-      {children}
-    </p>
-  );
+  const base = `${baseStyles} text-base`;
+  const heading = `${baseStyles} text-3xl font-bold`;
+  const subtitle = `${baseStyles} text-2xl`;
+
+  const className =
+    variant === 'base' ? base : variant === 'heading' ? heading : subtitle;
+
+  return <p className={className}>{children}</p>;
 }
