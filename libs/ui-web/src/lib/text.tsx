@@ -1,16 +1,17 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 interface IText {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
 export default function Text({ children, className, ...rest }: IText) {
-  const buttonClasses = classNames('font-custom text-@sura-primary', className);
-
-  return (
-    <p className={buttonClasses} {...rest}>
-      {children}
-    </p>
+  const buttonClasses = classnames(
+    'text-base font-custom text-@sura-primary',
+    className
   );
+
+  console.log({ buttonClasses });
+
+  return <p className={buttonClasses}>{children}</p>;
 }
