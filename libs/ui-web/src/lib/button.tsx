@@ -1,17 +1,27 @@
-import classnames from 'classnames';
+import { HTMLAttributes } from 'react';
 
-interface IButton {
-  children: React.ReactNode;
-  className?: string;
+interface IButton extends HTMLAttributes<HTMLButtonElement> {
+  children?: React.ReactNode;
+  variant?: 'primary' | 'outline' | 'social';
 }
 
-export default function Button({ children, className, ...rest }: IButton) {
-  const buttonClasses = classnames(
-    `font-custom bg-black text-xl text-white h-16 bg-@sura-primary rounded-md text-white w-full text-xl font-medium shadow-md`, className
-  );
+export default function Button({
+  children,
+  variant = 'primary',
+  ...rest
+}: IButton) {
+  const baseStyles =
+    'h-[60px] bg-@sura-primary text-xl font-medium rounded-md w-full';
+
+  const primary = `${baseStyles} text-white shadow-md`;
+  const outline = `${baseStyles} bg-white border-2 border-@sura-border text-@sura-primary shadow-md`;
+  const social = `${baseStyles} ${outline} shadow-none`;
+
+  const className =
+    variant === 'primary' ? primary : variant === 'social' ? social : outline;
 
   return (
-    <button className={buttonClasses} {...rest}>
+    <button className={className} {...rest}>
       {children}
     </button>
   );
